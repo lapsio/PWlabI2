@@ -1,5 +1,5 @@
 #include <iostream>
-#include "./include/PointXY.h"
+#include "PointXY.h"
 
 using namespace std;
 
@@ -83,13 +83,13 @@ PointXY PointXY::operator-(PointXY point) /***ODEJMUJE PUNKTY***/
 
 void PointXY::operator+=(PointXY point) /***DODAJE PUNKTY i PRZYPISUJE WYNIK DODAWANIA***/
 {
-    this -> changeTo(this -> X + point.getX(), this -> Y + point.getY());
+    this -> changeTo(this -> X + point.X, this -> Y + point.Y);
     return;
 }
 
 void PointXY::operator-=(PointXY point) /***ODEJMUJE PUNKTY i PRZYPISUJE WYNIK ODEJMOWANIA***/
 {
-    this -> changeTo(this -> X - point.getX(), this -> Y - point.getY());
+    this -> changeTo(this -> X - point.X, this -> Y - point.Y);
     return;
 }
 
@@ -126,9 +126,7 @@ bool PointXY:: operator==(const PointXY& point) /***POROWNANIE DWOCH PUNKTOW == 
 
 bool PointXY:: operator!=(const PointXY& point) /***POROWNANIE DWOCH PUNKTOW != ***/
 {
-    if (this -> X == point.X)
-        return false;
-    if (this -> Y == point.Y)
+    if ((this -> X == point.X) && (this -> Y == point.Y))
         return false;
 
     return true;

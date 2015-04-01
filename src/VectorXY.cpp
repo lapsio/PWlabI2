@@ -1,4 +1,4 @@
-#include "./include/VectorXY.h"
+#include "VectorXY.h"
 
 using namespace std;
 
@@ -518,7 +518,7 @@ bool VectorXY:: operator==(const VectorXY& vect) /***POROWNANIE DWOCH PUNKTOW ==
 
 bool VectorXY:: operator!=(const VectorXY& vect) /***POROWNANIE DWOCH PUNKTOW != ***/
 {
-    if ((this -> getBegin() != vect.Beg) && (this -> getEnd() != vect.End))
+    if ((this -> getBegin() != vect.Beg) || (this -> getEnd() != vect.End))
         return true;
     else
         return false;
