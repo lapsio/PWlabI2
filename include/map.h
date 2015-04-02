@@ -45,6 +45,26 @@ public:
 
 private:
   void operator=(const ObjectMapMeta& R){(void)R;}
+
+#ifdef _DEBUG
+public:
+  static void DEBUG(ObjectMapMeta * m){
+    std::cout << "SELF: " << m << std::endl;
+
+    std::cout << "inUse: " << m->inUse << std::endl;
+    std::cout << "mapLink: " << m->mapLink << std::endl;
+    std::cout << "map: " << m->map << std::endl;
+
+    std::cout << "anchor: " << m->anchor << std::endl;
+    std::cout << "tail: " << m->tail << std::endl;
+
+    std::cout << "Obj pointer: " << &m->object << std::endl;
+    std::cout << "refLink: " << &m->objLink << std::endl;
+
+    std::cout << "pos:" << m->pos.getX() << " " << m->pos.getY() << std::endl;
+  }
+
+#endif
 };
 
 
@@ -65,6 +85,19 @@ public:
   ObjectMapMeta& popObject(int index);
   void deleteObject(ObjectMapMeta * meta);
   void deleteObject(int index);
+
+#ifdef _DEBUG
+  static void DEBUG(GameMap* a){
+    Chain<ObjectMapMeta&>*c=a->objects;
+    int k=0;
+    while(c){
+      std::cout << std::endl << "#" << k++ << ":" << std::endl;
+      ObjectMapMeta::DEBUG(&c->data);
+      Object::DEBUG(&c->data.object);
+      c=c->next();
+    }
+  }
+#endif
 };
 
 

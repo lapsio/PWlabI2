@@ -1,12 +1,21 @@
+#define _DEBUG
+
+#ifdef _DEBUG
+#include "./include/tests.h"
+#endif
+
 #include <iostream>
-#include "./include/object.h"
+#include "./include/physx.h"
 
 using namespace std;
 
+
+
 int main()
 {
-  cout << "Hello World! omg" << endl;
-  Object A = Object();
+#ifdef _DEBUG
+  CORE_DEBUG();
+#endif
+
   return 0;
 }
-

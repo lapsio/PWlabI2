@@ -1,6 +1,8 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
+
+
 #include <string>
 #include <cstring>
 #include "./include/PointXY.h"
@@ -84,6 +86,36 @@ public:
   inline void setFriction(double friction){friction>0?this->friction=friction:throw "friction must be positive value";}
 
   PhysicalBody& operator=(const PhysicalBody& R);
+
+#ifdef _DEBUG
+  static void DEBUG(PhysicalBody * o){
+    std::cout << "bounds: " << o->boundBox.getX() << " " << o->boundBox.getY() << std::endl;
+    std::cout << "flags: " << (char)o->type << " " << (char)o->collisionType << " " << (char)o->meshType << std::endl;
+    std::cout << "props: mass: " << o->mass << " friction: " << o->friction << std::endl;
+    if (o->meshType==PhysicalBody::mesh){
+      std::cout << "mesh: " << std::endl;
+
+      int l = o->collisionMesh->length();
+      for (int i = 0 ; i < l ; i++)
+        std::cout
+            << "   " << o->collisionMesh->getData(i)->getBegin().getX()
+            << ":" << o->collisionMesh->getData(i)->getBegin().getY()
+            << "   " << o->collisionMesh->getData(i)->getEnd().getX()
+            << ":" << o->collisionMesh->getData(i)->getEnd().getY() << std::endl;
+
+      std::cout << "normals: " << std::endl;
+
+      l = o->collisionNormals->length();
+      for (int i = 0 ; i < l ; i++)
+        std::cout
+            << "   " << o->collisionNormals->getData(i)->getBegin().getX()
+            << ":" << o->collisionNormals->getData(i)->getBegin().getY()
+            << "   " << o->collisionNormals->getData(i)->getEnd().getX()
+            << ":" << o->collisionNormals->getData(i)->getEnd().getY() << std::endl;
+    } else
+      std::cout << "no mesh - circular object" << std::endl << std::endl;
+  }
+#endif
 };
 
 
@@ -110,7 +142,17 @@ public:
   inline bool operator==(const Object& o){return o.id==this->id;}
   inline static bool matchType(Object obj){return strcmp(obj.typeOf(),"Object")==0;}
 
+#ifdef _DEBUG
+  static void DEBUG(Object * o){
+    std::cout << "SELF: " << o << std::endl;
 
+    std::cout << "name: " << o->name << std::endl;
+    std::cout << "id:" << o->id << std::endl;
+    std::cout << "maxId:" << Object::maxId << std::endl;
+
+    std::cout << "refUsers:" << o->refUsersCount() << std::endl;
+  }
+#endif
 };
 
 

@@ -39,12 +39,14 @@ ObjectMapMeta::~ObjectMapMeta(){
 void ObjectMapMeta::attach(ObjectMapMeta &anchor){
   this->detach();
   this->anchor=&anchor;
-  this->anchor->tail->detach();
+  if (this->anchor->tail)
+    this->anchor->tail->detach();
   this->anchor->tail=this;
 }
 
 void ObjectMapMeta::detach(){
-  this->anchor->tail=nullptr;
+  if (this->anchor)
+    this->anchor->tail=nullptr;
   this->anchor=nullptr;
 }
 

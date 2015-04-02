@@ -59,12 +59,34 @@ public:
   Chain * rewind(){Chain<TYPE>*c=this;while(c->prev())c=c->prev();return c;}
   Chain * rewindForward(){Chain<TYPE>*c=this;while(c->next())c=c->next();return c;}
 
-  inline void insertAfter(Chain * c){this->nextC=c;c->prevC=this;}
-  inline void insertBefore(Chain * c){this->prevC=c;c->nextC=this;}
+  inline void insertAfter(Chain * c){
+    Chain*t=this->nextC;
+    this->nextC=c;
+    c->prevC=this;
+    c=c->rewindForward();
+    c->nextC=t;
+    if (t)
+      t->prevC=c;
+  }
+  inline void insertBefore(Chain * c){
+    Chain*t=this->prevC;
+    this->prevC=c;
+    c->nextC=this;
+    c=c->rewind();
+    c->prevC=t;
+    if (t)
+      t->nextC=c;
+  }
+
   inline void insertAfter(TYPE data){this->insertAfter(new Chain(data));}
   inline void insertBefore(TYPE data){this->insertBefore(new Chain(data));}
 
-  inline void pop(){if(this->nextC)this->nextC->prevC=this->prevC;if(this->prevC)this->prevC->nextC=this->nextC;}
+  inline void pop(){
+    if(this->nextC)
+      this->nextC->prevC=this->prevC;
+    if(this->prevC)
+      this->prevC->nextC=this->nextC;
+  }
 
   inline Chain<TYPE>* map(void (*f)(TYPE&)){
     Chain<TYPE>*c=this->rewind();

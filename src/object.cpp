@@ -7,6 +7,7 @@ PhysicalBody::PhysicalBody(ObjectType type,CollisionType collision, PointXY dime
   if (dimensions.getX()<0||dimensions.getY()<0)
     throw "dimensions cannot be negative";
 
+  this->boundBox=dimensions;
   this->setMass(mass);
   this->setFriction(friction);
 
@@ -62,7 +63,7 @@ void PhysicalBody::reshape(){
 
 void PhysicalBody::reshape(Array<PointXY *> &mesh){
 
-  int l = collisionMesh->length();
+  int l = mesh.length();
   if (l<3)
     throw "invalid collision mesh";
 
