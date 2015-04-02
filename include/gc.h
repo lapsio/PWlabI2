@@ -27,7 +27,7 @@ private:
 public:
   GCRefLink * link();
   void unlock();
-  int refUsersCount();
+  int refUsersCount() const;
 
 protected:
   GCRef();

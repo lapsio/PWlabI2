@@ -92,7 +92,7 @@ void GameMap::addObject(ObjectMapMeta &meta){
 
 
 
-int GameMap::getIndex(ObjectMapMeta *meta){
+int GameMap::getIndex(const ObjectMapMeta *meta) const {
   Chain<ObjectMapMeta&>*c=this->objects;
   int index=0;
   while(1){
@@ -105,7 +105,7 @@ int GameMap::getIndex(ObjectMapMeta *meta){
   return index;
 }
 
-ObjectMapMeta& GameMap::getMeta(int index){
+ObjectMapMeta& GameMap::getMeta(int index) const {
   Chain<ObjectMapMeta&>*c=this->objects;
   while(index-->0&&c)
     c=c->next();

@@ -137,9 +137,9 @@ public:
   Object(const Object& ref);
   virtual ~Object();
 
-  inline const std::string getName(){return this->name;}
-  inline virtual const char * typeOf(){return "Object";}
-  inline bool operator==(const Object& o){return o.id==this->id;}
+  inline const std::string getName() const {return this->name;}
+  inline virtual const char * typeOf() const {return "Object";}
+  inline bool operator==(const Object& o) const {return o.id==this->id;}
   inline static bool matchType(Object obj){return strcmp(obj.typeOf(),"Object")==0;}
 
 #ifdef _DEBUG

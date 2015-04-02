@@ -54,7 +54,7 @@ void PhysicalBody::meshRealloc(Array<VectorXY *> &col, Array<VectorXY *> &nor){
   this->collisionNormals->map([](VectorXY*& v){v=new VectorXY(*v);});
 }
 
-void PhysicalBody::reshape(){
+void PhysicalBody::reshape(){//reshape to circular object
   this->~PhysicalBody();
 
   this->collisionMesh=this->collisionNormals=nullptr;

@@ -34,14 +34,14 @@ public:
   ObjectMapMeta(const ObjectMapMeta& ref);
   virtual ~ObjectMapMeta();
 
-  inline ObjectMapMeta* getAnchor(){return this->anchor;}
-  inline ObjectMapMeta* getTail(){return this->tail;}
+  inline ObjectMapMeta* getAnchor() const {return this->anchor;}
+  inline ObjectMapMeta* getTail() const {return this->tail;}
 
   void attach(ObjectMapMeta& anchor);
   void detach();
 
-  inline bool isInUse(){return this->inUse;}
-  inline GameMap* getMap(){return this->map;}
+  inline bool isInUse() const {return this->inUse;}
+  inline GameMap* getMap() const {return this->map;}
 
 private:
   void operator=(const ObjectMapMeta& R){(void)R;}
@@ -76,8 +76,8 @@ public:
   GameMap();
   ~GameMap();
 
-  int getIndex(ObjectMapMeta * meta);
-  ObjectMapMeta& getMeta(int index);
+  int getIndex(const ObjectMapMeta * meta) const;
+  ObjectMapMeta& getMeta(int index) const;
 
   void addObject(Object& obj,PointXY pos=PointXY(0,0));
   void addObject(ObjectMapMeta& meta);
@@ -85,6 +85,9 @@ public:
   ObjectMapMeta& popObject(int index);
   void deleteObject(ObjectMapMeta * meta);
   void deleteObject(int index);
+
+  inline ObjectMapMeta& operator[](const int& index) const {return this->getMeta(index);}
+  inline int operator[](const ObjectMapMeta& m) const {return this->getIndex(&m);}
 
 #ifdef _DEBUG
   static void DEBUG(GameMap* a){

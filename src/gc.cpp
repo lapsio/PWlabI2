@@ -28,6 +28,6 @@ void GCRef::unlock(){
     delete this;
 }
 
-int GCRef::refUsersCount(){
+int GCRef::refUsersCount() const {
   return this->refCount;
 }
