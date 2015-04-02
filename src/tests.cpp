@@ -6,15 +6,15 @@ void test_punkt_konstruktor()
 {
     PointXY A;
     if (A.getX() != 0 || A.getY() != 0)
-        cout << "Blad dla 1 konstruktora z domyslymi wartosciami" << endl;
+        std::cout << "Blad dla 1 konstruktora z domyslymi wartosciami" << std::endl;
 
     PointXY B(5 , 5);
     if (B.getX() != 5 || B.getY() != 5)
-        cout << "Blad dla 1 konstruktora z podanymi wartosciami" << endl;
+        std::cout << "Blad dla 1 konstruktora z podanymi wartosciami" << std::endl;
 
     PointXY C(B);
     if (C.getX() != 5 || C.getY() != 5)
-        cout << "Blad dla 2 konstruktora z podanym punktem" << endl;
+        std::cout << "Blad dla 2 konstruktora z podanym punktem" << std::endl;
 
     /** Punkt A(0,0) , B(5,5) , C(5,5) **/
 }
@@ -24,12 +24,12 @@ void test_punkt_changeTo(long double k , long double l)
     PointXY B , A;
     B.changeTo(k , l);
     if (B.getX() != k || B.getY() != l)
-        cout << "Blad dla changeTo z podanymi wartosciami" << endl;
+        std::cout << "Blad dla changeTo z podanymi wartosciami" << std::endl;
 
 
     A.changeTo(B);
     if (A.getX() != k || A.getY() != l)
-        cout << "Blad dla changeTo z podanym punktem" << endl;
+        std::cout << "Blad dla changeTo z podanym punktem" << std::endl;
 
 
     return;
@@ -41,13 +41,13 @@ void test_punkt_moveBy(long double k,long double l)
 
     A.moveBy(k , l);
     if (A.getX() != k || A.getY() != l)
-        cout << "Blad dla moveBy z podanymi wartosciamy" << endl;
+        std::cout << "Blad dla moveBy z podanymi wartosciamy" << std::endl;
 
     /** Punkt A(0,0) , B(-1,-1) , C(5,5) **/
 
     A.moveBy(B);
     if (A.getX() != 0 || A.getY() != 0)
-        cout << "Blad dla moveBy z podanym punktem" << endl;
+        std::cout << "Blad dla moveBy z podanym punktem" << std::endl;
 
 }
 
@@ -58,16 +58,16 @@ void test_punkt_operatory(long double ax, long double ay, long double bx , long 
     PointXY B(bx,by);
     C = A + B;
     if (C.getX() != ax + bx || C.getY() != ay + by)
-        cout << "Blad dla operatora +" << endl;
+        std::cout << "Blad dla operatora +" << std::endl;
 
 
 
     C = C - 2*B;
     if (C.getX() != ax + bx - 2*bx || C.getY() != ay + by - 2*by)
-        cout << "Blad dla operatora - albo k*Punkt" << endl;
+        std::cout << "Blad dla operatora - albo k*Punkt" << std::endl;
 
     if ((A == B && (ax != bx && ay != by)) || (A != B && (ax == bx && ay == by)))
-        cout << "Blad dla operatora == lub !=" << endl;
+        std::cout << "Blad dla operatora == lub !=" << std::endl;
 }
 void test_punkt()
 {
@@ -79,6 +79,7 @@ void test_punkt()
 
     test_punkt_operatory(2 , 2 , 3 , 3);
 
+    std::cout << "Test punktu zakonczony" << std::endl << std::endl;
 
     return;
 }
@@ -90,18 +91,18 @@ void test_wektor_konstruktory()
     PointXY Q(-1, -1);
     PointXY W (1 , 1);
     if (AB.getBegin().getX() != 0 || AB.getBegin().getY() != 0 || AB.getEnd().getX() != 1 || AB.getEnd().getY() != 1)
-        cout << "Blad dla konstruktora domyslnego" << endl;
+        std::cout << "Blad dla konstruktora domyslnego" << std::endl;
 
     if (CD.getBegin().getX() != -1 || CD.getBegin().getY() != -1 || CD.getEnd().getX() != 1 || CD.getEnd().getY() != 1)
-        cout << "Blad dla konstruktora z podanymi wartosciami" << endl;
+        std::cout << "Blad dla konstruktora z podanymi wartosciami" << std::endl;
 
     VectorXY QW(Q,W);
     if (QW.getBegin().getX() != -1 || QW.getBegin().getY() != -1 || QW.getEnd().getX() != 1 || QW.getEnd().getY() != 1)
-        cout << "Blad dla konstruktora z podanymi punktami" << endl;
+        std::cout << "Blad dla konstruktora z podanymi punktami" << std::endl;
 
     VectorXY D(QW);
     if (D.getBegin().getX() != -1 || D.getBegin().getY() != -1 || D.getEnd().getX() != 1 || D.getEnd().getY() != 1)
-        cout << "Blad dla konstruktora z podanym wektorem" << endl;
+        std::cout << "Blad dla konstruktora z podanym wektorem" << std::endl;
 
     return;
 }
@@ -117,9 +118,9 @@ void test_wektor_set()
     AB.setEnd(2,2);
 
     if (AB.getBegin().getX() != 1 || AB.getBegin().getY() != 1 || AB.getEnd().getX() != 2 || AB.getEnd().getY() != 2)
-        cout << "Blad dla setBegin lub setEnd z podanymi wartosciami" << endl;
+        std::cout << "Blad dla setBegin lub setEnd z podanymi wartosciami" << std::endl;
     if (CD.getBegin().getX() != 1 || CD.getBegin().getY() != 1 || CD.getEnd().getX() != 2 || CD.getEnd().getY() != 2)
-        cout << "Blad dla setVector, setBegin, setEnd z podanymi punktami" << endl;
+        std::cout << "Blad dla setVector, setBegin, setEnd z podanymi punktami" << std::endl;
 
     return;
 
@@ -130,13 +131,13 @@ void test_wektor_wymiary(long double k, long double l)
     VectorXY AB(0,0,k,l);
 
     if (AB.height() != k || AB.width() != k)
-        cout << "Blad dla height i width" << endl;
+        std::cout << "Blad dla height i width" << std::endl;
     if (AB.size() != sqrt(k*k + l*l))
-        cout << "Blad dla size()" << endl;
+        std::cout << "Blad dla size()" << std::endl;
     PointXY C;
     C = AB.sizeXY();
     if (C.getX() != k && C.getY() != l)
-        cout << "Blad sizeXY" << endl;
+        std::cout << "Blad sizeXY" << std::endl;
 
     return;
 }
@@ -147,17 +148,17 @@ void test_wektor_move(long double k , long double l)
     AB.moveBy(k , l);
     PointXY A(-k,-l);
     if (AB.getBegin().getX() != 0 + k || AB.getBegin().getY() != 0 + l || AB.getEnd().getX() != 1+k || AB.getEnd().getY() != 1+l)
-        cout << "Blad dla moveby z wartosciami" << endl;
+        std::cout << "Blad dla moveby z wartosciami" << std::endl;
     AB.moveBy(A);
     if (AB.getBegin().getX() != 0 || AB.getBegin().getY() != 0 || AB.getEnd().getX() != 1 || AB.getEnd().getY() != 1)
-        cout << "Blad dla moveby z punktem" << endl;
+        std::cout << "Blad dla moveby z punktem" << std::endl;
 
     AB.moveTo(k,l);
     if (AB.getBegin().getX() != k || AB.getBegin().getY() != l)
-        cout << "Blad dla moveTo dla poczatku" << endl;
+        std::cout << "Blad dla moveTo dla poczatku" << std::endl;
     AB.moveTo(k,l,true);
     if (AB.getEnd().getX() != k || AB.getEnd().getY() != l)
-        cout << "Blad dla moveTo dla konca" << endl;
+        std::cout << "Blad dla moveTo dla konca" << std::endl;
 
     return;
 }
@@ -169,12 +170,12 @@ void test_wektor_centerOn()
     PointXY C(-1,-1);
 
     if (AB.getBegin().getX() != 0 || AB.getBegin().getY() != 0 || AB.getEnd().getX() != 2 || AB.getEnd().getY() != 2)
-        cout << "Blad dla CenterOn z podanymi wartosciami" << endl;
+        std::cout << "Blad dla CenterOn z podanymi wartosciami" << std::endl;
 
     AB.centerOn(C);
 
     if (AB.getBegin().getX() != -2 || AB.getBegin().getY() != -2 || AB.getEnd().getX() != 0 || AB.getEnd().getY() != 0)
-        cout << "Blad dla CenterOn z podanymi wartosciami" << endl;
+        std::cout << "Blad dla CenterOn z podanymi wartosciami" << std::endl;
 
     return;
 }
@@ -186,6 +187,8 @@ void test_wektor()
     test_wektor_wymiary(10,10);
     test_wektor_move(10,10);
     test_wektor_centerOn();
+
+    std::cout << "Test wektora zakonczony" << std::endl << std::endl;
 }
 
 void CORE_DEBUG(){

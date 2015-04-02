@@ -14,6 +14,9 @@ using namespace std;
 int main()
 {
 #ifdef _DEBUG
+
+  test_punkt();
+  test_wektor();
   CORE_DEBUG();
 #endif
 
