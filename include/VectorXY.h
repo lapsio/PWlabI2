@@ -1,6 +1,8 @@
 #ifndef VECTORXY_H
 #define VECTORXY_H
 
+#include "./include/defines.h"
+
 #include <iostream>
 #include <math.h>
 #include "PointXY.h"
@@ -18,8 +20,8 @@ class VectorXY
         VectorXY(const VectorXY& tmp);                                                        /**** Konstruktor kopiujacy wartosci z podanego wektora ****/
         ~VectorXY();
 
-        PointXY getBegin(); /**** Kopiuje punkt poczatkowy ****/
-        PointXY getEnd(); /**** Kopiuje punkt koncowy ****/
+        inline const PointXY& getBegin() const {return this->Beg;} /**** Kopiuje punkt poczatkowy ****/
+        inline const PointXY& getEnd() const {return this->End;} /**** Kopiuje punkt koncowy ****/
 
         void setBegin(const PointXY& A);                          /**** Ustawia poczatek zgodny z podanym punktem ****/
         void setBegin(long double a, long double b);        /**** Ustawia poczatek o podanych wspolrzednych ****/
@@ -27,10 +29,10 @@ class VectorXY
         void setEnd(long double a, long double b);          /**** Ustawia koniec o podanych wspolrzednych ****/
         void setVector(const PointXY& beg, const PointXY& end);          /**** Ustawia vector dla podanych punktow ****/
 
-        long double height();   /**** Zwraca wysokosc  ****/
-        long double width();     /**** Zwraca szerokosc  ****/
-        PointXY sizeXY();   /**** zwraca wysokosc i dlugosc czyli punkt koncowy ****/
-        long double size();      /**** Liczy dlugosc wektora ****/
+        long double height() const;   /**** Zwraca wysokosc  ****/
+        long double width() const;     /**** Zwraca szerokosc  ****/
+        PointXY sizeXY() const;   /**** zwraca wysokosc i dlugosc czyli punkt koncowy ****/
+        long double size() const;      /**** Liczy dlugosc wektora ****/
 
         void moveTo (long double x, long double y, bool end = false); /**** Przesuwa koniec wektora lub poczatek wektora do podanego punktu zachowujac dlugosc  ****/
         void moveBy (long double x, long double y);             /**** Przesuwa koniec wektora i poczatek wektora o podane wartosci  ****/
@@ -55,22 +57,23 @@ class VectorXY
         static void projectOntoVector(PointXY& pt, VectorXY& vec);              /**** Rzutowanie punktu na wektor ****/
         static void projectOntoVector(VectorXY& A, VectorXY& B);               /**** Rzutowanie wektora na wektor ****/
 
-        VectorXY operator +(VectorXY vect);
-        VectorXY operator -(VectorXY vect);
+        VectorXY operator +(VectorXY vect) const;
+        VectorXY operator -(VectorXY vect) const;
         void operator +=(VectorXY vect);
         void operator -=(VectorXY vect);
-        VectorXY operator *(double k); /**** Operator dla mnozenia (X,Y) * k ****/
+        VectorXY operator *(double k) const; /**** Operator dla mnozenia (X,Y) * k ****/
         void operator *=(double k); /**** Operator dla mnozenia (X,Y) * k ****/
-        bool operator ==(const VectorXY& vect);
-        bool operator !=(const VectorXY& vect);
+        bool operator ==(const VectorXY& vect) const;
+        bool operator !=(const VectorXY& vect) const;
 
 /*****************************************************************************************/
 /*************Funkcje zaprzyjaznione przeciazenia operatorow poza klasa******************/
 /***************************************************************************************/
 
         friend VectorXY operator*( const double & k,const VectorXY & vect ); // Operator dla mnozenia k * (X,Y)
-
+#ifdef _DEBUG
         void show();
+#endif
 };
 
 

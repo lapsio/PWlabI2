@@ -1,6 +1,8 @@
 #ifndef GC_H
 #define GC_H
 
+#include "./include/defines.h"
+
 class GCRefLink;
 class GCRef;
 

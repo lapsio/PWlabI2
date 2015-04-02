@@ -1,6 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "./include/defines.h"
+
 #include "./include/object.h"
 
 

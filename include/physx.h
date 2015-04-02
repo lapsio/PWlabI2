@@ -1,6 +1,8 @@
 #ifndef PHYSX_H
 #define PHYSX_H
 
+#include "./include/defines.h"
+
 #include "./include/map.h"
 
 

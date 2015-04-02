@@ -24,17 +24,6 @@ PointXY::~PointXY()
     //dtor
 }
 
-long double PointXY::getX() /**** Zwraca wartość X klasy punkt ****/
-{
-    return X;
-}
-
-long double PointXY::getY() /**** Zwraca wartość Y klasy punkt ****/
-{
-    return Y;
-}
-
-
 void PointXY::changeTo (long double X, long double Y) /**** Zmienia wartosc X i Y klasy do ... ****/
 {
     this->X = X;
@@ -63,7 +52,7 @@ void PointXY::moveBy(const PointXY& tmp) /**** Przesuwa punkt o wartosc X i Y z 
 /************************ OPERATORY *************************/
 /***********************************************************/
 
-PointXY PointXY::operator+(PointXY point) /***DODAJE PUNKTY***/
+PointXY PointXY::operator+(PointXY point) const /***DODAJE PUNKTY***/
 {
     PointXY tmp;
     tmp.X = X + point.X;
@@ -72,7 +61,7 @@ PointXY PointXY::operator+(PointXY point) /***DODAJE PUNKTY***/
     return tmp;
 }
 
-PointXY PointXY::operator-(PointXY point) /***ODEJMUJE PUNKTY***/
+PointXY PointXY::operator-(PointXY point) const /***ODEJMUJE PUNKTY***/
 {
     PointXY tmp;
     tmp.X = X - point.X;
@@ -81,7 +70,7 @@ PointXY PointXY::operator-(PointXY point) /***ODEJMUJE PUNKTY***/
     return tmp;
 }
 
-void PointXY::operator+=(PointXY point) /***DODAJE PUNKTY i PRZYPISUJE WYNIK DODAWANIA***/
+void PointXY::operator+=(PointXY point)/***DODAJE PUNKTY i PRZYPISUJE WYNIK DODAWANIA***/
 {
     this -> changeTo(this -> X + point.X, this -> Y + point.Y);
     return;
@@ -93,7 +82,7 @@ void PointXY::operator-=(PointXY point) /***ODEJMUJE PUNKTY i PRZYPISUJE WYNIK O
     return;
 }
 
-PointXY PointXY:: operator*( double k ) /***MNOZENIE PRZEZ SKALAR POSTACI (X,Y)*k ***/
+PointXY PointXY:: operator*( double k ) const /***MNOZENIE PRZEZ SKALAR POSTACI (X,Y)*k ***/
 {
     PointXY tmp;
     tmp.X = this -> X * k;
@@ -114,7 +103,7 @@ void PointXY:: operator*=( double k ) /***MNOZENIE PRZEZ SKALAR POSTACI (X,Y)*k 
     return;
 }
 
-bool PointXY:: operator==(const PointXY& point) /***POROWNANIE DWOCH PUNKTOW == ***/
+bool PointXY:: operator==(const PointXY& point) const /***POROWNANIE DWOCH PUNKTOW == ***/
 {
     if (this -> X != point.X)
         return false;
@@ -124,7 +113,7 @@ bool PointXY:: operator==(const PointXY& point) /***POROWNANIE DWOCH PUNKTOW == 
     return true;
 }
 
-bool PointXY:: operator!=(const PointXY& point) /***POROWNANIE DWOCH PUNKTOW != ***/
+bool PointXY:: operator!=(const PointXY& point) const /***POROWNANIE DWOCH PUNKTOW != ***/
 {
     if ((this -> X == point.X) && (this -> Y == point.Y))
         return false;

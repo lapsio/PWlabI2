@@ -34,15 +34,6 @@ VectorXY::~VectorXY()
 /************************** Metody **************************/
 /***********************************************************/
 
-PointXY VectorXY::getBegin()        /**** Kopiuje punkt poczatkowy ****/
-{
-    return Beg;
-}
-
-PointXY VectorXY::getEnd()          /**** Kopiuje punkt koncowy ****/
-{
-    return End;
-}
 
 void VectorXY::setBegin(const PointXY& A)         /**** Ustawia poczatek zgodny z podanym punktem ****/
 {
@@ -71,7 +62,7 @@ void VectorXY:: setVector(const PointXY& beg, const PointXY& end)
     return;
 }
 
-long double VectorXY::size()            /**** Liczy dlugosc wektora ****/
+long double VectorXY::size() const            /**** Liczy dlugosc wektora ****/
 {
     long double tmp1;
     PointXY tmp2;
@@ -83,7 +74,7 @@ long double VectorXY::size()            /**** Liczy dlugosc wektora ****/
     return tmp1;
 }
 
-long double VectorXY::height()          /**** Zwraca wysokosc  ****/
+long double VectorXY::height() const          /**** Zwraca wysokosc  ****/
 {
     long double tmp;
 
@@ -92,7 +83,7 @@ long double VectorXY::height()          /**** Zwraca wysokosc  ****/
     return tmp;
 }
 
-long double VectorXY::width()           /**** Zwraca szerokosc  ****/
+long double VectorXY::width() const           /**** Zwraca szerokosc  ****/
 {
     long double tmp;
 
@@ -101,7 +92,7 @@ long double VectorXY::width()           /**** Zwraca szerokosc  ****/
     return tmp;
 }
 
-PointXY VectorXY::sizeXY()          /**** zwraca wysokosc i dlugosc czyli punkt koncowy - punkt poczatkowy ****/
+PointXY VectorXY::sizeXY() const          /**** zwraca wysokosc i dlugosc czyli punkt koncowy - punkt poczatkowy ****/
 {
     long double a, b;
 
@@ -394,7 +385,7 @@ void VectorXY:: projectOntoVector(VectorXY& A, VectorXY& B)
 /************************ OPERATORY *************************/
 /***********************************************************/
 
-VectorXY VectorXY::operator+(VectorXY vect) /***DODAJE PUNKTY***/
+VectorXY VectorXY::operator+(VectorXY vect) const /***DODAJE PUNKTY***/
 {
     VectorXY tmp;
     PointXY point1;
@@ -412,7 +403,7 @@ VectorXY VectorXY::operator+(VectorXY vect) /***DODAJE PUNKTY***/
     return tmp;
 }
 
-VectorXY VectorXY::operator-(VectorXY vect) /***ODEJMUJE PUNKTY***/
+VectorXY VectorXY::operator-(VectorXY vect) const /***ODEJMUJE PUNKTY***/
 {
     VectorXY tmp;
     PointXY point1;
@@ -476,7 +467,7 @@ void VectorXY::operator-=(VectorXY vect) /***ODEJMUJE PUNKTY i PRZYPISUJE WYNIK 
     return;
 }
 
-VectorXY VectorXY:: operator*( double k ) /***MNOZENIE PRZEZ SKALAR POSTACI (X,Y)*k ***/
+VectorXY VectorXY:: operator*( double k ) const /***MNOZENIE PRZEZ SKALAR POSTACI (X,Y)*k ***/
 {
     VectorXY tmp;
 
@@ -508,7 +499,7 @@ void VectorXY:: operator*=( double k ) /***MNOZENIE PRZEZ SKALAR POSTACI (X,Y)*k
     return;
 }
 
-bool VectorXY:: operator==(const VectorXY& vect) /***POROWNANIE DWOCH PUNKTOW == ***/
+bool VectorXY:: operator==(const VectorXY& vect) const /***POROWNANIE DWOCH PUNKTOW == ***/
 {
     if ((this -> getBegin() == vect.Beg) && (this -> getEnd() == vect.End))
         return true;
@@ -516,7 +507,7 @@ bool VectorXY:: operator==(const VectorXY& vect) /***POROWNANIE DWOCH PUNKTOW ==
         return false;
 }
 
-bool VectorXY:: operator!=(const VectorXY& vect) /***POROWNANIE DWOCH PUNKTOW != ***/
+bool VectorXY:: operator!=(const VectorXY& vect) const /***POROWNANIE DWOCH PUNKTOW != ***/
 {
     if ((this -> getBegin() != vect.Beg) || (this -> getEnd() != vect.End))
         return true;

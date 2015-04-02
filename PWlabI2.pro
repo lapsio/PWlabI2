@@ -25,5 +25,6 @@ HEADERS += \
     include/physx.h \
     include/PointXY.h \
     include/tests.h \
-    include/VectorXY.h
+    include/VectorXY.h \
+    include/defines.h
 

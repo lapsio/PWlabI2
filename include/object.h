@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-
+#include "./include/defines.h"
 
 #include <string>
 #include <cstring>

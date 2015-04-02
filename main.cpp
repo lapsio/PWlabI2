@@ -1,4 +1,4 @@
-#define _DEBUG
+#include "./include/defines.h"
 
 #ifdef _DEBUG
 #include "./include/tests.h"

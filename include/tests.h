@@ -1,7 +1,7 @@
 #ifndef TESTS_H
 #define TESTS_H
 
-#define _DEBUG
+#include "./include/defines.h"
 
 void test_punkt();
 void test_punkt_changeTo(long double k , long double l);

@@ -1,7 +1,7 @@
 #ifndef MISC_H
 #define MISC_H
 
-
+#include "./include/defines.h"
 
 template <class TYPE>
 class Array {
