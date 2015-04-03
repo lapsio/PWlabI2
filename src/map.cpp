@@ -36,17 +36,31 @@ ObjectMapMeta::~ObjectMapMeta(){
   delete &this->objLink;
 }
 
+bool ObjectMapMeta::detectAnchorLoop(const ObjectMapMeta *candidate) const {
+  ObjectMapMeta* root=const_cast<ObjectMapMeta*>(this->getRoot());
+  while(root){
+    if(root==candidate)return true;
+    root=root->tail;}
+  return false;
+}
+
 void ObjectMapMeta::attach(ObjectMapMeta &anchor){
+  if (this->detectAnchorLoop(&anchor))
+    throw "chain loop detected";
+
   this->detach();
   this->anchor=&anchor;
   if (this->anchor->tail)
     this->anchor->tail->detach();
   this->anchor->tail=this;
+  this->pos-=this->anchor->pos;//in attached objects pos becomes offset from anchor
 }
 
 void ObjectMapMeta::detach(){
-  if (this->anchor)
-    this->anchor->tail=nullptr;
+  if (!this->anchor)
+    return;
+  this->pos+=this->anchor->pos;//make pos global;
+  this->anchor->tail=nullptr;
   this->anchor=nullptr;
 }
 

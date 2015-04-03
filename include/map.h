@@ -28,6 +28,8 @@ private:
   ObjectMapMeta * tail;
   GCRefLink& objLink;
 
+  bool detectAnchorLoop(const ObjectMapMeta* candidate) const;
+
 public:
   Object& object;
   PointXY pos;
@@ -38,6 +40,8 @@ public:
 
   inline ObjectMapMeta* getAnchor() const {return this->anchor;}
   inline ObjectMapMeta* getTail() const {return this->tail;}
+  inline ObjectMapMeta* getRoot() const {ObjectMapMeta* k=const_cast<ObjectMapMeta*>(this);while(k->anchor)k=k->anchor;return k;}
+  inline PointXY getGlobalPos() const {ObjectMapMeta* m=const_cast<ObjectMapMeta*>(this->getRoot());PointXY p(0,0);while(m){p+=m->pos;if(m==this)return p;m=m->tail;}}
 
   void attach(ObjectMapMeta& anchor);
   void detach();
