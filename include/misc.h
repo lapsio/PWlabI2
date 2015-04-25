@@ -25,21 +25,28 @@ public:
     return *this;
   }
 
-  Array<TYPE>& map(void (*f)(TYPE&)){
+  Array<TYPE>& map(void (*f)(TYPE&)){//changes all values in array basing on value returned by passed function
     for (int i=0,l=this->lengthC;i<l;++i)
       f(this->arr[i]);
     return *this;
   }
 
-  Array<TYPE>& map(TYPE (*f)(const TYPE&)){
+  Array<TYPE>& map(TYPE (*f)(const TYPE&)){//allows passed function to change all values in array
     for (int i=0,l=this->lengthC;i<l;++i)
       this->arr[i]=f(this->arr[i]);
     return *this;
   }
 
-  Array<TYPE>& each(void (*f)(const TYPE&)){
+  Array<TYPE>& each(void (*f)(const TYPE&)){//calls passed function with all array elements as argument
     for (int i=0,l=this->lengthC;i<l;++i)
       f(this->arr[i]);
+    return *this;
+  }
+
+  Array<TYPE>& selected(void (*f)(const TYPE&), bool (*p)(const TYPE&)){//calls first passed function only on elements accepted by second one
+    for (int i=0,l=this->lengthC;i<l;++i)
+      if (p(this->arr[i]))
+        f(this->arr[i]);
     return *this;
   }
 };

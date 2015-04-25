@@ -19,6 +19,5 @@ int main()
   test_wektor();
   CORE_DEBUG();
 #endif
-
   return 0;
 }

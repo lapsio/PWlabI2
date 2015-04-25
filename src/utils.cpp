@@ -1,5 +1,7 @@
-#include "./include/gc.h"
+#include "./include/utils.h"
 
+
+TypedClass::TypedClass() : typeChain(new Chain<const char*>(TypedClass::typeName)) {}
 
 
 GCRefLink::GCRefLink(GCRef * ref) : ref(ref) {}

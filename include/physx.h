@@ -15,6 +15,9 @@ struct GridPool;
 
 
 class ObjectPhysicsMeta : public ObjectMapMeta{
+public:
+  static constexpr char* typeName=(char*)"PhysicsMeta";
+
 private:
   const PhysicsEngine * engine;
 
@@ -55,6 +58,7 @@ private:
   GameMap* map;
   CollisionGrid* collisionGrid;
 
+  int getTimeShift(int objIndex=-1);
   void moveObjects(int& timeShift, int objIndex=-1);
   void moveAnchors(int& timeShift, int objIndex=-1);
   void collideObjects(int& timeShift, int objIndex=-1);

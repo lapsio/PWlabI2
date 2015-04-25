@@ -1,6 +1,5 @@
 #include "./include/object.h"
-#include "./include/gc.h"
-
+#include "./include/utils.h"
 
 
 PhysicalBody::PhysicalBody(ObjectType type,CollisionType collision, PointXY dimensions,double friction,double mass){
@@ -132,6 +131,7 @@ Object::Object(const std::string name,
   name(name),
   id(Object::maxId++)
 {
+  this->pushType(Object::typeName);
 }
 
 Object::Object(const Object &ref) :

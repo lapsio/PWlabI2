@@ -12,17 +12,11 @@ ObjectMapMeta::ObjectMapMeta(Object &obj, PointXY pos) :
   object(obj),
   pos(pos)
 {
+  this->pushType(ObjectMapMeta::typeName);
 }
 
 ObjectMapMeta::ObjectMapMeta(const ObjectMapMeta &ref) :
-  inUse(false),
-  mapLink(nullptr),
-  map(nullptr),
-  anchor(nullptr),
-  tail(nullptr),
-  objLink(*ref.object.link()),
-  object(ref.object),
-  pos(ref.pos)
+  ObjectMapMeta(ref.object,ref.pos)
 {
 }
 

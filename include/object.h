@@ -8,7 +8,7 @@
 #include "./include/PointXY.h"
 #include "./include/VectorXY.h"
 #include "./include/misc.h"
-#include "./include/gc.h"
+#include "./include/utils.h"
 
 
 
@@ -119,9 +119,11 @@ public:
 };
 
 
-
-class Object : public PhysicalBody, public LightSource, public Decal, public GCRef
+class Object : public PhysicalBody, public LightSource, public Decal, public GCRef, public TypedClass
 {
+public:
+  static constexpr char * typeName=(char*)"Object";
+
 private:
   const std::string name;
   const long long id;
@@ -138,12 +140,12 @@ public:
   virtual ~Object();
 
   inline const std::string getName() const {return this->name;}
-  inline virtual const char * typeOf() const {return "Object";}
   inline bool operator==(const Object& o) const {return o.id==this->id;}
-  inline static bool matchType(Object obj){return strcmp(obj.typeOf(),"Object")==0;}
 
 #ifdef _DEBUG
   static void DEBUG(Object * o){
+    std::cout << "type: " << o->typeOf() << std::endl;
+
     std::cout << "SELF: " << o << std::endl;
 
     std::cout << "name: " << o->name << std::endl;

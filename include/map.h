@@ -12,8 +12,11 @@ class ObjectMapMeta;
 
 
 
-class ObjectMapMeta : public GCRef{
+class ObjectMapMeta : public GCRef, public TypedClass{
   friend class GameMap;
+
+public:
+  static constexpr char* typeName=(char*)"Meta";
 
 protected:
   bool inUse;
@@ -55,6 +58,8 @@ private:
 #ifdef _DEBUG
 public:
   static void DEBUG(ObjectMapMeta * m){
+    std::cout << "type: " << m->typeOf() << std::endl;
+
     std::cout << "SELF: " << m << std::endl;
 
     std::cout << "inUse: " << m->inUse << std::endl;

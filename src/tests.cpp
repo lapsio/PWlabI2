@@ -399,5 +399,21 @@ void CORE_DEBUG(){
     std::cout << "success - function call failed as expected" << std::endl;
   }
 
+  ///TYPESTREE/////////////////////////////////////////////////////////////
+
+  Mesh = new Object("box",Decal(),
+                             PhysicalBody(
+                               PhysicalBody::dynamic,
+                               PhysicalBody::solid,
+                               PointXY(4,8),
+                               arr,2,5
+                               ));
+
+  std::cout << "Types: is " << Mesh->typeOf() << " type of Generic - " << (Mesh->isTypeOf(TypedClass::typeName)?"yes":"no") << std::endl;
+  std::cout << "Types: is " << Mesh->typeOf() << " type of Object - " << (Mesh->isTypeOf(Object::typeName)?"yes":"no") << std::endl;
+
+  ///
+
   std::cout << "Hello World! omg" << std::endl;
+
 }

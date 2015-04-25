@@ -9,7 +9,7 @@ ObjectPhysicsMeta::ObjectPhysicsMeta(const ObjectMapMeta& ref, const PhysicsEngi
   acceleration(acceleration),
   gridChain(nullptr)
 {
-
+  this->pushType(ObjectPhysicsMeta::typeName);
 }
 
 ObjectPhysicsMeta::~ObjectPhysicsMeta(){
