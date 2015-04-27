@@ -32,23 +32,25 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/GameDomain.h" />
 		<Unit filename="include/PointXY.h" />
 		<Unit filename="include/VectorXY.h" />
 		<Unit filename="include/defines.h" />
-		<Unit filename="include/gc.h" />
 		<Unit filename="include/map.h" />
 		<Unit filename="include/misc.h" />
 		<Unit filename="include/object.h" />
 		<Unit filename="include/physx.h" />
 		<Unit filename="include/tests.h" />
+		<Unit filename="include/utils.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/GameDomain.cpp" />
 		<Unit filename="src/PointXY.cpp" />
 		<Unit filename="src/VectorXY.cpp" />
-		<Unit filename="src/gc.cpp" />
 		<Unit filename="src/map.cpp" />
 		<Unit filename="src/object.cpp" />
 		<Unit filename="src/physx.cpp" />
 		<Unit filename="src/tests.cpp" />
+		<Unit filename="src/utils.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
