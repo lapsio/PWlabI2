@@ -12,40 +12,43 @@ void GameDomain:: add (Interface& klocek)
     this -> chain -> insertAfter({&klocek,klocek.link()});
 }
 
-void GameDomain:: remove (Interface& klocek)
+void GameDomain:: remove (Interface* klocek)
 {
     Chain <Team>* tmp;
 
     tmp = this -> chain;
-    while (tmp -> data.driver == &klocek)
-        tmp = tmp -> next();
+    while ((tmp = tmp->next()))
+        if (tmp->data.driver == klocek){
+          delete tmp->data.link;
+          delete tmp;
+        }
 
-    delete tmp -> data.link;
-    delete tmp;
+    throw "Could not find driver";
 }
 
 Chain <BaseEvent>* GameDomain:: reload ()
 {
-    Chain <BaseEvent>* tmp_BEvent = new Chain <BaseEvent> ({false, BaseEvent::Type::none});
-    Chain <BaseEvent>* tmp_BEvent_single = new Chain <BaseEvent> ({false, BaseEvent::Type::none});
+    Chain <BaseEvent>* tmp_BEvent = new Chain <BaseEvent> ({BaseEvent::Type::none, false});
+    Chain <BaseEvent>* tmp_BEvent_single = new Chain <BaseEvent> ({BaseEvent::Type::none, false});
     Chain <Team>* tmp;
 
     tmp = this -> chain;
 
-    while (tmp -> next() != nullptr)
+    while ((tmp = tmp -> next()))
     {
-        if (tmp -> data.driver -> run().interrupt == true)
+        BaseEvent& e = tmp -> data.driver -> run();
+        if (e.interrupt == true)
         {
             delete tmp_BEvent;
-            tmp_BEvent_single -> insertAfter(tmp -> data.driver -> run());
+            tmp_BEvent_single -> insertAfter(e);
             return tmp_BEvent_single;
         }
-        else
+        else if (e.type!=BaseEvent::Type::none)
         {
-            tmp_BEvent -> insertAfter(tmp -> data.driver -> run());
+            tmp_BEvent -> insertAfter(e);
         }
-
-        tmp = tmp -> next();
+        else
+          delete &e;
     }
     delete tmp_BEvent_single;
 
@@ -55,9 +58,6 @@ Chain <BaseEvent>* GameDomain:: reload ()
 
 /****************Interface*************/
 
-Interface::Interface()
-:GCRef()
-{
-}
+
 
 /***************enum_Event*************/

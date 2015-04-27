@@ -8,21 +8,18 @@ class BaseEvent
 {
 
     public:
-        const bool interrupt;
         enum class Type
         {
             swapSessions,
             none = 0
         };
-
-    private:
-
-        const Type type = Type::none;
+        const Type type;
+        const bool interrupt;
 
     public:
 
-        BaseEvent(bool interrupt, const Type t) :interrupt(false),  type(t){};
-        virtual ~BaseEvent(){};
+        BaseEvent(const Type t = Type::none, const bool interrupt = false) : type(t), interrupt(interrupt){}
+        virtual ~BaseEvent(){}
 
 };
 
@@ -40,12 +37,8 @@ class Event: public BaseEvent
 
     public:
 
-        Event (const D data, const Type t)
-        :BaseEvent (t)
-        {
-            this -> data = data;
-        }
-        virtual ~Event(){};
+        Event (const D data, const Type t = Type::none, const bool interrupt = false) : BaseEvent (t,interrupt), data(data){}
+        virtual ~Event(){}
 };
 
 
@@ -59,7 +52,7 @@ class Interface: public GCRef
 {
     public:
 
-        Interface();
+        Interface() : GCRef(){}
         virtual ~Interface() = 0;
 
         virtual BaseEvent& run() = 0;
@@ -83,10 +76,10 @@ class GameDomain
         Chain <Team> * chain;
     public:
         GameDomain();
-        virtual ~GameDomain() = 0;
+        ~GameDomain();
 
         void add (Interface&);
-        void remove (Interface&);
+        void remove (Interface*);
 
         Chain <BaseEvent>* reload ();
 

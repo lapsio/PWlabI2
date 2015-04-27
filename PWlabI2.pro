@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     src/PointXY.cpp \
     src/tests.cpp \
     src/VectorXY.cpp \
-    src/utils.cpp
+    src/utils.cpp \
+    src/GameDomain.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -26,5 +27,6 @@ HEADERS += \
     include/tests.h \
     include/VectorXY.h \
     include/defines.h \
-    include/utils.h
+    include/utils.h \
+    include/GameDomain.h
 
