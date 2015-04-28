@@ -6,54 +6,61 @@
 #include "./include/map.h"
 
 
-
+class Timer;
 class PhysicsEngine;
 class ObjectPhysicsMeta;
 
-struct GridPool;
 
-
-
-class ObjectPhysicsMeta : public ObjectMapMeta{
-public:
-  static constexpr char* typeName=(char*)"PhysicsMeta";
-
+class Timer {
 private:
-  const PhysicsEngine * engine;
-
-protected:
-  virtual void linkMap(GameMap &map);
-  virtual void unlinkMap();
+  unsigned long long lastTime;
+  long double bufferedTimeShift;
+  bool paused;
 
 public:
-  VectorXY speed;
-  VectorXY acceleration;
+  const int freq;
 
-  Chain<struct GridPool> * gridChain;
+  Timer(int frequency=25);
+  ~Timer(){}
 
-  ObjectPhysicsMeta(const ObjectMapMeta& ref, const PhysicsEngine& engine, VectorXY speed=VectorXY(0,0,0,0), VectorXY acceleration=VectorXY(0,0,0,0));
-  virtual ~ObjectPhysicsMeta();
+  bool shift(int diff);
+  void pause();
+  void resume();
+  inline bool isPaused(){return this->paused;}
+
 };
 
-struct GridPool {
-  int posX, posY, indR, indC;
-  Chain<Object> * objectsChain; //(Object *);
-};
-
-class CollisionGrid {
-public:
-  int gridC,gridR,gridW,gridH;
-  struct GridPool ** GridPool;
-
-  CollisionGrid(GameMap* map);
-  ~CollisionGrid();
-
-  void reload();
-  Chain<Object> * getObjects(int R, int C);
-};
 
 class PhysicsEngine
 {
+public:
+  class CollisionGrid {
+    friend class PhysicsEngine;
+  public:
+    struct GridPool {
+      int posX, posY, indR, indC;
+      Chain<ObjectPhysicsMeta*> * objectsChain; //(Object *);
+    };
+
+  private:
+    struct GridPool *** grid;
+    GameMap* map;
+
+    struct whp {int a;int b;};
+    whp computeDim(GameMap* map);
+
+  public:
+    const int gridW,gridH,gridC,gridR;
+
+    CollisionGrid(GameMap& map);
+    ~CollisionGrid();
+
+    void registerMeta(ObjectPhysicsMeta& meta);
+    void eraseMetaRecords(ObjectPhysicsMeta* meta);
+
+    static VectorXY getObjectBounds(ObjectPhysicsMeta& m);
+  };
+
 private:
   GameMap* map;
   CollisionGrid* collisionGrid;
@@ -75,6 +82,29 @@ public:
   void registerObject(Object *);
   void removeObject();
   int timeShift();
+};
+
+
+
+class ObjectPhysicsMeta : public ObjectMapMeta {
+  friend class PhysicsEngine::CollisionGrid;
+public:
+  static constexpr char* typeName=(char*)"PhysicsMeta";
+
+private:
+  const PhysicsEngine * engine;
+  Chain<PhysicsEngine::CollisionGrid::GridPool*> * gridNeighbours;
+
+protected:
+  virtual void linkMap(GameMap &map);
+  virtual void unlinkMap();
+
+public:
+  VectorXY speed;
+  VectorXY acceleration;
+
+  ObjectPhysicsMeta(const ObjectMapMeta& ref, const PhysicsEngine& engine, VectorXY speed=VectorXY(0,0,0,0), VectorXY acceleration=VectorXY(0,0,0,0));
+  virtual ~ObjectPhysicsMeta();
 };
 
 

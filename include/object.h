@@ -42,9 +42,9 @@ class PhysicalBody
   friend class PhysicsEngine;
 
 public:
-  enum ObjectType {passive='p', dynamic='d'};
-  enum CollisionType {ghost='g',solid='s'};
-  enum MeshType {circle='c', mesh='m'};
+  enum class ObjectType {passive='p', dynamic='d'};
+  enum class CollisionType {ghost='g',solid='s'};
+  enum class MeshType {circle='c', mesh='m'};
 
 private:
   PointXY boundBox;
@@ -92,7 +92,7 @@ public:
     std::cout << "bounds: " << o->boundBox.getX() << " " << o->boundBox.getY() << std::endl;
     std::cout << "flags: " << (char)o->type << " " << (char)o->collisionType << " " << (char)o->meshType << std::endl;
     std::cout << "props: mass: " << o->mass << " friction: " << o->friction << std::endl;
-    if (o->meshType==PhysicalBody::mesh){
+    if (o->meshType==PhysicalBody::MeshType::mesh){
       std::cout << "mesh: " << std::endl;
 
       int l = o->collisionMesh->length();
@@ -134,7 +134,7 @@ public:
 
   Object(const std::string name = std::string("Object"),
          const Decal& = Decal(),
-         const PhysicalBody& = PhysicalBody(PhysicalBody::passive, PhysicalBody::ghost, PointXY(0,0)),
+         const PhysicalBody& = PhysicalBody(PhysicalBody::ObjectType::passive, PhysicalBody::CollisionType::ghost, PointXY(0,0)),
          const LightSource& = LightSource());
   Object(const Object& ref);
   virtual ~Object();

@@ -5,12 +5,10 @@
 
 class PointXY
 {
-    private:
+    public:
 
         long double X;
         long double Y;
-
-    public:
 
         PointXY(long double X = 0, long double Y = 0); /**** Konstruktor z podanymi wartosciami ****/
         PointXY(const PointXY& tmp); /**** Konstruktor jako kopia podanego punktu ****/

@@ -84,7 +84,10 @@ class GameMap {
 private:
   Chain<ObjectMapMeta&> * objects;
 public:
-  GameMap();
+  const int width;
+  const int height;
+
+  GameMap(int width = 64, int heigth = 64);
   ~GameMap();
 
   int getIndex(const ObjectMapMeta * meta) const;

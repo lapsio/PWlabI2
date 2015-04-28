@@ -59,6 +59,8 @@ void ObjectMapMeta::detach(){
 }
 
 void ObjectMapMeta::linkMap(GameMap& map){
+  if (this->inUse)
+    throw "Meta already in use";
   this->inUse=true;
   this->map=&map;
   this->mapLink=this->link();
@@ -74,8 +76,10 @@ void ObjectMapMeta::unlinkMap(){
 ///////////////////////////////////////////////////////////////////
 
 
-GameMap::GameMap() :
-  objects(new Chain<ObjectMapMeta&>(*(new ObjectMapMeta(*(new Object(Object::nullObj))))))
+GameMap::GameMap(int width, int height) :
+  objects(new Chain<ObjectMapMeta&>(*(new ObjectMapMeta(*(new Object(Object::nullObj)))))),
+  width(width),
+  height(height)
 {
   this->objects->data.inUse=true;
   this->objects->data.map=this;

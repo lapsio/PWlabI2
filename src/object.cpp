@@ -13,7 +13,7 @@ PhysicalBody::PhysicalBody(ObjectType type,CollisionType collision, PointXY dime
   this->setObjectType(type);
   this->setCollisionType(collision);
 
-  this->meshType=PhysicalBody::circle;
+  this->meshType=PhysicalBody::MeshType::circle;
   this->collisionMesh=this->collisionNormals=nullptr;
   this->reshape();
 }
@@ -27,14 +27,14 @@ PhysicalBody::PhysicalBody(ObjectType type, CollisionType collision, PointXY dim
 PhysicalBody::PhysicalBody(const PhysicalBody &ref) :
   PhysicalBody(ref.type,ref.collisionType,ref.boundBox,ref.friction,ref.mass)
 {
-  if (ref.meshType==PhysicalBody::mesh){
+  if (ref.meshType==PhysicalBody::MeshType::mesh){
     this->meshRealloc(*ref.collisionMesh,*ref.collisionNormals);
-    this->meshType=PhysicalBody::mesh;
+    this->meshType=PhysicalBody::MeshType::mesh;
   }
 }
 
 PhysicalBody::~PhysicalBody(){
-  if (this->meshType==PhysicalBody::mesh){
+  if (this->meshType==PhysicalBody::MeshType::mesh){
     this->collisionMesh->map([](VectorXY*& v){delete v;v=nullptr;});
     delete this->collisionMesh;
     this->collisionNormals->map([](VectorXY*& v){delete v;v=nullptr;});
@@ -57,7 +57,7 @@ void PhysicalBody::reshape(){//reshape to circular object
   this->~PhysicalBody();
 
   this->collisionMesh=this->collisionNormals=nullptr;
-  this->meshType=PhysicalBody::circle;
+  this->meshType=PhysicalBody::MeshType::circle;
 }
 
 void PhysicalBody::reshape(Array<PointXY *> &mesh){
@@ -81,7 +81,7 @@ void PhysicalBody::reshape(Array<PointXY *> &mesh){
   this->collisionMesh->setData(new VectorXY(*currPt,this->collisionMesh->getData(0)->getBegin()),l-1);
 
   this->computeNormals();
-  this->meshType=PhysicalBody::mesh;
+  this->meshType=PhysicalBody::MeshType::mesh;
 }
 
 void PhysicalBody::computeNormals(){
@@ -104,9 +104,9 @@ void PhysicalBody::computeNormals(){
 
 PhysicalBody& PhysicalBody::operator=(const PhysicalBody& R){
   this->~PhysicalBody();
-  if (R.meshType==PhysicalBody::mesh){
+  if (R.meshType==PhysicalBody::MeshType::mesh){
     this->meshRealloc(*R.collisionMesh,*R.collisionNormals);
-    this->meshType=PhysicalBody::mesh;
+    this->meshType=PhysicalBody::MeshType::mesh;
   }
   return *this;
 }

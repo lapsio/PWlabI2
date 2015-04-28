@@ -199,8 +199,8 @@ void CORE_DEBUG(){
                    "potato",
                    Decal(),
                    PhysicalBody(
-                     PhysicalBody::dynamic,
-                     PhysicalBody::solid,
+                     PhysicalBody::ObjectType::dynamic,
+                     PhysicalBody::CollisionType::solid,
                      PointXY(2,5),
                      4,10
                      ));
@@ -223,8 +223,8 @@ void CORE_DEBUG(){
   try{
     new Object("box",Decal(),
                PhysicalBody(
-                 PhysicalBody::dynamic,
-                 PhysicalBody::solid,
+                 PhysicalBody::ObjectType::dynamic,
+                 PhysicalBody::CollisionType::solid,
                  PointXY(4,8),
                  badarr,2,5
                  ));
@@ -237,8 +237,8 @@ void CORE_DEBUG(){
 
   Object * Mesh = new Object("box",Decal(),
                              PhysicalBody(
-                               PhysicalBody::dynamic,
-                               PhysicalBody::solid,
+                               PhysicalBody::ObjectType::dynamic,
+                               PhysicalBody::CollisionType::solid,
                                PointXY(4,8),
                                arr,2,5
                                ));
@@ -278,16 +278,16 @@ void CORE_DEBUG(){
                    "potato",
                    Decal(),
                    PhysicalBody(
-                     PhysicalBody::dynamic,
-                     PhysicalBody::solid,
+                     PhysicalBody::ObjectType::dynamic,
+                     PhysicalBody::CollisionType::solid,
                      PointXY(2,5),
                      4,10
                      ));
 
   Mesh = new Object("box",Decal(),
                              PhysicalBody(
-                               PhysicalBody::dynamic,
-                               PhysicalBody::solid,
+                               PhysicalBody::ObjectType::dynamic,
+                               PhysicalBody::CollisionType::solid,
                                PointXY(4,8),
                                arr,2,5
                                ));
@@ -332,16 +332,16 @@ void CORE_DEBUG(){
                    "potato",
                    Decal(),
                    PhysicalBody(
-                     PhysicalBody::dynamic,
-                     PhysicalBody::solid,
+                     PhysicalBody::ObjectType::dynamic,
+                     PhysicalBody::CollisionType::solid,
                      PointXY(2,5),
                      4,10
                      ));
 
   Mesh = new Object("box",Decal(),
                              PhysicalBody(
-                               PhysicalBody::dynamic,
-                               PhysicalBody::solid,
+                               PhysicalBody::ObjectType::dynamic,
+                               PhysicalBody::CollisionType::solid,
                                PointXY(4,8),
                                arr,2,5
                                ));
@@ -403,8 +403,8 @@ void CORE_DEBUG(){
 
   Mesh = new Object("box",Decal(),
                              PhysicalBody(
-                               PhysicalBody::dynamic,
-                               PhysicalBody::solid,
+                               PhysicalBody::ObjectType::dynamic,
+                               PhysicalBody::CollisionType::solid,
                                PointXY(4,8),
                                arr,2,5
                                ));
