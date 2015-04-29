@@ -87,11 +87,10 @@ GameMap::GameMap(int width, int height) :
 }
 
 GameMap::~GameMap(){
-  this->objects->map([](ObjectMapMeta& m){m.unlinkMap();});
+  this->clear();
+  this->objects->data.unlinkMap();
   delete this->objects;
 }
-
-
 
 void GameMap::addObject(Object &obj, PointXY pos){
   this->addObject(*(new ObjectMapMeta(obj,pos)));
@@ -105,7 +104,7 @@ void GameMap::addObject(ObjectMapMeta &meta){
 
 
 int GameMap::getIndex(const ObjectMapMeta *meta) const {
-  Chain<ObjectMapMeta&>*c=this->objects;
+  Chain<ObjectMapMeta&>*c=this->objects->next();//do not allow getting dummyObject
   int index=0;
   while(1){
     if (&c->data==meta)
@@ -169,4 +168,9 @@ void GameMap::deleteObject(int index){
 
   c->data.unlinkMap();
   delete c;
+}
+
+void GameMap::clear(){
+  while(this->objects->next())
+    this->deleteObject(1);
 }

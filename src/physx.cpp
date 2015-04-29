@@ -1,5 +1,49 @@
+#include <unistd.h>
 #include "./include/physx.h"
 
+
+Timer::Timer(int frequency, bool autosleep) :
+  paused(true),
+  autosleep(autosleep),
+  freq(frequency)
+{
+
+}
+
+bool Timer::shift(int diff){
+  if (this->paused)
+    throw "Cannot shift paused timer";
+
+  this->bufferedTimeShift+=diff;
+
+  unsigned long long t;
+  struct timespec currentTime;
+  clock_gettime(CLOCK_REALTIME,&currentTime);
+
+  t=(unsigned long long)currentTime.tv_sec*1000;
+  t+=currentTime.tv_nsec/1000000;
+
+  if (t-this->lastTime<this->bufferedTimeShift)
+    return false;
+
+  if (this->autosleep&&t-this->lastTime<(1000/this->freq))
+    usleep((1000/this->freq)-(t-this->lastTime));
+
+  this->resume();
+  return true;
+}
+
+void Timer::pause(){
+  this->paused=true;
+}
+
+void Timer::resume(){
+  struct timespec currentTime;
+  clock_gettime(CLOCK_REALTIME,&currentTime);
+
+  this->lastTime=(unsigned long long)currentTime.tv_sec*1000;
+  this->lastTime+=currentTime.tv_nsec/1000000;
+}
 
 
 ObjectPhysicsMeta::ObjectPhysicsMeta(const ObjectMapMeta& ref, const PhysicsEngine& engine, VectorXY speed, VectorXY acceleration) :
@@ -212,8 +256,26 @@ void PhysicsEngine::CollisionGrid::registerMeta(ObjectPhysicsMeta &meta){
     }
 }
 
-PhysicsEngine::PhysicsEngine(GameMap &map) :
-  map(&map)
+PhysicsEngine::PhysicsEngine(GameMap &map)
 {
+  this->loadMapData(map);
+}
 
+void PhysicsEngine::loadMapData(GameMap &map){
+  this->map=&map;
+  this->collisionGrid=new PhysicsEngine::CollisionGrid(map);
+}
+
+void PhysicsEngine::purgeMapData(){
+  int l = this->map->length();
+  ObjectMapMeta * oldMeta;
+  for(int i = 1; i < l ; i++){
+    if ((oldMeta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)){
+      ObjectMapMeta * newMeta = new ObjectMapMeta(*oldMeta);
+      this->map->deleteObject(i);
+      this->map->addObject(*newMeta);
+    }
+  }
+  this->map=nullptr;
+  delete this->collisionGrid;
 }

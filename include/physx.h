@@ -16,17 +16,21 @@ private:
   unsigned long long lastTime;
   long double bufferedTimeShift;
   bool paused;
+  bool autosleep;
 
 public:
-  const int freq;
+  const unsigned int freq;
 
-  Timer(int frequency=25);
+  Timer(int frequency=25, bool autosleep=true);
   ~Timer(){}
 
   bool shift(int diff);
   void pause();
   void resume();
+  inline void setAutosleep(bool value){this->autosleep=value;}
+  inline void toggleAutosleep(){this->autosleep=!this->autosleep;}
   inline bool isPaused(){return this->paused;}
+  inline bool isAutoSleep(){return this->autosleep;}
 
 };
 
@@ -70,6 +74,9 @@ private:
   void moveAnchors(int& timeShift, int objIndex=-1);
   void collideObjects(int& timeShift, int objIndex=-1);
   void postMotion(int& timeShift, int objIndex=-1);
+
+  void loadMapData(GameMap& map);
+  void purgeMapData();
 
 public:
   PhysicsEngine(GameMap& map);
