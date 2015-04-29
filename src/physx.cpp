@@ -135,6 +135,10 @@ PhysicsEngine::CollisionGrid::~CollisionGrid(){
   free (this->grid);
 }
 
+Chain<PhysicsEngine::CollisionGrid::GridPool*>* PhysicsEngine::CollisionGrid::getNeighbours(ObjectPhysicsMeta &m){
+  return m.gridNeighbours;
+}
+
 PhysicsEngine::CollisionGrid::whp PhysicsEngine::CollisionGrid::computeDim(GameMap *map){
   int tileW=map->width,
       tileH=map->height;
@@ -256,7 +260,8 @@ void PhysicsEngine::CollisionGrid::registerMeta(ObjectPhysicsMeta &meta){
     }
 }
 
-PhysicsEngine::PhysicsEngine(GameMap &map)
+PhysicsEngine::PhysicsEngine(GameMap &map) :
+  collisionsRegistry(new Chain<PhysicsEngine::CREnt>({nullptr,nullptr}))
 {
   this->loadMapData(map);
 }
@@ -278,4 +283,437 @@ void PhysicsEngine::purgeMapData(){
   }
   this->map=nullptr;
   delete this->collisionGrid;
+}
+
+
+
+int PhysicsEngine::getTimeShift(int objIndex){
+  //calculate smallest object and highest speed
+
+  //fprintf(stderr,"timeShift begin (%Ldms)\n",timeDiff);
+  long double
+      min_bound=this->map->width+this->map->height,
+      max_spd=0,
+      tmp,
+      timeStep;
+
+  ObjectMapMeta * meta;
+  ObjectPhysicsMeta * pmeta;
+  Object * obj;
+  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+    if ((meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)&&(obj=&meta->object)->collisionType!=PhysicalBody::CollisionType::ghost){
+      if (min_bound>(tmp=fabs(obj->boundBox.X)))
+        min_bound=tmp;
+      if (min_bound>(tmp=fabs(obj->boundBox.Y)))
+        min_bound=tmp;
+
+      pmeta = (ObjectPhysicsMeta*)meta;
+
+      if (max_spd<(tmp=fabs(pmeta->speed.width()))+fabs(pmeta->speed.height()))
+        max_spd=tmp;
+    }
+  }
+
+  min_bound/=2;
+
+  if (max_spd==0)
+    timeStep=0.25; //4fps on idle
+  else
+    timeStep=min_bound/max_spd;
+
+  return timeStep;
+  /*struct Chain * objChain = session->map->objectsChain;
+  while (objChain){
+    struct Object * obj = chainGetData(objChain);
+
+    if (obj->collision!=ghost){
+      if (min_bound>(tmp=fabs(xyVectorWidth(obj->bound))))
+        min_bound=tmp;
+      if (min_bound>(tmp=fabs(xyVectorHeight(obj->bound))))
+        min_bound=tmp;
+
+      if (max_spd<(tmp=fabs(xyVectorHeight(obj->speed))+fabs(xyVectorWidth(obj->speed))))
+        max_spd=tmp;
+    }
+
+    objChain=chainGetNext(objChain);
+  }
+  min_bound/=2;
+
+  if (max_spd==0)
+    timeStep=0.25; //4fps on idle
+  else
+    timeStep=min_bound/max_spd;
+
+  return timeStep;*/
+}
+
+void PhysicsEngine::moveObjects(int &timeShift, int objIndex){
+  //perform actual movement
+
+  ObjectMapMeta * meta;
+  ObjectPhysicsMeta * pmeta;
+  Object * obj;
+  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+    if (!(meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)||
+        ((pmeta=(ObjectPhysicsMeta*)meta)->getAnchor() ||
+        (pmeta->speed.size()==0 && pmeta->acceleration.size()==0)))
+      continue;
+
+    meta->pos.changeTo(meta->pos.X+pmeta->speed.width()*timeShift,
+                       meta->pos.Y+pmeta->speed.height()*timeShift);
+
+    //invalid pos correction
+
+    obj=&meta->object;
+
+    if (meta->pos.X<0)
+      meta->pos.changeTo(0,meta->pos.Y);
+    if (meta->pos.X+obj->boundBox.X>this->map->width)
+      meta->pos.changeTo(this->map->width-obj->boundBox.X,meta->pos.Y);
+
+    if (meta->pos.Y<0)
+      meta->pos.changeTo(meta->pos.Y,0);
+    if (meta->pos.Y+obj->boundBox.Y>this->map->height)
+      meta->pos.changeTo(meta->pos.Y,this->map->height-obj->boundBox.Y);
+
+    this->collisionGrid->registerMeta(*pmeta);
+  }
+
+  /*objChain = session->map->objectsChain;
+  while (objChain){
+    struct Object * obj = chainGetData(objChain);
+    if (obj->anchor ||
+        (xyVectorWidth(obj->speed) == xyVectorHeight(obj->speed) &&
+        xyVectorWidth(obj->speed) == 0 &&
+        xyVectorWidth(obj->acceleration) == xyVectorHeight(obj->acceleration) &&
+        xyVectorWidth(obj->acceleration) == 0)){
+      objChain=chainGetNext(objChain);
+      continue;
+    }
+
+    xyVectorMove(obj->bound,
+                 xyVectorWidth(obj->speed)*timeStep,
+                 xyVectorHeight(obj->speed)*timeStep);
+
+    //invalid pos correction
+
+    if (obj->bound->beg->x<0)
+      xyVectorMove(obj->bound,-obj->bound->beg->x,0);
+    if (obj->bound->end->x>session->map->width)
+      xyVectorMove(obj->bound,session->map->width-obj->bound->end->x,0);
+    if (obj->bound->beg->y<0)
+      xyVectorMove(obj->bound,0,-obj->bound->beg->y);
+    if (obj->bound->end->y>session->map->height)
+      xyVectorMove(obj->bound,0,session->map->height-obj->bound->end->y);
+
+    collisionGridRegisterObject(session->map,obj);
+
+    objChain=chainGetNext(objChain);
+  }*/
+}
+
+void PhysicsEngine::collideObjects(int &timeShift, int objIndex){
+  (void)timeShift;
+  //calculate collisions
+
+  Chain<PhysicsEngine::CREnt> * c = this->collisionsRegistry;//clear collisions registry
+  while (c->next())
+    delete c->next();
+
+  ObjectMapMeta * meta;
+  ObjectPhysicsMeta * pmeta;
+  //Object * obj;
+  ObjectPhysicsMeta * collider;
+
+  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+    if (!(meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)||
+        (pmeta=(ObjectPhysicsMeta*)meta)->getAnchor()||
+        pmeta->speed.size()==0)
+      continue;
+
+    if ((collider=this->getObjectCollisions(*pmeta)))
+      this->collisionsRegistry->insertAfter({pmeta,collider});
+  }
+
+  /*while (chainGetNext(session->world.lastCollisions))//clear last collision registry
+    free(chainDeleteChainElem(chainGetNext(session->world.lastCollisions)));
+
+  objChain = session->map->objectsChain;
+  while (objChain){
+    struct Object
+        * obj = chainGetData(objChain),
+        * collider;
+
+    if (obj->anchor ||
+        (xyVectorWidth(obj->speed) == xyVectorHeight(obj->speed) &&
+        xyVectorWidth(obj->speed) == 0)){
+      objChain=chainGetNext(objChain);
+      continue;
+    }
+
+    if ((collider=objectGetCollision(obj,1))){
+      struct Object ** t = malloc(sizeof(struct Object *)*2);
+      t[0]=obj;
+      t[1]=collider;
+      chainInsertElemAfter(session->world.lastCollisions,t);
+    }
+
+    objChain=chainGetNext(objChain);
+  }*/
+}
+
+ObjectPhysicsMeta * PhysicsEngine::getObjectCollisions(ObjectPhysicsMeta &meta, const bool& collide){
+  Chain<PhysicsEngine::CollisionGrid::GridPool*> * c = this->collisionGrid->getNeighbours(meta);
+  while((c=c->next())){
+    Chain<ObjectPhysicsMeta*>*cc=c->data->objectsChain;
+    while(cc=cc->next())
+      if (this->isColliding(meta,*cc->data,collide)>-1)
+        return cc->data;
+  }
+
+  return nullptr;
+
+  /*struct Chain * gridChain = chainGetNext(obj->gridChain);
+  while(gridChain){
+    struct Chain * objChain = chainGetNext(((struct GridPool*)chainGetData(gridChain))->objects);
+    while (objChain){
+      if (objectIsColliding(obj,chainGetData(objChain),collide)>-1)
+        return chainGetData(objChain);
+      objChain=chainGetNext(objChain);
+    }
+    gridChain = chainGetNext(gridChain);
+  }
+
+  return (struct Object*)NULL;*/
+}
+
+int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const bool& collide){
+  if (&A==&B ||
+      (A.object.collisionType==PhysicalBody::CollisionType::ghost||B.object.collisionType==PhysicalBody::CollisionType::ghost) ||
+      (A.object.type==PhysicalBody::ObjectType::passive && B.object.type==PhysicalBody::ObjectType::passive) ||
+      (A.object.meshType==PhysicalBody::MeshType::mesh && B.object.meshType==PhysicalBody::MeshType::mesh))
+    return -1;
+
+  if (A.object.meshType==PhysicalBody::MeshType::circle && B.object.meshType==PhysicalBody::MeshType::circle){
+
+  }
+
+  if (A.object.meshType==PhysicalBody::MeshType::circle || B.object.meshType==PhysicalBody::MeshType::circle){
+    //fprintf(stderr,"got candidates!: %s, %s\n",A->customID,B->customID);
+
+    ObjectPhysicsMeta
+        *o_circle=A.object.meshType==PhysicalBody::MeshType::circle?&A:&B,
+        *o_mesh=A.object.meshType==PhysicalBody::MeshType::mesh?&A:&B;
+
+    if (o_circle->getAnchor())
+      return -1;
+
+    PointXY localCirclePos = PointXY(
+                               o_circle->pos.X-o_mesh->pos.X,
+                               o_circle->pos.Y-o_mesh->pos.Y
+                               );
+
+    /*struct xyPoint * localCirclePos = xyPointCreate(
+                               o_circle->bound->beg->x-o_mesh->bound->beg->x,
+                               o_circle->bound->beg->y-o_mesh->bound->beg->y
+                               );*/
+
+    //fprintf(stderr,"local ball: %llf, %llf\n",
+    //        localCirclePos->x,localCirclePos->y);
+
+    //try edges
+
+    for (int i = 0 ; i < o_mesh->object.collisionMesh->length() ; i++){
+
+      //fprintf(stderr,"entering: %d",i);
+
+      /*struct xyVector
+          * face = arrayGetData(o_mesh->collisionMesh,i),
+          * norm = xyVectorCenterOnPoint(
+            xyVectorScaleTo(
+              arrayGetData(o_mesh->collisionNormals,i),
+              xyVectorWidth(o_circle->bound)*2
+              ),
+            localCirclePos
+            );*/
+      //fprintf(stderr,"face: (%llf;%llf),(%llf;%llf)\n",
+      //        face->beg->x,face->beg->y,
+      //        face->end->x,face->end->y);
+
+      //fprintf(stderr,"norm: (%llf;%llf),(%llf;%llf)\n",
+      //        norm->beg->x,norm->beg->y,
+      //        norm->end->x,norm->end->y);
+
+      VectorXY& vec = *o_mesh->object.getCollisionNormals()[i];
+      vec.scaleTo(o_circle->object.boundBox.X*2);
+      vec.centerOn(localCirclePos);
+      if(VectorXY::intersects(vec,*o_mesh->object.getCollisionMesh()[i])){
+        if (collide){
+          VectorXY scaledSpeed = VectorXY(o_circle->speed);
+          scaledSpeed.scaleTo(o_circle->object.boundBox.X*2);
+          o_circle->pos.moveBy(
+                scaledSpeed.width(),
+                scaledSpeed.height());
+          VectorXY::flipAcrossVector(
+                o_circle->speed,
+                *o_mesh->object.getCollisionNormals()[i]);
+          o_circle->speed.flip();
+
+          VectorXY projectedSpeed = VectorXY(o_mesh->speed);
+          VectorXY::projectOntoVector(
+                projectedSpeed,
+                *o_mesh->object.getCollisionNormals()[i]);
+
+          o_circle->speed.setEnd(
+                o_circle->speed.getEnd().X+projectedSpeed.width(),
+                o_circle->speed.getEnd().Y+projectedSpeed.height());
+        }
+
+        return i;
+      }
+
+      /*if (xyVectorIntersect(
+            xyVectorCenterOnPoint(
+              xyVectorScaleTo(
+                arrayGetData(o_mesh->collisionNormals,i),
+                xyVectorWidth(o_circle->bound)*2
+                ),
+              localCirclePos
+              ),
+            arrayGetData(o_mesh->collisionMesh,i)
+            ))
+      {
+        if (collide){
+          //fprintf(stderr,"COLLISION:\n");
+
+          struct xyVector * scaledSpeed = xyVectorScaleTo(
+                xyVectorCopy(o_circle->speed),
+                xyVectorWidth(o_circle->bound)*2
+                );
+
+          //fprintf(stderr,"old ball: %llf, %llf\n",
+          //        o_circle->bound->beg->x,o_circle->bound->beg->y);
+
+          xyVectorMove(o_circle->bound,
+                       -xyVectorWidth(scaledSpeed),
+                       -xyVectorHeight(scaledSpeed));
+
+          //fprintf(stderr,"new ball: %llf, %llf\n",
+          //        o_circle->bound->beg->x,o_circle->bound->beg->y);
+
+          xyVectorFlip(
+                xyVectorFlipAgainstVector(
+                  o_circle->speed,
+                  arrayGetData(o_mesh->collisionNormals,i)
+                  )
+                );
+
+          struct xyVector * projectedSpeed = xyVectorProjectOntoVector(
+                xyVectorCopy(o_mesh->speed),
+                arrayGetData(o_mesh->collisionNormals,i)
+                );
+
+          o_circle->speed->end->x+=xyVectorWidth(projectedSpeed);
+          o_circle->speed->end->y+=xyVectorHeight(projectedSpeed);
+
+          xyVectorReleaseFull(scaledSpeed);
+          xyVectorReleaseFull(projectedSpeed);
+        }
+
+        xyPointRelease(localCirclePos);
+        return i;
+      }*/
+    }
+
+    //try verticles
+
+    long double ballSize = o_circle->object.boundBox.X;
+
+    for (int i = 0 ; i < o_mesh->object.getCollisionMesh().length() ; i++){
+      VectorXY path = VectorXY(
+                        o_mesh->object.getCollisionMesh()[i]->getBegin(),
+                        localCirclePos);
+
+      if (path.size()<ballSize){
+        if (collide){
+          VectorXY scaledSpeed = VectorXY(o_circle->speed);
+          scaledSpeed.scaleTo(o_circle->object.boundBox.X*2);
+
+          o_circle->pos.moveBy(
+                -scaledSpeed.width(),
+                -scaledSpeed.height());
+
+          VectorXY::flipAcrossVector(o_circle->speed,path);
+          o_circle->speed.flip();
+
+          VectorXY projectedSpeed = VectorXY(o_mesh->speed);
+          VectorXY::projectOntoVector(projectedSpeed,path);
+
+          o_circle->speed.setEnd(
+                o_circle->speed.getEnd().X+projectedSpeed.width(),
+                o_circle->speed.getEnd().Y+projectedSpeed.height());
+        }
+
+        return i;
+      }
+    }
+
+    /*long double ballSize = xyVectorWidth(o_circle->bound);
+
+    for (int i = 0 ; i < arrayLength(o_mesh->collisionMesh) ; i++){
+      struct xyVector * path = xyVectorCreate(
+            ((struct xyVector*)arrayGetData(o_mesh->collisionMesh,i))->beg,
+            localCirclePos);
+
+      if (xyVectorLinearLength(path)<ballSize){
+        if (collide){
+          //fprintf(stderr,"VERT COLLISION:\n");
+
+          struct xyVector * scaledSpeed = xyVectorScaleTo(
+                xyVectorCopy(o_circle->speed),
+                xyVectorWidth(o_circle->bound)*2);
+
+          //fprintf(stderr,"old ball: %Lf, %Lf\n",
+          //        o_circle->bound->beg->x,o_circle->bound->beg->y);
+
+          xyVectorMove(o_circle->bound,
+                       -xyVectorWidth(scaledSpeed),
+                       -xyVectorHeight(scaledSpeed));
+
+          //fprintf(stderr,"new ball: %Lf, %Lf\n",
+          //        o_circle->bound->beg->x,o_circle->bound->beg->y);
+
+          xyVectorFlip(
+                xyVectorFlipAgainstVector(
+                  o_circle->speed,
+                  path));
+
+          struct xyVector * projectedSpeed = xyVectorProjectOntoVector(
+                xyVectorCopy(o_mesh->speed),
+                path);
+
+          o_circle->speed->end->x+=xyVectorWidth(projectedSpeed);
+          o_circle->speed->end->y+=xyVectorHeight(projectedSpeed);
+
+          xyVectorReleaseFull(scaledSpeed);
+          xyVectorReleaseFull(projectedSpeed);
+        }
+
+        xyVectorReleasePartial(path);
+        xyPointRelease(localCirclePos);
+        return i;
+      }
+      xyVectorReleasePartial(path);
+    }
+
+
+    //fprintf(stderr,"not colliding\n");
+
+    xyPointRelease(localCirclePos);
+    return -1;
+    */
+    return -1;
+  }
+  return -1;
 }

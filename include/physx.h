@@ -53,6 +53,13 @@ public:
     struct whp {int a;int b;};
     whp computeDim(GameMap* map);
 
+    static Chain<PhysicsEngine::CollisionGrid::GridPool*>* getNeighbours(ObjectPhysicsMeta& m);
+    GridPool * getPool(int C, int R){
+      if(C>-1&&R>-1
+         &&C<this->gridC&&R<this->gridR)
+        return this->grid[C][R];
+      throw "Invalid index";}
+
   public:
     const int gridW,gridH,gridC,gridR;
 
@@ -66,14 +73,24 @@ public:
   };
 
 private:
+  struct CREnt {
+    ObjectPhysicsMeta*A;
+    ObjectPhysicsMeta*B;
+  };
+
   GameMap* map;
   CollisionGrid* collisionGrid;
 
+  Chain<CREnt>* collisionsRegistry;
+  long double timeScale;
+
   int getTimeShift(int objIndex=-1);
   void moveObjects(int& timeShift, int objIndex=-1);
-  void moveAnchors(int& timeShift, int objIndex=-1);
   void collideObjects(int& timeShift, int objIndex=-1);
   void postMotion(int& timeShift, int objIndex=-1);
+
+  ObjectPhysicsMeta * getObjectCollisions(ObjectPhysicsMeta& meta, const bool& collide=true);
+  int isColliding(ObjectPhysicsMeta& A, ObjectPhysicsMeta& B, const bool& collide=false);
 
   void loadMapData(GameMap& map);
   void purgeMapData();

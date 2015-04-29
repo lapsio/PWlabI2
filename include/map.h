@@ -102,8 +102,8 @@ public:
 
   void clear();
 
-  inline ObjectMapMeta& operator[](const int& index) const {return this->getMeta(index);}
-  inline int operator[](const ObjectMapMeta& m) const {return this->getIndex(&m);}
+  ObjectMapMeta& operator[](const int& index) const {return this->getMeta(index);}
+  int operator[](const ObjectMapMeta& m) const {return this->getIndex(&m);}
   inline int length(){int l=0;Chain<ObjectMapMeta&>*c=this->objects;while((c=c->next()))++l;return ++l;}
 
 #ifdef _DEBUG
