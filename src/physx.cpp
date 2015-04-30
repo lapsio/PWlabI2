@@ -38,6 +38,8 @@ void Timer::pause(){
 }
 
 void Timer::resume(){
+  this->paused=false;
+
   struct timespec currentTime;
   clock_gettime(CLOCK_REALTIME,&currentTime);
 
@@ -75,12 +77,8 @@ void ObjectPhysicsMeta::linkMap(GameMap &map){
 }
 
 void ObjectPhysicsMeta::unlinkMap(){
-  this->inUse=false;
-  this->map=nullptr;
-  delete this->mapLink;
-
   Chain<PhysicsEngine::CollisionGrid::GridPool*> * c = this->gridNeighbours;
-  while (c){
+  while ((c=c->next())){
     Chain<ObjectPhysicsMeta*> * d = c->data->objectsChain;
     while (d){
       if (d->data==this){
@@ -91,9 +89,12 @@ void ObjectPhysicsMeta::unlinkMap(){
     }
     if (!d)
       throw "Could not find meta on grid - internal engine error";
-    c=c->next();
   }
   this->gridNeighbours=nullptr;
+
+  this->inUse=false;
+  this->map=nullptr;
+  delete this->mapLink;
 }
 
 PhysicsEngine::CollisionGrid::CollisionGrid(GameMap& map) :
@@ -467,7 +468,7 @@ ObjectPhysicsMeta * PhysicsEngine::getObjectCollisions(ObjectPhysicsMeta &meta, 
   Chain<PhysicsEngine::CollisionGrid::GridPool*> * c = this->collisionGrid->getNeighbours(meta);
   while((c=c->next())){
     Chain<ObjectPhysicsMeta*>*cc=c->data->objectsChain;
-    while(cc=cc->next())
+    while((cc=cc->next()))
       if (this->isColliding(meta,*cc->data,collide)>-1)
         return cc->data;
   }
@@ -716,4 +717,131 @@ int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const
     return -1;
   }
   return -1;
+}
+
+void PhysicsEngine::postMotion(int &timeShift, int objIndex){
+  //post motion effects
+
+  ObjectMapMeta*meta;
+  Object*obj;
+  ObjectPhysicsMeta*pmeta;
+
+  long double tmp;
+
+  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+    if ((meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)){
+
+      pmeta=(ObjectPhysicsMeta*)meta;
+      obj=&meta->object;
+
+      pmeta->speed.setEnd(
+            pmeta->speed.getEnd().X+pmeta->acceleration.width()*timeShift,
+            pmeta->speed.getEnd().Y+pmeta->acceleration.height()*timeShift);
+
+      if (obj->friction){
+        if (pmeta->speed.width()>0)
+          if (pmeta->speed.width()>(tmp=obj->friction*obj->mass*timeShift))
+            pmeta->speed.setEnd(
+                  pmeta->speed.getEnd().X-tmp,
+                  pmeta->speed.getEnd().Y);
+          else
+            pmeta->speed.setEnd(
+                  pmeta->speed.getBegin().X,
+                  pmeta->speed.getEnd().Y);
+        else
+          if (pmeta->speed.width()<(tmp=-obj->friction*obj->mass*timeShift))
+            pmeta->speed.setEnd(
+                  pmeta->speed.getEnd().X-tmp,
+                  pmeta->speed.getEnd().Y);
+          else
+            pmeta->speed.setEnd(
+                  pmeta->speed.getBegin().X,
+                  pmeta->speed.getEnd().Y);
+
+        if (pmeta->speed.height()>0)
+          if (pmeta->speed.height()>(tmp=obj->friction*obj->mass*timeShift))
+            pmeta->speed.setEnd(
+                  pmeta->speed.getEnd().X,
+                  pmeta->speed.getEnd().Y-tmp);
+          else
+            pmeta->speed.setEnd(
+                  pmeta->speed.getEnd().X,
+                  pmeta->speed.getBegin().Y);
+        else
+          if (pmeta->speed.height()<(tmp=obj->friction*obj->mass*timeShift))
+            pmeta->speed.setEnd(
+                  pmeta->speed.getEnd().X,
+                  pmeta->speed.getEnd().Y-tmp);
+          else
+            pmeta->speed.setEnd(
+                  pmeta->speed.getEnd().X,
+                  pmeta->speed.getBegin().Y);
+      }
+    }
+  }
+
+  /*objChain = session->map->objectsChain;
+  while (objChain){
+    struct Object * obj = chainGetData(objChain);
+    //acceleration
+
+    obj->speed->end->x+=xyVectorWidth(obj->acceleration)*timeStep;
+    obj->speed->end->y+=xyVectorHeight(obj->acceleration)*timeStep;
+
+    //friction
+    if (obj->friction){
+      if(xyVectorWidth(obj->speed)>0)
+        if (xyVectorWidth(obj->speed)>(tmp=obj->friction*obj->mass*timeStep))
+          obj->speed->end->x-=tmp;
+        else
+          obj->speed->end->x=obj->speed->beg->x;
+      else
+        if (xyVectorWidth(obj->speed)<(tmp=-obj->friction*obj->mass*timeStep))
+          obj->speed->end->x-=tmp;
+        else
+          obj->speed->end->x=obj->speed->beg->x;
+
+      if(xyVectorHeight(obj->speed)>0)
+        if (xyVectorHeight(obj->speed)>(tmp=obj->friction*obj->mass*timeStep))
+          obj->speed->end->y-=tmp;
+        else
+          obj->speed->end->y=obj->speed->beg->y;
+      else
+        if (xyVectorHeight(obj->speed)<(tmp=-obj->friction*obj->mass*timeStep))
+          obj->speed->end->y-=tmp;
+        else
+          obj->speed->end->y=obj->speed->beg->y;
+    }
+
+    objChain=chainGetNext(objChain);
+  }*/
+}
+
+int PhysicsEngine::timeShift(){
+  int time = this->getTimeShift();
+  this->moveObjects(time);
+  this->collideObjects(time);
+  this->postMotion(time);
+
+  return time;
+}
+
+void PhysicsEngine::reloadMap(GameMap &map){
+  (void)map;
+  throw "Not implemented";
+}
+
+void PhysicsEngine::registerObject(ObjectMapMeta &meta){
+  if(meta.isTypeOf(ObjectPhysicsMeta::typeName))
+    throw "Meta already registered!";
+  ObjectPhysicsMeta* newMeta = new ObjectPhysicsMeta(meta, *this);
+  map->deleteObject((*(this->map))[meta]);
+  map->addObject(*newMeta);
+  this->collisionGrid->registerMeta(*newMeta);
+}
+
+void PhysicsEngine::unregisterObject(ObjectPhysicsMeta &meta){
+  ObjectMapMeta* newMeta = new ObjectMapMeta(meta);
+  map->deleteObject(&meta);
+  map->addObject(*newMeta);
 }

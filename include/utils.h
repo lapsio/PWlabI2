@@ -21,7 +21,7 @@ public:
   static constexpr char * typeName=(char*)"Generic";
 
   TypedClass();
-  virtual ~TypedClass(){delete this->typeChain;};
+  virtual ~TypedClass(){while(this->typeChain->next())delete this->typeChain->next();delete this->typeChain;}
 
   inline const char * typeOf() const {return this->typeChain->data;}
   inline bool matchType(TypedClass& t) const {return t.typeOf()==this->typeOf();}

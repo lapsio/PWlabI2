@@ -3,7 +3,7 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-QMAKE_CXXFLAGS += -std=c++11 -march=corei7 -O3
+QMAKE_CXXFLAGS += -std=c++11 -march=corei7
 
 SOURCES += main.cpp \
     src/map.cpp \
@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     src/tests.cpp \
     src/VectorXY.cpp \
     src/utils.cpp \
-    src/GameDomain.cpp
+    src/GameDomain.cpp \
+    src/session.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -28,5 +29,6 @@ HEADERS += \
     include/VectorXY.h \
     include/defines.h \
     include/utils.h \
-    include/GameDomain.h
+    include/GameDomain.h \
+    include/session.h
 

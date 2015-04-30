@@ -2,9 +2,11 @@
 
 /************GameDomain******************/
 
-GameDomain::GameDomain()
+GameDomain::GameDomain() :
+  chain(new Chain<Team> ({nullptr,nullptr})),
+  session(nullptr)
 {
-    this -> chain = new Chain <Team> ({nullptr,nullptr});
+
 }
 
 void GameDomain:: add (Interface& klocek)
@@ -26,17 +28,20 @@ void GameDomain:: remove (Interface* klocek)
     throw "Could not find driver";
 }
 
-Chain <BaseEvent>* GameDomain:: reload ()
+Chain <BaseEvent&>* GameDomain:: reload ()
 {
-    Chain <BaseEvent>* tmp_BEvent = new Chain <BaseEvent> ({BaseEvent::Type::none, false});
-    Chain <BaseEvent>* tmp_BEvent_single = new Chain <BaseEvent> ({BaseEvent::Type::none, false});
+    if (!this->session)
+      throw "Session uninitialized";
+
+    Chain <BaseEvent&>* tmp_BEvent = new Chain <BaseEvent&> (*(new BaseEvent()));
+    Chain <BaseEvent&>* tmp_BEvent_single = new Chain <BaseEvent&> (*(new BaseEvent()));
     Chain <Team>* tmp;
 
     tmp = this -> chain;
 
     while ((tmp = tmp -> next()))
     {
-        BaseEvent& e = tmp -> data.driver -> run();
+        BaseEvent& e = tmp -> data.driver -> run(*this->session);
         if (e.interrupt == true)
         {
             delete tmp_BEvent;

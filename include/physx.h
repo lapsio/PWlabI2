@@ -38,6 +38,11 @@ public:
 class PhysicsEngine
 {
 public:
+  struct CREnt {
+    ObjectPhysicsMeta*A;
+    ObjectPhysicsMeta*B;
+  };
+
   class CollisionGrid {
     friend class PhysicsEngine;
   public:
@@ -73,10 +78,6 @@ public:
   };
 
 private:
-  struct CREnt {
-    ObjectPhysicsMeta*A;
-    ObjectPhysicsMeta*B;
-  };
 
   GameMap* map;
   CollisionGrid* collisionGrid;
@@ -100,11 +101,12 @@ public:
   ~PhysicsEngine();
 
   inline GameMap* getMap() const {return this->map;}
+  inline Chain<CREnt>* getCollisionRegistry() const {return this->collisionsRegistry;}
 
   void reloadMap(GameMap& map);
 
-  void registerObject(Object *);
-  void removeObject();
+  void registerObject(ObjectMapMeta& meta);
+  void unregisterObject(ObjectPhysicsMeta& meta);
   int timeShift();
 };
 

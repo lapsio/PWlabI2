@@ -1,8 +1,11 @@
 #include "./include/utils.h"
 #include "./include/misc.h"
+//#include "./include/session.h"
 
 #ifndef BaseEvent_H
 #define BaseEvent_H
+
+class GameSession;
 
 class BaseEvent
 {
@@ -55,7 +58,7 @@ class Interface: public GCRef
         Interface() : GCRef(){}
         virtual ~Interface() = 0;
 
-        virtual BaseEvent& run() = 0;
+        virtual BaseEvent& run(GameSession& session) = 0;
 
 };
 
@@ -74,14 +77,16 @@ class GameDomain
             GCRefLink* link;
         };
         Chain <Team> * chain;
+        GameSession* session;
     public:
         GameDomain();
         ~GameDomain();
 
         void add (Interface&);
         void remove (Interface*);
+        inline void bindSession(GameSession& s){this->session=&s;}
 
-        Chain <BaseEvent>* reload ();
+        Chain <BaseEvent&>* reload ();
 
 };
 

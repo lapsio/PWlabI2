@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "./include/tests.h"
-#include "./include/physx.h"
+#include "./include/session.h"
 
 void test_punkt_konstruktor()
 {
@@ -411,6 +411,61 @@ void CORE_DEBUG(){
 
   std::cout << "Types: is " << Mesh->typeOf() << " type of Generic - " << (Mesh->isTypeOf(TypedClass::typeName)?"yes":"no") << std::endl;
   std::cout << "Types: is " << Mesh->typeOf() << " type of Object - " << (Mesh->isTypeOf(Object::typeName)?"yes":"no") << std::endl;
+
+  delete (Mesh->link());
+
+  delete map;
+
+  ///PHYSICS///////////////////////////////////////////////////////////////
+
+  Circle = new Object(
+                   "potato",
+                   Decal(),
+                   PhysicalBody(
+                     PhysicalBody::ObjectType::dynamic,
+                     PhysicalBody::CollisionType::solid,
+                     PointXY(2,5),
+                     4,10
+                     ));
+
+  Mesh = new Object("box",Decal(),
+                             PhysicalBody(
+                               PhysicalBody::ObjectType::dynamic,
+                               PhysicalBody::CollisionType::solid,
+                               PointXY(4,8),
+                               arr,2,5
+                               ));
+
+  Object * Mesh2 = new Object("box",Decal(),
+                             PhysicalBody(
+                               PhysicalBody::ObjectType::dynamic,
+                               PhysicalBody::CollisionType::solid,
+                               PointXY(4,8),
+                               arr,2,5
+                               ));
+
+  Mmeta = new ObjectMapMeta(*Mesh,PointXY(1,5));
+  Cmeta = new ObjectMapMeta(*Circle,PointXY(35,36));
+  ObjectMapMeta* Mmeta2= new ObjectMapMeta(*Mesh2,PointXY(35,36));
+
+  map = new GameMap();
+  map->addObject(*Mmeta);
+  map->addObject(*Cmeta);
+  map->addObject(*Mmeta2);
+
+  PhysicsEngine* pE=new PhysicsEngine(*map);
+  pE->registerObject((*map)[2]);
+  pE->registerObject((*map)[2]);
+
+  pE->timeShift();
+
+  pE->unregisterObject(dynamic_cast<ObjectPhysicsMeta&>((*map)[2]));
+
+  GameSession* session= new GameSession(*pE);
+
+  bool k=0;
+
+  session->enterSessionLoop(k);
 
   ///
 

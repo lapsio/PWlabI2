@@ -105,7 +105,7 @@ void GameMap::addObject(ObjectMapMeta &meta){
 
 int GameMap::getIndex(const ObjectMapMeta *meta) const {
   Chain<ObjectMapMeta&>*c=this->objects->next();//do not allow getting dummyObject
-  int index=0;
+  int index=1;
   while(1){
     if (&c->data==meta)
       break;
