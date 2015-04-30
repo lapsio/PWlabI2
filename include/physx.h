@@ -108,6 +108,10 @@ public:
   void registerObject(ObjectMapMeta& meta);
   void unregisterObject(ObjectPhysicsMeta& meta);
   int timeShift();
+
+#ifdef _DEBUG
+  static void DEBUG(PhysicsEngine * p);
+#endif
 };
 
 
@@ -131,6 +135,29 @@ public:
 
   ObjectPhysicsMeta(const ObjectMapMeta& ref, const PhysicsEngine& engine, VectorXY speed=VectorXY(0,0,0,0), VectorXY acceleration=VectorXY(0,0,0,0));
   virtual ~ObjectPhysicsMeta();
+
+#ifdef _DEBUG
+public:
+  static void DEBUG(ObjectPhysicsMeta * m){
+    ObjectMapMeta::DEBUG(m);
+    std::cout << "engine: " << m->engine  << std::endl;
+    std::cout << "speed: (" <<  m->speed.getBegin().X << "," << m->speed.getBegin().Y << ") (" << m->speed.getEnd().X << ";" << m->speed.getEnd().Y << ")" << std::endl;
+    std::cout << "acceleration: (" <<  m->acceleration.getBegin().X << "," << m->acceleration.getBegin().Y << ") (" << m->acceleration.getEnd().X << ";" << m->acceleration.getEnd().Y << ")" << std::endl;
+
+    int i=0;
+    Chain<PhysicsEngine::CollisionGrid::GridPool*>*c=m->gridNeighbours;
+    while((c=c->next())){
+      ++i;
+      int j=0;
+      Chain<ObjectPhysicsMeta*>*cc=c->data->objectsChain;
+      while((cc=cc->next())){
+        ++j;
+        std::cout << "pool:" << i << ", object:" << j << " - " << cc->data->object.getName() << std::endl;
+      }
+    }
+    std::cout << std::endl;
+  }
+#endif
 };
 
 

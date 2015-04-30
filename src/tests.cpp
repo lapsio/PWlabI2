@@ -457,9 +457,13 @@ void CORE_DEBUG(){
   pE->registerObject((*map)[2]);
   pE->registerObject((*map)[2]);
 
+  GameMap::DEBUG(map);
+
   pE->timeShift();
 
   pE->unregisterObject(dynamic_cast<ObjectPhysicsMeta&>((*map)[2]));
+
+  PhysicsEngine::DEBUG(pE);
 
   GameSession* session= new GameSession(*pE);
 

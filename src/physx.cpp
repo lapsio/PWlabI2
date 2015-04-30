@@ -845,3 +845,19 @@ void PhysicsEngine::unregisterObject(ObjectPhysicsMeta &meta){
   map->deleteObject(&meta);
   map->addObject(*newMeta);
 }
+
+#ifdef _DEBUG
+  void PhysicsEngine::DEBUG(PhysicsEngine * p){
+
+    for (int i = 0, l = p->map->length(), k=1 ; i < l ; i++){
+      ObjectMapMeta*m=&(*(p->map))[i];
+      if (m->isTypeOf(ObjectPhysicsMeta::typeName)){
+        std::cout << std::endl << "#" << k++ << ":" << std::endl;
+        ObjectPhysicsMeta::DEBUG(dynamic_cast<ObjectPhysicsMeta*>(m));
+        Object::DEBUG(&m->object);
+      }
+      else
+        std::cout << std::endl << "#" << k++ << " - non-physical" << std::endl;
+    }
+  }
+#endif
