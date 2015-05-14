@@ -15,12 +15,12 @@ private:
   Chain<const char*>* typeChain;
 
 protected:
+  TypedClass();
   inline void pushType(const char * type){this->typeChain->insertBefore(type);this->typeChain=this->typeChain->prev();}
 
 public:
-  static constexpr char * typeName=(char*)"Generic";
+  static constexpr char * typeName=(char*)"Generic";  //type descriptor
 
-  TypedClass();
   virtual ~TypedClass(){while(this->typeChain->next())delete this->typeChain->next();delete this->typeChain;}
 
   inline const char * typeOf() const {return this->typeChain->data;}

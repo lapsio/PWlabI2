@@ -14,8 +14,8 @@ public:
   ~Array(){delete [] this->arr;}
 
   inline int length() const {return this->lengthC;}
-  TYPE getData(int index) const {return this->arr[index];}
-  void setData(TYPE d, int index){this->arr[index]=d;}
+  TYPE getData(int index) const {return this->arr[index];}  //returns array field content
+  void setData(TYPE d, int index){this->arr[index]=d;}  //writes data to array
 
   TYPE& operator[](int index) const {return this->arr[index];}
 
@@ -63,10 +63,10 @@ public:
 
   Chain * next(){return this->nextC;}
   Chain * prev(){return this->prevC;}
-  Chain * rewind(){Chain<TYPE>*c=this;while(c->prev())c=c->prev();return c;}
-  Chain * rewindForward(){Chain<TYPE>*c=this;while(c->next())c=c->next();return c;}
+  Chain * rewind(){Chain<TYPE>*c=this;while(c->prev())c=c->prev();return c;}  //returns first element
+  Chain * rewindForward(){Chain<TYPE>*c=this;while(c->next())c=c->next();return c;}  //returns last element
 
-  inline void insertAfter(Chain * c){
+  inline void insertAfter(Chain * c){  //inserts given chain after current element
     Chain*t=this->nextC;
     this->nextC=c;
     c->prevC=this;
@@ -75,7 +75,7 @@ public:
     if (t)
       t->prevC=c;
   }
-  inline void insertBefore(Chain * c){
+  inline void insertBefore(Chain * c){  //inserts given chain before current element
     Chain*t=this->prevC;
     this->prevC=c;
     c->nextC=this;
@@ -85,39 +85,47 @@ public:
       t->nextC=c;
   }
 
-  inline void insertAfter(TYPE data){this->insertAfter(new Chain(data));}
-  inline void insertBefore(TYPE data){this->insertBefore(new Chain(data));}
+  inline void insertAfter(TYPE data){this->insertAfter(new Chain(data));}  //inserts given data after current element
+  inline void insertBefore(TYPE data){this->insertBefore(new Chain(data));}  //inserts given data before current element
 
-  inline void pop(){
+  inline void pop(){  //pulls element out of chain (doesn't delete it)
     if(this->nextC)
       this->nextC->prevC=this->prevC;
     if(this->prevC)
       this->prevC->nextC=this->nextC;
   }
 
-  inline Chain<TYPE>* map(void (*f)(TYPE&)){
+  inline Chain<TYPE>* map(void (*f)(TYPE&)){//changes all values in array basing on value returned by passed function
     Chain<TYPE>*c=this->rewind();
     while(c)
       f(c->data);
     return this;
   }
 
-  inline Chain<TYPE>* map(TYPE (*f)(const TYPE&)){
+  inline Chain<TYPE>* map(TYPE (*f)(const TYPE&)){//allows passed function to change all values in array
     Chain<TYPE>*c=this->rewind();
     while(c)
       c->data=f(c->data);
     return this;
   }
 
-  inline Chain<TYPE>* each(void (*f)(const TYPE&)){
+  inline Chain<TYPE>* each(void (*f)(const TYPE&)){//calls passed function with all array elements as argument
     Chain<TYPE>*c=this->rewind();
     while(c)
       f(c->data);
     return this;
   }
 
+  inline Chain<TYPE>* selected(void (*f)(const TYPE&), bool (*p)(const TYPE&)){//calls first passed function only on elements accepted by second one
+    Chain<TYPE>*c=this->rewind();
+    while(c)
+      if (p(c->data))
+        f(c->data);
+    return this;
+  }
+
 private:
-  void operator=(const Chain<TYPE>* R){(void)R;}
+  void operator=(const Chain<TYPE>* R){(void)R;}  //locked
 };
 
 
