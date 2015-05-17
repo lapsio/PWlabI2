@@ -3,6 +3,7 @@
 
 #include "./include/physx.h"
 #include "./include/GameDomain.h"
+#include "./gfx.h"
 
 
 /**
@@ -11,6 +12,7 @@
 class GameSession
 {
 private:
+  RenderEngine& renderEngine;
   GameDomain& gameDomain;
   Timer& timer;
   PhysicsEngine& physicsEngine;
@@ -26,9 +28,9 @@ public:
    * @param timer timer to be used by session
    * @param gameDomain game domain code engine to be used by session
    */
-  GameSession(PhysicsEngine& physicsEngine, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
-  GameSession(GameMap& map, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
-  GameSession(int W=128, int H=96, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
+  GameSession(RenderEngine& renderEngine, PhysicsEngine& physicsEngine, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
+  GameSession(RenderEngine& renderEngine, GameMap& map, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
+  GameSession(RenderEngine& renderEngine, int W=128, int H=96, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
   ~GameSession();
 
   /**
@@ -58,18 +60,6 @@ public:
    * @return game domain engine used by session
    */
   inline GameDomain* getGameDomain(){return &this->gameDomain;}
-};
-
-class GameEngine
-{
-private:
-  Chain<GameSession>* sessions;
-
-public:
-  GameEngine();
-  ~GameEngine();
-
-  void run(bool& interruptTrigger);
 };
 
 #endif // SESSION_H

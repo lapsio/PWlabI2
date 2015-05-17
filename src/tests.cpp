@@ -465,11 +465,11 @@ void CORE_DEBUG(){
 
   PhysicsEngine::DEBUG(pE);
 
-  GameSession* session= new GameSession(*pE);
+  //GameSession* session= new GameSession(*pE);
 
-  bool k=0;
+  //bool k=0;
 
-  session->enterSessionLoop(k);
+  //session->enterSessionLoop(k);
 
   ///
 

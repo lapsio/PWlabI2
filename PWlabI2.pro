@@ -5,6 +5,8 @@ CONFIG -= qt
 
 QMAKE_CXXFLAGS += -std=c++11 -march=corei7
 
+LIBS += -lsfml-graphics -lsfml-window -lsfml-system
+
 SOURCES += main.cpp \
     src/map.cpp \
     src/object.cpp \
@@ -14,7 +16,9 @@ SOURCES += main.cpp \
     src/VectorXY.cpp \
     src/utils.cpp \
     src/GameDomain.cpp \
-    src/session.cpp
+    src/session.cpp \
+    src/gfx.cpp \
+    src/engine.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -30,5 +34,7 @@ HEADERS += \
     include/defines.h \
     include/utils.h \
     include/GameDomain.h \
-    include/session.h
+    include/session.h \
+    include/gfx.h \
+    include/engine.h
 

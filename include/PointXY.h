@@ -23,10 +23,10 @@ class PointXY
         inline long double getX() const {return this->X;} /**** Zwraca wartość X klasy ****/
         inline long double getY() const {return this->Y;} /**** Zwraca wartość Y klasy ****/
 
-        PointXY operator +(PointXY point) const;
-        PointXY operator -(PointXY point) const;
-        void operator +=(PointXY point);
-        void operator -=(PointXY point);
+        PointXY operator +(const PointXY point) const;
+        PointXY operator -(const PointXY point) const;
+        void operator +=(const PointXY point);
+        void operator -=(const PointXY point);
         PointXY operator *(double k) const; /**** Operator dla mnozenia (X,Y) * k ****/
         void operator *=(double k); /**** Operator dla mnozenia (X,Y) * k ****/
         bool operator ==(const PointXY& point) const;

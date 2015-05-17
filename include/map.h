@@ -80,7 +80,7 @@ public:
    * @brief getGlobalPos returns calculated global position (affected by
    * @return
    */
-  inline PointXY getGlobalPos() const {ObjectMapMeta* m=const_cast<ObjectMapMeta*>(this->getRoot());PointXY p(0,0);while(m){p+=m->pos;if(m==this)return p;m=m->tail;}}
+  inline PointXY getGlobalPos() const {ObjectMapMeta* m=const_cast<ObjectMapMeta*>(this->getRoot());PointXY p(0,0);while(m){p+=m->pos;if(m==this)return p;m=m->tail;}return p;}
 
   /**
    * @brief attach Attaches object to another one

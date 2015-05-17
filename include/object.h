@@ -9,6 +9,7 @@
 #include "./include/VectorXY.h"
 #include "./include/misc.h"
 #include "./include/utils.h"
+#include "SFML/Graphics.hpp"
 
 
 
@@ -22,9 +23,15 @@ class PhysicalBody;
 class Decal
 {
 private:
+  const sf::Texture* loadTexture(const char* path);
+
 public:
-  Decal(){}
-  virtual ~Decal(){}
+  static constexpr char* voidTexturePath=(char*)"misc/void.png";
+
+  const sf::Texture* texture;
+
+  Decal(const char* filePath=Decal::voidTexturePath);
+  virtual ~Decal();
 };
 
 class LightSource

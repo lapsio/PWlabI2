@@ -5,7 +5,7 @@
 #endif
 
 #include <iostream>
-#include "./include/physx.h"
+#include "./include/engine.h"
 
 using namespace std;
 
@@ -14,10 +14,15 @@ using namespace std;
 int main()
 {
 #ifdef _DEBUG
-
   test_punkt();
   test_wektor();
   CORE_DEBUG();
 #endif
+
+  bool interrupt=false;
+
+  GameEngine * game = new GameEngine();
+  game->start(interrupt);
+
   return 0;
 }

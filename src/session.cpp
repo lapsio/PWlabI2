@@ -3,7 +3,8 @@
 
 
 
-GameSession::GameSession(PhysicsEngine &physicsEngine, Timer &timer, GameDomain &gameDomain) :
+GameSession::GameSession(RenderEngine &renderEngine, PhysicsEngine &physicsEngine, Timer &timer, GameDomain &gameDomain) :
+  renderEngine(renderEngine),
   gameDomain(gameDomain),
   timer(timer),
   physicsEngine(physicsEngine),
@@ -14,14 +15,14 @@ GameSession::GameSession(PhysicsEngine &physicsEngine, Timer &timer, GameDomain 
   this->gameDomain.bindSession(*this);
 }
 
-GameSession::GameSession(GameMap &map, Timer &timer, GameDomain &gameDomain) :
-  GameSession(*(new PhysicsEngine(map)), timer, gameDomain)
+GameSession::GameSession(RenderEngine &renderEngine, GameMap &map, Timer &timer, GameDomain &gameDomain) :
+  GameSession(renderEngine, *(new PhysicsEngine(map)), timer, gameDomain)
 {
 
 }
 
-GameSession::GameSession(int W, int H, Timer &timer, GameDomain &gameDomain) :
-  GameSession(*(new GameMap(W,H)), timer, gameDomain)
+GameSession::GameSession(RenderEngine &renderEngine, int W, int H, Timer &timer, GameDomain &gameDomain) :
+  GameSession(renderEngine, *(new GameMap(W,H)), timer, gameDomain)
 {
 
 }
@@ -35,7 +36,10 @@ bool GameSession::enterSessionLoop(bool &interruptTrigger){
     while(!this->timer.shift(this->physicsEngine.timeShift()));
     delete ev;
     ev=this->gameDomain.reload();
-    //render
+    this->renderEngine.clear();
+    for (int i = 0, l = this->gameMap.length(); i < l ; i++)
+      this->renderEngine.pushObject(this->gameMap[i].getGlobalPos(),this->gameMap[i].object);
+    this->renderEngine.flush();
   }
 
   return false;

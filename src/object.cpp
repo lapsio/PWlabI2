@@ -1,6 +1,28 @@
 #include "./include/object.h"
 #include "./include/utils.h"
 
+Decal::Decal(const char *filePath) :
+  texture(this->loadTexture(filePath))
+{
+
+}
+
+Decal::~Decal(){
+  delete this->texture;
+}
+
+const sf::Texture* Decal::loadTexture(const char *path){
+  sf::Texture* tx = new sf::Texture();
+
+  char buff[256];
+  size_t s = snprintf(buff, 256,"./assets/textures/%s", path);
+  buff[s]=0;
+
+  if (!tx->loadFromFile(buff))
+    throw "Could not load image";
+
+  return (const_cast<const sf::Texture*>(tx));
+}
 
 PhysicalBody::PhysicalBody(ObjectType type,CollisionType collision, PointXY dimensions,double friction,double mass){
   if (dimensions.getX()<0||dimensions.getY()<0)

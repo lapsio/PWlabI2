@@ -52,7 +52,7 @@ void PointXY::moveBy(const PointXY& tmp) /**** Przesuwa punkt o wartosc X i Y z 
 /************************ OPERATORY *************************/
 /***********************************************************/
 
-PointXY PointXY::operator+(PointXY point) const /***DODAJE PUNKTY***/
+PointXY PointXY::operator+(const PointXY point) const /***DODAJE PUNKTY***/
 {
     PointXY tmp;
     tmp.X = X + point.X;
@@ -61,7 +61,7 @@ PointXY PointXY::operator+(PointXY point) const /***DODAJE PUNKTY***/
     return tmp;
 }
 
-PointXY PointXY::operator-(PointXY point) const /***ODEJMUJE PUNKTY***/
+PointXY PointXY::operator-(const PointXY point) const /***ODEJMUJE PUNKTY***/
 {
     PointXY tmp;
     tmp.X = X - point.X;
@@ -70,13 +70,13 @@ PointXY PointXY::operator-(PointXY point) const /***ODEJMUJE PUNKTY***/
     return tmp;
 }
 
-void PointXY::operator+=(PointXY point)/***DODAJE PUNKTY i PRZYPISUJE WYNIK DODAWANIA***/
+void PointXY::operator+=(const PointXY point)/***DODAJE PUNKTY i PRZYPISUJE WYNIK DODAWANIA***/
 {
     this -> changeTo(this -> X + point.X, this -> Y + point.Y);
     return;
 }
 
-void PointXY::operator-=(PointXY point) /***ODEJMUJE PUNKTY i PRZYPISUJE WYNIK ODEJMOWANIA***/
+void PointXY::operator-=(const PointXY point) /***ODEJMUJE PUNKTY i PRZYPISUJE WYNIK ODEJMOWANIA***/
 {
     this -> changeTo(this -> X - point.X, this -> Y - point.Y);
     return;
