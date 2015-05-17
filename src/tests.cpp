@@ -384,6 +384,15 @@ void CORE_DEBUG(){
     std::cout << "success - function call failed as expected" << std::endl;
   }
 
+  std::cout << std::endl << std::endl << "try to jupm out of index: " << std::endl;
+
+  try{
+    (*map)[map->length()];
+    std::cout << "failure - function call succesfull" << std::endl;
+  } catch (const char*) {
+    std::cout << "success - function call failed as expected" << std::endl;
+  }
+
   map->deleteObject(CPYmeta);
 
   std::cout << std::endl << std::endl << "mesh pointer after all meta delete: " << std::endl;

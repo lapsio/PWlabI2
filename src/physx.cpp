@@ -301,7 +301,7 @@ int PhysicsEngine::getTimeShift(int objIndex){
   ObjectMapMeta * meta;
   ObjectPhysicsMeta * pmeta;
   Object * obj;
-  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+  for (int i = (objIndex==-1)?1:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
     if ((meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)&&(obj=&meta->object)->collisionType!=PhysicalBody::CollisionType::ghost){
       if (min_bound>(tmp=fabs(obj->boundBox.X)))
         min_bound=tmp;
@@ -355,7 +355,7 @@ void PhysicsEngine::moveObjects(int &timeShift, int objIndex){
   ObjectMapMeta * meta;
   ObjectPhysicsMeta * pmeta;
   Object * obj;
-  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+  for (int i = (objIndex==-1)?1:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
     if (!(meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)||
         ((pmeta=(ObjectPhysicsMeta*)meta)->getAnchor() ||
         (pmeta->speed.size()==0 && pmeta->acceleration.size()==0)))
@@ -427,7 +427,7 @@ void PhysicsEngine::collideObjects(int &timeShift, int objIndex){
   //Object * obj;
   ObjectPhysicsMeta * collider;
 
-  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+  for (int i = (objIndex==-1)?1:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
     if (!(meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)||
         (pmeta=(ObjectPhysicsMeta*)meta)->getAnchor()||
         pmeta->speed.size()==0)
@@ -728,7 +728,7 @@ void PhysicsEngine::postMotion(int &timeShift, int objIndex){
 
   long double tmp;
 
-  for (int i = (objIndex==-1)?0:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
+  for (int i = (objIndex==-1)?1:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
     if ((meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)){
 
       pmeta=(ObjectPhysicsMeta*)meta;
@@ -849,7 +849,7 @@ void PhysicsEngine::unregisterObject(ObjectPhysicsMeta &meta){
 #ifdef _DEBUG
   void PhysicsEngine::DEBUG(PhysicsEngine * p){
 
-    for (int i = 0, l = p->map->length(), k=1 ; i < l ; i++){
+    for (int i = 1, l = p->map->length(), k=1 ; i < l ; i++){
       ObjectMapMeta*m=&(*(p->map))[i];
       if (m->isTypeOf(ObjectPhysicsMeta::typeName)){
         std::cout << std::endl << "#" << k++ << ":" << std::endl;

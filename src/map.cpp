@@ -117,11 +117,11 @@ int GameMap::getIndex(const ObjectMapMeta *meta) const {
 }
 
 ObjectMapMeta& GameMap::getMeta(int index) const {
-  Chain<ObjectMapMeta&>*c=this->objects;
-  while(index-->0&&c)
+  Chain<ObjectMapMeta&>*c=this->objects->next();
+  while(index-->1&&c)
     c=c->next();
 
-  if (!c||index==-2)//do NOT allow to pop dummyObject
+  if (!c||index==-1)//do NOT allow to pop dummyObject
     throw "out of index - map entry not found";
 
   return c->data;

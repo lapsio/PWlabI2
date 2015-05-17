@@ -37,8 +37,11 @@ bool GameSession::enterSessionLoop(bool &interruptTrigger){
     delete ev;
     ev=this->gameDomain.reload();
     this->renderEngine.clear();
-    for (int i = 0, l = this->gameMap.length(); i < l ; i++)
+
+    for (int i = 1, l = this->gameMap.length(); i < l ; i++){
+      std::cout << this->gameMap[i].object.getName() << std::endl;
       this->renderEngine.pushObject(this->gameMap[i].getGlobalPos(),this->gameMap[i].object);
+    }
     this->renderEngine.flush();
   }
 
