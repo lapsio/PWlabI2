@@ -8,7 +8,7 @@ Decal::Decal(const char *filePath) :
 }
 
 Decal::~Decal(){
-  delete this->texture;
+  //delete this->texture;
 }
 
 const sf::Texture* Decal::loadTexture(const char *path){
