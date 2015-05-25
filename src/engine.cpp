@@ -18,5 +18,22 @@ GameEngine::~GameEngine(){
 }
 
 void GameEngine::start(bool &interruptTrigger){
-  this->sessions->data.enterSessionLoop(interruptTrigger);
+  GameSession* newSession=&this->sessions->data;
+
+  while(1){
+    newSession = newSession->enterSessionLoop(interruptTrigger);
+    if (newSession==nullptr)
+      break;
+
+    Chain<GameSession&>*c=this->sessions;
+    while(c){//check if session already registered
+      if (&c->data==newSession)
+        break;
+      c=c->next();
+    }
+    if (!c)//if not then add new session to list
+      this->sessions->rewindForward()->insertAfter(*newSession);
+  }
+
+  return;
 }
