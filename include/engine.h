@@ -3,6 +3,7 @@
 
 #include "include/session.h"
 #include "include/gfx.h"
+#include "drivers/include/EngineStart.h"
 
 class GameEngine
 {

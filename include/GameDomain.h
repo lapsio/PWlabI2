@@ -56,7 +56,7 @@ class Interface: public GCRef
     public:
 
         Interface() : GCRef(){}
-        virtual ~Interface() = 0;
+        ~Interface();
 
         virtual BaseEvent& run(GameSession& session) = 0;
 
