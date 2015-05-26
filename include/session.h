@@ -38,7 +38,7 @@ public:
    * @param interruptTrigger reference to interruption trigger. when set to true inside game loop, session will terminate
    * @return whether session was interrupted by interrupt trigger or in usual way (session swap event)
    */
-  bool enterSessionLoop(bool& interruptTrigger);
+  GameSession* enterSessionLoop(bool& interruptTrigger);
 
   /**
    * @brief getGameMap

@@ -34,11 +34,9 @@ class BaseEvent
 template <typename D>
 class Event: public BaseEvent
 {
-    private:
-
-        const D data;
 
     public:
+        const D data;
 
         Event (const D data, const Type t = Type::none, const bool interrupt = false) : BaseEvent (t,interrupt), data(data){}
         virtual ~Event(){}

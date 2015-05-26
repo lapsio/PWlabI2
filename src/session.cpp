@@ -27,7 +27,7 @@ GameSession::GameSession(RenderEngine &renderEngine, int W, int H, Timer &timer,
 
 }
 
-bool GameSession::enterSessionLoop(bool &interruptTrigger){
+GameSession* GameSession::enterSessionLoop(bool &interruptTrigger){
   this->timer.resume();
 
   Chain<BaseEvent&>* ev=new Chain<BaseEvent&>(*(new BaseEvent()));
@@ -45,5 +45,8 @@ bool GameSession::enterSessionLoop(bool &interruptTrigger){
     this->renderEngine.flush();
   }
 
-  return false;
+  if (interruptTrigger)
+    return nullptr;
+
+  return &((dynamic_cast<Event<GameSession&>*> (&(ev->next()->data)))->data);
 }
