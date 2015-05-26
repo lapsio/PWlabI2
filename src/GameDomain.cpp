@@ -63,6 +63,7 @@ Chain <BaseEvent&>* GameDomain:: reload ()
 
 /****************Interface*************/
 
+Interface:: ~Interface() {}
 
 
 /***************enum_Event*************/
