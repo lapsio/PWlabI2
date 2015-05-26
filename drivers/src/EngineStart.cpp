@@ -4,12 +4,26 @@ EngineStart::~EngineStart () {}
 
 BaseEvent& EngineStart:: run(GameSession& session)
 {
-    GameSession* startup = new GameSession(this -> renderEngine);
 
-    startup->getGameMap()->addObject(*(new ObjectMapMeta(*(new Object("Splash",
+    if (IsObjectAdded == false)
+    {
+        session.getGameMap()->addObject(*(new ObjectMapMeta(*(new Object("Splash",
                                                                             Decal("misc/derp.png"))),
-                                                                 PointXY(startup->getGameMap()->width,
-                                                                         startup->getGameMap()->height))));
+                                                                                PointXY(session.getGameMap()->width,
+                                                                                session.getGameMap()->height))));
+        this -> setIsObjectAdded(true);
+    }
 
-    return *(new BaseEvent);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+    {
+        return *(new Event <GameSession&> (session, BaseEvent::Type::swapSessions, false));
+    }
+    else
+        return *(new BaseEvent);
+}
+
+void EngineStart:: setIsObjectAdded (bool C)
+{
+    IsObjectAdded = C;
+    return;
 }

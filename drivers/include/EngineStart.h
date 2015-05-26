@@ -2,15 +2,19 @@
 
 class EngineStart : public Interface
 {
+    private:
+
+        bool IsObjectAdded = false;
+        RenderEngine& renderEngine;
 
     public:
-
-        RenderEngine& renderEngine;
 
         EngineStart(RenderEngine& rE) : renderEngine (rE) {}
 
         ~EngineStart();
 
         BaseEvent& run(GameSession& session);
+
+        void setIsObjectAdded(bool C = true);
 
 };

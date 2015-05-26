@@ -53,10 +53,11 @@ class Event: public BaseEvent
 
 class Interface: public GCRef
 {
+    protected:
+        Interface() : GCRef(){}
     public:
 
-        Interface() : GCRef(){}
-        ~Interface();
+        virtual ~Interface();
 
         virtual BaseEvent& run(GameSession& session) = 0;
 
