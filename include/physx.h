@@ -37,7 +37,7 @@ public:
    * @param diff time shift to be performed (in miliseconds)
    * @return
    */
-  bool shift(int diff);
+  bool shift(long double diff);
   /**
    * @brief pause pause timer
    */
@@ -149,10 +149,10 @@ private:
   Chain<CREnt>* collisionsRegistry;
   long double timeScale;
 
-  int getTimeShift(int objIndex=-1);
-  void moveObjects(int& timeShift, int objIndex=-1);
-  void collideObjects(int& timeShift, int objIndex=-1);
-  void postMotion(int& timeShift, int objIndex=-1);
+  long double getTimeShift(int objIndex=-1);
+  void moveObjects(long double& timeShift, int objIndex=-1);
+  void collideObjects(long double& timeShift, int objIndex=-1);
+  void postMotion(long double& timeShift, int objIndex=-1);
 
   ObjectPhysicsMeta * getObjectCollisions(ObjectPhysicsMeta& meta, const bool& collide=true);
   int isColliding(ObjectPhysicsMeta& A, ObjectPhysicsMeta& B, const bool& collide=false);
@@ -199,7 +199,7 @@ public:
    * @brief timeShift perform physics clock tick
    * @return time shifted by engine
    */
-  int timeShift();
+  long double timeShift();
 
 #ifdef _DEBUG
   static void DEBUG(PhysicsEngine * p);

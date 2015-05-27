@@ -39,7 +39,7 @@ class PointXY
 
         friend PointXY operator*( const double & k,const PointXY & point ); // Operator dla mnozenia k * (X,Y)
 #ifdef _DEBUG
-        void show ();
+        void show () const;
 #endif
 };
 

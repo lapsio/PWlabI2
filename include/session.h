@@ -30,7 +30,7 @@ public:
    */
   GameSession(RenderEngine& renderEngine, PhysicsEngine& physicsEngine, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
   GameSession(RenderEngine& renderEngine, GameMap& map, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
-  GameSession(RenderEngine& renderEngine, int W=128, int H=96, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
+  GameSession(RenderEngine& renderEngine, int W=64, int H=48, Timer& timer=*(new Timer(25,true)), GameDomain& gameDomain=*(new GameDomain()));
   ~GameSession();
 
   /**

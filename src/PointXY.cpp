@@ -132,7 +132,7 @@ PointXY operator*( const double & k,const PointXY & point ) /***MNOZENIE PRZEZ S
 }
 
 
-void PointXY:: show()
+void PointXY:: show() const
 {
     cout << endl << "(" << this -> X <<","<< this -> Y << ")" << endl << endl;
 }

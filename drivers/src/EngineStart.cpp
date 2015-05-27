@@ -10,8 +10,7 @@ BaseEvent& EngineStart:: run(GameSession& session)
     std::cout << "Adding Splash" << std::endl;
     session.getGameMap()->addObject(*(new ObjectMapMeta(*(new Object("Splash",
                                                                      Decal("misc/derp.png"))),
-                                                        PointXY(session.getGameMap()->width,
-                                                                session.getGameMap()->height))));
+                                                        PointXY(0,0))));
     this -> setIsObjectAdded(true);
   }
 

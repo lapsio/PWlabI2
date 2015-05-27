@@ -10,7 +10,7 @@ Timer::Timer(int frequency, bool autosleep) :
 
 }
 
-bool Timer::shift(int diff){
+bool Timer::shift(long double diff){
   if (this->paused)
     throw "Cannot shift paused timer";
 
@@ -23,7 +23,7 @@ bool Timer::shift(int diff){
   t=(unsigned long long)currentTime.tv_sec*1000;
   t+=currentTime.tv_nsec/1000000;
 
-  if (t-this->lastTime<this->bufferedTimeShift)
+  if (t-this->lastTime>this->bufferedTimeShift)
     return false;
 
   if (this->autosleep&&t-this->lastTime<(1000/this->freq))
@@ -39,6 +39,8 @@ void Timer::pause(){
 
 void Timer::resume(){
   this->paused=false;
+
+  this->bufferedTimeShift=0;
 
   struct timespec currentTime;
   clock_gettime(CLOCK_REALTIME,&currentTime);
@@ -296,7 +298,7 @@ void PhysicsEngine::purgeMapData(){
 
 
 
-int PhysicsEngine::getTimeShift(int objIndex){
+long double PhysicsEngine::getTimeShift(int objIndex){
   //calculate smallest object and highest speed
 
   //fprintf(stderr,"timeShift begin (%Ldms)\n",timeDiff);
@@ -316,19 +318,21 @@ int PhysicsEngine::getTimeShift(int objIndex){
       if (min_bound>(tmp=fabs(obj->boundBox.Y)))
         min_bound=tmp;
 
-      pmeta = (ObjectPhysicsMeta*)meta;
+      pmeta = dynamic_cast<ObjectPhysicsMeta*>(meta);
 
-      if (max_spd<(tmp=fabs(pmeta->speed.width()))+fabs(pmeta->speed.height()))
+      if (max_spd<(tmp=fabs(pmeta->speed.width())+fabs(pmeta->speed.height())))
         max_spd=tmp;
     }
   }
 
   min_bound/=2;
 
+  std::cout << "AAAAAAAAAAA" << max_spd << std::endl;
+
   if (max_spd==0)
     timeStep=0.25; //4fps on idle
   else
-    timeStep=min_bound/max_spd;
+    timeStep=min_bound/max_spd/10;
 
   return timeStep;
   /*struct Chain * objChain = session->map->objectsChain;
@@ -357,7 +361,7 @@ int PhysicsEngine::getTimeShift(int objIndex){
   return timeStep;*/
 }
 
-void PhysicsEngine::moveObjects(int &timeShift, int objIndex){
+void PhysicsEngine::moveObjects(long double &timeShift, int objIndex){
   //perform actual movement
 
   ObjectMapMeta * meta;
@@ -365,12 +369,21 @@ void PhysicsEngine::moveObjects(int &timeShift, int objIndex){
   Object * obj;
   for (int i = (objIndex==-1)?1:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
     if (!(meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)||
-        ((pmeta=(ObjectPhysicsMeta*)meta)->getAnchor() ||
+        ((pmeta=dynamic_cast<ObjectPhysicsMeta*>(meta))->getAnchor() ||
         (pmeta->speed.size()==0 && pmeta->acceleration.size()==0)))
       continue;
 
-    meta->pos.changeTo(meta->pos.X+pmeta->speed.width()*timeShift,
-                       meta->pos.Y+pmeta->speed.height()*timeShift);
+
+    meta->pos.show();
+
+    std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height() << " " << timeShift;
+
+    meta->pos.X+=pmeta->speed.width()*timeShift;
+    meta->pos.Y+=pmeta->speed.height()*timeShift;
+
+    meta->pos.show();
+
+    std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height();
 
     //invalid pos correction
 
@@ -422,7 +435,7 @@ void PhysicsEngine::moveObjects(int &timeShift, int objIndex){
   }*/
 }
 
-void PhysicsEngine::collideObjects(int &timeShift, int objIndex){
+void PhysicsEngine::collideObjects(long double &timeShift, int objIndex){
   (void)timeShift;
   //calculate collisions
 
@@ -437,7 +450,7 @@ void PhysicsEngine::collideObjects(int &timeShift, int objIndex){
 
   for (int i = (objIndex==-1)?1:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
     if (!(meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)||
-        (pmeta=(ObjectPhysicsMeta*)meta)->getAnchor()||
+        (pmeta=dynamic_cast<ObjectPhysicsMeta*>(meta))->getAnchor()||
         pmeta->speed.size()==0)
       continue;
 
@@ -727,7 +740,7 @@ int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const
   return -1;
 }
 
-void PhysicsEngine::postMotion(int &timeShift, int objIndex){
+void PhysicsEngine::postMotion(long double &timeShift, int objIndex){
   //post motion effects
 
   ObjectMapMeta*meta;
@@ -739,7 +752,7 @@ void PhysicsEngine::postMotion(int &timeShift, int objIndex){
   for (int i = (objIndex==-1)?1:objIndex, l = (objIndex==-1)?this->map->length():objIndex+1; i < l ; i++){
     if ((meta=&(this->map->getMeta(i)))->isTypeOf(ObjectPhysicsMeta::typeName)){
 
-      pmeta=(ObjectPhysicsMeta*)meta;
+      pmeta=dynamic_cast<ObjectPhysicsMeta*>(meta);
       obj=&meta->object;
 
       pmeta->speed.setEnd(
@@ -825,13 +838,17 @@ void PhysicsEngine::postMotion(int &timeShift, int objIndex){
   }*/
 }
 
-int PhysicsEngine::timeShift(){
-  int time = this->getTimeShift();
+long double PhysicsEngine::timeShift(){
+  long double time = this->getTimeShift();
+
+  if (time == 0)
+    throw "invalid time";
+
   this->moveObjects(time);
   this->collideObjects(time);
   this->postMotion(time);
 
-  return time;
+  return time*1000;
 }
 
 void PhysicsEngine::reloadMap(GameMap &map){

@@ -6,6 +6,8 @@
 
 class RenderEngine {
 public:
+  static constexpr int UNITSIZE=10;
+
   static constexpr int defaultBufferSize=256;
   static constexpr char* defaultWindowName=(char*)"Game window";
 
@@ -43,7 +45,9 @@ public:
   void flush();
 
   void centerCamera(const PointXY pos);
-  void canvasResize(int W, int H);
+  inline void centerCamera(int W, int H){this->centerCamera(PointXY(W,H));}
+  void canvasResize(const PointXY pos);
+  inline void canvasResize(int W, int H){this->canvasResize(PointXY(W,H));}
   void resizeDrawBuffer(int maxObjCount);
   void setWindowTitle(const char* title);
 };

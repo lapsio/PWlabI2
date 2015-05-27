@@ -21,6 +21,8 @@ void GameEngine::start(bool &interruptTrigger){
   GameSession* newSession=&this->sessions->data;
 
   while(1){
+    this->renderEngine.canvasResize(newSession->getGameMap()->width,newSession->getGameMap()->height);
+    this->renderEngine.centerCamera(newSession->getGameMap()->width/2,newSession->getGameMap()->height/2);
     newSession = newSession->enterSessionLoop(interruptTrigger);
     if (newSession==nullptr)
       break;
