@@ -16,7 +16,7 @@ Tree::Tree(std::string n)
 
     Array<PointXY*>* a = Tree::generateColMesh();
     this->reshape(*a);
-    a->map([](PointXY* p){delete p;});
+    a->map([](PointXY*& p){delete p;});
     delete a;
 }
 Tree:: ~Tree() {}
