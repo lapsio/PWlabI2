@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     drivers/src/Actor.cpp \
     drivers/src/EngineStart.cpp \
     drivers/src/Intro.cpp \
-    drivers/src/PlayerController.cpp
+    drivers/src/PlayerController.cpp \
+    drivers/src/Static.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -44,5 +45,6 @@ HEADERS += \
     drivers/include/Actor.h \
     drivers/include/EngineStart.h \
     drivers/include/Intro.h \
-    drivers/include/PlayerController.h
+    drivers/include/PlayerController.h \
+    drivers/include/Static.h
 
