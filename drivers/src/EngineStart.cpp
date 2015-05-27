@@ -16,10 +16,10 @@ BaseEvent& EngineStart:: run(GameSession& session)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
     {
-        return *(new Event <GameSession&> (session, BaseEvent::Type::swapSessions, false));
+        session.getGameDomain()->add(*(new Intro(this->renderEngine))); /**DODAJE KLOCEK KTORY W RUN ZWRACA swapSESSIONS**/
     }
-    else
-        return *(new BaseEvent);
+
+    return *(new BaseEvent);
 }
 
 void EngineStart:: setIsObjectAdded (bool C)

@@ -34,9 +34,11 @@
 		</Compiler>
 		<Unit filename="drivers/include/Actor.h" />
 		<Unit filename="drivers/include/EngineStart.h" />
+		<Unit filename="drivers/include/Intro.h" />
 		<Unit filename="drivers/include/PlayerController.h" />
 		<Unit filename="drivers/src/Actor.cpp" />
 		<Unit filename="drivers/src/EngineStart.cpp" />
+		<Unit filename="drivers/src/Intro.cpp" />
 		<Unit filename="drivers/src/PlayerController.cpp" />
 		<Unit filename="include/GameDomain.h" />
 		<Unit filename="include/PointXY.h" />
