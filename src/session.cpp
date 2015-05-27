@@ -44,17 +44,17 @@ GameSession* GameSession::enterSessionLoop(bool &interruptTrigger){
     delete ev;
     ev=this->gameDomain.reload();
 
-    std::cout << "render beg" << std::endl;
+    //std::cout << "render beg" << std::endl;
 
     this->renderEngine.clear();
 
     for (int l = 0, i = this->gameMap.length()-1; l < i ; i--){
-      std::cout << this->gameMap[i].object.getName() << std::endl;
+      //std::cout << this->gameMap[i].object.getName() << std::endl;
       this->renderEngine.pushObject(this->gameMap[i].getGlobalPos(),this->gameMap[i].object);
     }
     this->renderEngine.flush();
 
-    std::cout << "render end" << std::endl;
+    //std::cout << "render end" << std::endl;
   }
 
   if (interruptTrigger)

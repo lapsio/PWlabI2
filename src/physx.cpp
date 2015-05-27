@@ -14,7 +14,7 @@ bool Timer::shift(long double diff){
   if (this->paused)
     throw "Cannot shift paused timer";
 
-  std::cout << "CURR LAST TIME: " << this->lastTime << std::endl;
+  //std::cout << "CURR LAST TIME: " << this->lastTime << std::endl;
 
   this->bufferedTimeShift+=diff;
 
@@ -22,25 +22,23 @@ bool Timer::shift(long double diff){
   struct timespec currentTime;
   clock_gettime(CLOCK_REALTIME,&currentTime);
 
-  std::cout << "CURR LAST TIME2: " << this->lastTime << std::endl;
-
   t=(unsigned long long)currentTime.tv_sec*1000;
   t+=currentTime.tv_nsec/1000000;
 
-  std::cout << t << " " << this->lastTime << " " << this->bufferedTimeShift << std::endl;
+  //std::cout << t << " " << this->lastTime << " " << this->bufferedTimeShift << std::endl;
 
   if (t-this->lastTime>this->bufferedTimeShift)
     return false;
 
   if (this->autosleep&&t-this->lastTime<(1000/this->freq)){
-    std::cout << "WAIT" << (1000000/this->freq) << " " << (t-this->lastTime) << std::endl;
+    //std::cout << "WAIT" << (1000000/this->freq) << " " << (t-this->lastTime) << std::endl;
     usleep(((1000/this->freq)-(t-this->lastTime))*1000);
   }
 
   this->lastTime=t;
   this->bufferedTimeShift=0;
 
-  std::cout << "NEXT LAST TIME: " << this->lastTime << std::endl;
+  //std::cout << "NEXT LAST TIME: " << this->lastTime << std::endl;
 
   return true;
 }
@@ -52,7 +50,7 @@ void Timer::pause(){
 void Timer::resume(){
   this->paused=false;
 
-  std::cout << "TIME RESET" << std::endl;
+  //std::cout << "TIME RESET" << std::endl;
 
   this->bufferedTimeShift=0;
 
@@ -863,7 +861,7 @@ long double PhysicsEngine::timeShift(){
   this->collideObjects(time);
   this->postMotion(time);
 
-  std::cout << time << std::endl;
+  //std::cout << time << std::endl;
 
   return time*1000;
 }

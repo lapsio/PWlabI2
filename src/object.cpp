@@ -56,13 +56,7 @@ PhysicalBody::PhysicalBody(const PhysicalBody &ref) :
 }
 
 PhysicalBody::~PhysicalBody(){
-  if (this->meshType==PhysicalBody::MeshType::mesh){
-    this->collisionMesh->map([](VectorXY*& v){delete v;v=nullptr;});
-    delete this->collisionMesh;
-    this->collisionNormals->map([](VectorXY*& v){delete v;v=nullptr;});
-    delete this->collisionNormals;
-  }
-  this->collisionMesh=this->collisionNormals=nullptr;
+  this->reshape();
 }
 
 
@@ -76,7 +70,12 @@ void PhysicalBody::meshRealloc(Array<VectorXY *> &col, Array<VectorXY *> &nor){
 }
 
 void PhysicalBody::reshape(){//reshape to circular object
-  this->~PhysicalBody();
+  if (this->meshType==PhysicalBody::MeshType::mesh){
+    this->collisionMesh->map([](VectorXY*& v){delete v;v=nullptr;});
+    delete this->collisionMesh;
+    this->collisionNormals->map([](VectorXY*& v){delete v;v=nullptr;});
+    delete this->collisionNormals;
+  }
 
   this->collisionMesh=this->collisionNormals=nullptr;
   this->meshType=PhysicalBody::MeshType::circle;
