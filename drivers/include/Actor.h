@@ -30,12 +30,21 @@ class Actor: public Object
 class Player: public Actor
 {
     private:
+        float GainedExperience = 0;
+        float ToNextLevelExperience = 100;
     public:
         static constexpr char* typeName=(char*)"Player";
 
         Player(std::string N = "Player", float maxhp = 1, float curhp = 1, int lvl = 1);
 
         virtual ~Player();
+
+        inline float getGainedExperience() const {return this->GainedExperience;}
+        inline float getToNextLevelExperience() const {return this->ToNextLevelExperience;}
+
+        void AddExperience (float exp); /** DODAJE EXP I JAK PRZEKROCZY NA LVL ZWIEKSZY LVL I POTRZEBNY EXP**/
+        void LevelUp ();
+
 
 
 };

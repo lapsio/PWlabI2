@@ -37,22 +37,22 @@ BaseEvent& PlayerController:: run(GameSession& session)
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            W.setEnd(0,-10);
+            W.setEnd(0,-0.02);
             W.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            S.setEnd(0,10);
+            S.setEnd(0,0.02);
             S.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            A.setEnd(-10,0);
+            A.setEnd(-0.02,0);
             A.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            D.setEnd(10,0);
+            D.setEnd(0.02,0);
             D.show();
         }
 
