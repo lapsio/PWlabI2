@@ -26,7 +26,7 @@ RenderEngine::~RenderEngine(){
   this->window.close();
 }
 
-void RenderEngine::pushObject(const PointXY &pos, const Decal &decal){
+void RenderEngine::pushObject(const PointXY pos, const Decal &decal){
   if (this->objListLength>=this->objListBufferSize){
     if (this->autoresize)
       this->resizeDrawBuffer(this->objListBufferSize*2);
@@ -34,7 +34,7 @@ void RenderEngine::pushObject(const PointXY &pos, const Decal &decal){
       throw "Objects list buffer too small";
   }
 
-  this->objList[this->objListLength++]={&pos,&decal};
+  this->objList[this->objListLength++]={pos,&decal};
 }
 
 void RenderEngine::clear(){
@@ -53,8 +53,8 @@ void RenderEngine::flush(){
   for (int i = 0; i < this->objListLength ; i++){
     sf::Sprite sp(*(this->objList[i].dec->texture));
     sp.setPosition(
-          this->objList[i].pos->getX()*RenderEngine::UNITSIZE+pivot.getX(),
-          this->objList[i].pos->getY()*RenderEngine::UNITSIZE+pivot.getY());
+          this->objList[i].pos.getX()*RenderEngine::UNITSIZE+pivot.getX(),
+          this->objList[i].pos.getY()*RenderEngine::UNITSIZE+pivot.getY());
     this->window.draw(sp);
   }
   window.display();

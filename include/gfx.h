@@ -12,7 +12,7 @@ public:
   static constexpr char* defaultWindowName=(char*)"Game window";
 
   struct objRecord {
-    const PointXY* pos;
+    PointXY pos;
     const Decal* dec;
   };
 
@@ -40,7 +40,7 @@ public:
 
   ~RenderEngine();
 
-  void pushObject(const PointXY& position, const Decal& decal);
+  void pushObject(const PointXY position, const Decal& decal);
   void clear();
   void flush();
 
