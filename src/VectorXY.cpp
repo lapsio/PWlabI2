@@ -109,15 +109,23 @@ void VectorXY:: moveTo (long double x, long double y, bool end)         /**** Pr
     long double k, l;
     if (end != true)
     {
-        k = this -> End.getX() - (this -> Beg.getX() - x);
-        l = this -> End.getY() - (this -> Beg.getY() - y);
+        /*k = this -> End.getX() - (this -> Beg.getX() - x);
+        l = this -> End.getY() - (this -> Beg.getY() - y);*/
+        k = this -> height();
+        l = this -> width();
+        k = k + x;
+        l = l + y;
         this -> Beg.changeTo(x,y);
         this -> End.changeTo(k,l);
     }
     else
     {
-        k = this -> Beg.getX() - (this -> End.getX() - x);
-        l = this -> Beg.getY() - (this -> End.getY() - y);
+        /*k = this -> Beg.getX() - (this -> End.getX() - x);
+        l = this -> Beg.getY() - (this -> End.getY() - y);*/
+        k = this -> height();
+        l = this -> width();
+        k = k + x;
+        l = l + y;
         this -> End.changeTo(x,y);
         this -> Beg.changeTo(k,l);
     }

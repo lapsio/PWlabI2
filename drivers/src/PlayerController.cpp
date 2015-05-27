@@ -27,60 +27,41 @@ BaseEvent& PlayerController:: run(GameSession& session)
     }
     if (PlayerHolder != nullptr)
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
 
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(-1,0);
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(1,0);
-            }
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        VectorXY W (0,0,0,0);
+        VectorXY S (0,0,0,0);
+        VectorXY A (0,0,0,0);
+        VectorXY D (0,0,0,0);
+        VectorXY WASD (0,0,0,0);
+
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (sf::Keyboard::isKeyPressed(sf::Keyboard::D)))
-            {
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(0,1);
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(-1,1);
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(1,1);
-            }
+            W.setEnd(0,1);
+            W.show();
         }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && (sf::Keyboard::isKeyPressed(sf::Keyboard::D)))
-            {
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(0,-1);
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(-1,-1);
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-              std::cout<<"DOWN"<<std::endl;
-                PlayerHolder->speed.setBegin(0,0);
-                PlayerHolder->speed.setEnd(1,-1);
-            }
+            S.setEnd(0,-1);
+            S.show();
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            A.setEnd(-1,0);
+            A.show();
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            D.setEnd(1,0);
+            D.show();
+        }
+
+        WASD = W + S + A + D;
+        WASD.show();
+
+
+        PlayerHolder->speed.setEnd(WASD.getEnd());
+        PlayerHolder->speed.setBegin(WASD.getBegin());
     }
 
     return *(new BaseEvent);
