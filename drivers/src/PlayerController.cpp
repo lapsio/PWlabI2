@@ -15,7 +15,7 @@ BaseEvent& PlayerController:: run(GameSession& session)
     if (PlayerHolder == nullptr)
     {
         GameMap & map = *session.getGameMap();
-        while ((map[i].object.isTypeOf(Player::typeName) == false) && i < map.length())
+        while (i < map.length() && (map[i].object.isTypeOf(Player::typeName) == false))
         {
             i++;
         }
@@ -23,7 +23,6 @@ BaseEvent& PlayerController:: run(GameSession& session)
         {
             this -> setPlayerHolder(&map[i]);
         }
-
 
     }
     if (PlayerHolder != nullptr)
@@ -38,33 +37,32 @@ BaseEvent& PlayerController:: run(GameSession& session)
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            W.setEnd(0,0.2);
+            W.setEnd(0,-10);
             W.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            S.setEnd(0,-0.2);
+            S.setEnd(0,10);
             S.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            A.setEnd(-0.2,0);
+            A.setEnd(-10,0);
             A.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            D.setEnd(0.2,0);
+            D.setEnd(10,0);
             D.show();
         }
 
         WASD = W + S + A + D;
-        //WASD.show();
+        WASD.show();
         //std::cout << WASD.height() << " " << WASD.width() << std::endl;
 
 
         PlayerHolder->speed.setEnd(WASD.getEnd());
         PlayerHolder->speed.setBegin(WASD.getBegin());
-        std::cout << PlayerHolder->speed.height();
     }
 
     return *(new BaseEvent);

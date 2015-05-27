@@ -51,7 +51,7 @@ void RenderEngine::flush(){
   pivot+=this->canvasSize*0.5;
 
   for (int i = 0; i < this->objListLength ; i++){
-    sf::Sprite sp(*(this->objList->dec->texture));
+    sf::Sprite sp(*(this->objList[i].dec->texture));
     sp.setPosition(
           this->objList->pos->getX()*RenderEngine::UNITSIZE+pivot.getX(),
           this->objList->pos->getY()*RenderEngine::UNITSIZE+pivot.getY());

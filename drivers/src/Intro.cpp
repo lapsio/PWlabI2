@@ -6,17 +6,24 @@ BaseEvent& Intro::run(GameSession& session)
 {
     int i = 1;
 
-    GameSession* game = new GameSession(*session.getRenderEngine(),512,512);
-    game ->getGameMap()->addObject(*(new ObjectMapMeta(*(new Player("Player")))));
+    GameSession* game = new GameSession(*session.getRenderEngine());
 
     Grass* grass = new Grass("Grass");
 
-    for (int i = 0; i<=7; i++)
-        for (int k = 0; k<=7; k++)
-            game ->getGameMap()->addObject(*(new ObjectMapMeta(*grass,PointXY(64*i,64*k))));
+    ObjectMapMeta* A = new ObjectMapMeta(*grass,PointXY(0,0));
+    ObjectMapMeta* B = new ObjectMapMeta(*grass,PointXY(0,20));
+
+    /*for(int i = 0; i < 8; i++)
+        for (int k = 0; k < 8; k++)
+            game ->getGameMap()->addObject(*(new ObjectMapMeta(*grass,PointXY(64*i, 64*k))));*/
+
+    game ->getGameMap()->addObject(*(new ObjectMapMeta(*(new Player("Player",1,1,1)))));
+    game->getGameMap()->addObject(*A);
+    game->getGameMap()->addObject(*B);
+
 
     GameMap & map = *game->getGameMap();
-        while ((i < map.length()) && (map[i].object.isTypeOf(Player::typeName) == false))
+        while (i < map.length() && (map[i].object.isTypeOf(Player::typeName) == false))
         {
             i++;
         }
