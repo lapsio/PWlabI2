@@ -37,27 +37,28 @@ BaseEvent& PlayerController:: run(GameSession& session)
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            W.setEnd(0,1);
+            W.setEnd(0,0.2);
             W.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            S.setEnd(0,-1);
+            S.setEnd(0,-0.2);
             S.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            A.setEnd(-1,0);
+            A.setEnd(-0.2,0);
             A.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            D.setEnd(1,0);
+            D.setEnd(0.2,0);
             D.show();
         }
 
         WASD = W + S + A + D;
-        WASD.show();
+        //WASD.show();
+        //std::cout << WASD.height() << " " << WASD.width() << std::endl;
 
 
         PlayerHolder->speed.setEnd(WASD.getEnd());

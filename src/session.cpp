@@ -43,6 +43,9 @@ GameSession* GameSession::enterSessionLoop(bool &interruptTrigger){
     while(!this->timer.shift(this->physicsEngine.timeShift()));
     delete ev;
     ev=this->gameDomain.reload();
+
+    std::cout << "render beg" << std::endl;
+
     this->renderEngine.clear();
 
     for (int l = 0, i = this->gameMap.length()-1; l < i ; i--){
@@ -50,6 +53,8 @@ GameSession* GameSession::enterSessionLoop(bool &interruptTrigger){
       this->renderEngine.pushObject(this->gameMap[i].getGlobalPos(),this->gameMap[i].object);
     }
     this->renderEngine.flush();
+
+    std::cout << "render end" << std::endl;
   }
 
   if (interruptTrigger)

@@ -149,7 +149,7 @@ public:
    * @param width map width
    * @param heigth map height
    */
-  GameMap(int width = 64, int heigth = 64);
+  GameMap(int width = 64, int heigth = 48);
   ~GameMap();
 
   /**

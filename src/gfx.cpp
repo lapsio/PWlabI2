@@ -53,19 +53,19 @@ void RenderEngine::flush(){
   for (int i = 0; i < this->objListLength ; i++){
     sf::Sprite sp(*(this->objList->dec->texture));
     sp.setPosition(
-          this->objList->pos->getX()+pivot.getX(),
-          this->objList->pos->getY()+pivot.getY());
+          this->objList->pos->getX()*RenderEngine::UNITSIZE+pivot.getX(),
+          this->objList->pos->getY()*RenderEngine::UNITSIZE+pivot.getY());
     this->window.draw(sp);
   }
   window.display();
 }
 
 void RenderEngine::centerCamera(const PointXY position){
-  this->cameraPos=position;
+  this->cameraPos=position*RenderEngine::UNITSIZE;
 }
 
-void RenderEngine::canvasResize(int W, int H){
-  this->canvasSize=PointXY(W,H);
+void RenderEngine::canvasResize(const PointXY size){
+  this->canvasSize=size*RenderEngine::UNITSIZE;
 }
 
 void RenderEngine::resizeDrawBuffer(int maxObjCount){
