@@ -10,7 +10,7 @@ Timer::Timer(int frequency, bool autosleep) :
 
 }
 
-bool Timer::shift(int diff){
+bool Timer::shift(long double diff){
   if (this->paused)
     throw "Cannot shift paused timer";
 
@@ -23,9 +23,7 @@ bool Timer::shift(int diff){
   t=(unsigned long long)currentTime.tv_sec*1000;
   t+=currentTime.tv_nsec/1000000;
 
-  //std::cout << t << " " <<
-
-  if (t-this->lastTime<this->bufferedTimeShift)
+  if (t-this->lastTime>this->bufferedTimeShift)
     return false;
 
   if (this->autosleep&&t-this->lastTime<(1000/this->freq))
@@ -41,6 +39,8 @@ void Timer::pause(){
 
 void Timer::resume(){
   this->paused=false;
+
+  this->bufferedTimeShift=0;
 
   struct timespec currentTime;
   clock_gettime(CLOCK_REALTIME,&currentTime);
@@ -320,17 +320,19 @@ long double PhysicsEngine::getTimeShift(int objIndex){
 
       pmeta = dynamic_cast<ObjectPhysicsMeta*>(meta);
 
-      if (max_spd<(tmp=fabs(pmeta->speed.width()))+fabs(pmeta->speed.height()))
+      if (max_spd<(tmp=fabs(pmeta->speed.width())+fabs(pmeta->speed.height())))
         max_spd=tmp;
     }
   }
 
   min_bound/=2;
 
+  std::cout << "AAAAAAAAAAA" << max_spd << std::endl;
+
   if (max_spd==0)
     timeStep=0.25; //4fps on idle
   else
-    timeStep=min_bound/max_spd;
+    timeStep=min_bound/max_spd/10;
 
   return timeStep;
   /*struct Chain * objChain = session->map->objectsChain;
@@ -836,7 +838,7 @@ void PhysicsEngine::postMotion(long double &timeShift, int objIndex){
   }*/
 }
 
-int PhysicsEngine::timeShift(){
+long double PhysicsEngine::timeShift(){
   long double time = this->getTimeShift();
 
   if (time == 0)
@@ -846,7 +848,7 @@ int PhysicsEngine::timeShift(){
   this->collideObjects(time);
   this->postMotion(time);
 
-  return time;
+  return time*1000;
 }
 
 void PhysicsEngine::reloadMap(GameMap &map){

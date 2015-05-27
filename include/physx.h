@@ -37,7 +37,7 @@ public:
    * @param diff time shift to be performed (in miliseconds)
    * @return
    */
-  bool shift(int diff);
+  bool shift(long double diff);
   /**
    * @brief pause pause timer
    */
@@ -199,7 +199,7 @@ public:
    * @brief timeShift perform physics clock tick
    * @return time shifted by engine
    */
-  int timeShift();
+  long double timeShift();
 
 #ifdef _DEBUG
   static void DEBUG(PhysicsEngine * p);
