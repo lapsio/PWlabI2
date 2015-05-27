@@ -26,6 +26,13 @@ BaseEvent& Intro::run(GameSession& session)
         game->getPhysicsEngine()->registerObject(map[i]);
 
     game ->getGameMap()->addObject(*(new ObjectMapMeta(*Tree01,PointXY(16, 16))));
+    i = 1;
+        while (i < map.length() && (map[i].object.isTypeOf(Tree::typeName) == false))
+        {
+            i++;
+        }
+    if (i < map.length())
+        game->getPhysicsEngine()->registerObject(map[i]);
 
 
     game -> getGameDomain()->add(*(new PlayerController())); /**DODAJE KLOCEK KTORY POWINIEN STEROWAC GRACZEM**/
