@@ -61,8 +61,14 @@ BaseEvent& PlayerController:: run(GameSession& session)
         //std::cout << WASD.height() << " " << WASD.width() << std::endl;
 
 
-        PlayerHolder->speed.setEnd(WASD.getEnd());
         PlayerHolder->speed.setBegin(WASD.getBegin());
+
+        if (WASD.width()==0)
+          WASD.setEnd(PlayerHolder->speed.getEnd().X,WASD.getEnd().Y);
+        if (WASD.height()==0)
+          WASD.setEnd(WASD.getEnd().X,PlayerHolder->speed.getEnd().Y);
+
+        PlayerHolder->speed.setEnd(WASD.getEnd());
     }
 
     return *(new BaseEvent);

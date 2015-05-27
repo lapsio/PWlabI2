@@ -14,22 +14,34 @@ bool Timer::shift(long double diff){
   if (this->paused)
     throw "Cannot shift paused timer";
 
+  std::cout << "CURR LAST TIME: " << this->lastTime << std::endl;
+
   this->bufferedTimeShift+=diff;
 
   unsigned long long t;
   struct timespec currentTime;
   clock_gettime(CLOCK_REALTIME,&currentTime);
 
+  std::cout << "CURR LAST TIME2: " << this->lastTime << std::endl;
+
   t=(unsigned long long)currentTime.tv_sec*1000;
   t+=currentTime.tv_nsec/1000000;
+
+  std::cout << t << " " << this->lastTime << " " << this->bufferedTimeShift << std::endl;
 
   if (t-this->lastTime>this->bufferedTimeShift)
     return false;
 
-  if (this->autosleep&&t-this->lastTime<(1000/this->freq))
-    usleep((1000/this->freq)-(t-this->lastTime));
+  if (this->autosleep&&t-this->lastTime<(1000/this->freq)){
+    std::cout << "WAIT" << (1000000/this->freq) << " " << (t-this->lastTime) << std::endl;
+    usleep(((1000/this->freq)-(t-this->lastTime))*1000);
+  }
 
-  this->resume();
+  this->lastTime=t;
+  this->bufferedTimeShift=0;
+
+  std::cout << "NEXT LAST TIME: " << this->lastTime << std::endl;
+
   return true;
 }
 
@@ -39,6 +51,8 @@ void Timer::pause(){
 
 void Timer::resume(){
   this->paused=false;
+
+  std::cout << "TIME RESET" << std::endl;
 
   this->bufferedTimeShift=0;
 
@@ -327,6 +341,7 @@ long double PhysicsEngine::getTimeShift(int objIndex){
 
   min_bound/=2;
 
+  if(max_spd>0)
   std::cout << "AAAAAAAAAAA " << max_spd << std::endl;
 
   if (max_spd==0)
@@ -395,9 +410,9 @@ void PhysicsEngine::moveObjects(long double &timeShift, int objIndex){
       meta->pos.changeTo(this->map->width-obj->boundBox.X,meta->pos.Y);
 
     if (meta->pos.Y<0)
-      meta->pos.changeTo(meta->pos.Y,0);
+      meta->pos.changeTo(meta->pos.X,0);
     if (meta->pos.Y+obj->boundBox.Y>this->map->height)
-      meta->pos.changeTo(meta->pos.Y,this->map->height-obj->boundBox.Y);
+      meta->pos.changeTo(meta->pos.X,this->map->height-obj->boundBox.Y);
 
     this->collisionGrid->registerMeta(*pmeta);
   }
@@ -789,7 +804,7 @@ void PhysicsEngine::postMotion(long double &timeShift, int objIndex){
                   pmeta->speed.getEnd().X,
                   pmeta->speed.getBegin().Y);
         else
-          if (pmeta->speed.height()<(tmp=obj->friction*obj->mass*timeShift))
+          if (pmeta->speed.height()<(tmp=-obj->friction*obj->mass*timeShift))
             pmeta->speed.setEnd(
                   pmeta->speed.getEnd().X,
                   pmeta->speed.getEnd().Y-tmp);
@@ -847,6 +862,8 @@ long double PhysicsEngine::timeShift(){
   this->moveObjects(time);
   this->collideObjects(time);
   this->postMotion(time);
+
+  std::cout << time << std::endl;
 
   return time*1000;
 }
