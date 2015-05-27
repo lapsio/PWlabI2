@@ -24,6 +24,7 @@ BaseEvent& PlayerController:: run(GameSession& session)
             this -> setPlayerHolder(&map[i]);
         }
 
+
     }
     if (PlayerHolder != nullptr)
     {
@@ -62,6 +63,7 @@ BaseEvent& PlayerController:: run(GameSession& session)
 
         PlayerHolder->speed.setEnd(WASD.getEnd());
         PlayerHolder->speed.setBegin(WASD.getBegin());
+        std::cout << PlayerHolder->speed.height();
     }
 
     return *(new BaseEvent);

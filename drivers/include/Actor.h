@@ -6,7 +6,6 @@
 class Actor: public Object
 {
     private:
-        std::string name = "Actor";
     public:
         static constexpr char* typeName=(char*)"Actor";
 
