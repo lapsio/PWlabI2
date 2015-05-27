@@ -18,7 +18,11 @@ SOURCES += main.cpp \
     src/GameDomain.cpp \
     src/session.cpp \
     src/gfx.cpp \
-    src/engine.cpp
+    src/engine.cpp \
+    drivers/src/Actor.cpp \
+    drivers/src/EngineStart.cpp \
+    drivers/src/Intro.cpp \
+    drivers/src/PlayerController.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -36,5 +40,9 @@ HEADERS += \
     include/GameDomain.h \
     include/session.h \
     include/gfx.h \
-    include/engine.h
+    include/engine.h \
+    drivers/include/Actor.h \
+    drivers/include/EngineStart.h \
+    drivers/include/Intro.h \
+    drivers/include/PlayerController.h
 

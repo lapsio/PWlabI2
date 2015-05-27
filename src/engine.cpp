@@ -8,7 +8,13 @@ GameEngine::GameEngine() :
 }
 
 GameEngine::~GameEngine(){
-
+  Chain<GameSession&>*c;
+  while((c=this->sessions->next())){
+    delete &c->data;
+    delete c;
+  }
+  delete &this->sessions->data;
+  delete this->sessions;
 }
 
 void GameEngine::start(bool &interruptTrigger){
@@ -30,4 +36,17 @@ void GameEngine::start(bool &interruptTrigger){
   }
 
   return;
+}
+
+void GameEngine::purgeSession(GameSession *session){
+  Chain<GameSession&>*c=this->sessions;
+  while(c){
+    if (&c->data==session)
+      break;
+    c=c->next();
+  }
+  if (!c)
+    throw "Session not found";
+  delete &c->data;
+  delete c;
 }

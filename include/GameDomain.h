@@ -13,8 +13,8 @@ class BaseEvent
     public:
         enum class Type
         {
-            swapSessions,
-            none = 0
+            none = 0,
+            swapSessions
         };
         const Type type;
         const bool interrupt;

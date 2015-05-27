@@ -3,10 +3,8 @@
 
 class Intro: public Interface
 {
-    private:
-        RenderEngine& renderEngine;
     public:
-        Intro (RenderEngine& rE): renderEngine (rE) {}
+        Intro (){}
 
         virtual ~Intro();
 

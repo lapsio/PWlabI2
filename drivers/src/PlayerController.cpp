@@ -4,7 +4,7 @@ PlayerController:: ~PlayerController() {}
 
 void PlayerController:: setPlayerHolder (ObjectMapMeta* MM)
 {
-    PlayerHolder = (ObjectPhysicsMeta*) MM;
+    PlayerHolder = dynamic_cast<ObjectPhysicsMeta*> (MM);
 }
 
 
@@ -15,11 +15,11 @@ BaseEvent& PlayerController:: run(GameSession& session)
     if (PlayerHolder == nullptr)
     {
         GameMap & map = *session.getGameMap();
-        while ((map[i].object.isTypeOf(Player::typeName) == false) && i <= map.length())
+        while ((map[i].object.isTypeOf(Player::typeName) == false) && i < map.length())
         {
             i++;
         }
-        if (map[i].object.isTypeOf(Player::typeName) == true)
+        if (i<map.length())
         {
             this -> setPlayerHolder(&map[i]);
         }
@@ -76,6 +76,7 @@ BaseEvent& PlayerController:: run(GameSession& session)
             }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
             {
+              std::cout<<"DOWN"<<std::endl;
                 PlayerHolder->speed.setBegin(0,0);
                 PlayerHolder->speed.setEnd(1,-1);
             }

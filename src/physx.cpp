@@ -267,6 +267,14 @@ PhysicsEngine::PhysicsEngine(GameMap &map) :
   this->loadMapData(map);
 }
 
+PhysicsEngine::~PhysicsEngine(){
+  delete this->collisionGrid;
+  Chain<PhysicsEngine::CREnt>*c=this->collisionsRegistry;
+  while((c=this->collisionsRegistry->next()))
+    delete c;
+  delete this->collisionsRegistry;
+}
+
 void PhysicsEngine::loadMapData(GameMap &map){
   this->map=&map;
   this->collisionGrid=new PhysicsEngine::CollisionGrid(map);

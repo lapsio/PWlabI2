@@ -3,6 +3,7 @@
 
 #include "./include/defines.h"
 #include "./include/misc.h"
+#include "string.h"
 
 class TypedClass;
 class GCRefLink;
@@ -41,14 +42,14 @@ public:
    * @param t class to be compared with
    * @return yup or nope
    */
-  inline bool matchType(TypedClass& t) const {return t.typeOf()==this->typeOf();}
+  inline bool matchType(TypedClass& t) const {return !strcmp(t.typeOf(),this->typeOf());}
 
   /**
    * @brief matchType tells whether class is type as provided type descriptor
    * @param type descriptor to be compared with
    * @return yup or nope
    */
-  inline bool matchType(const char * type) const {return type==this->typeOf();}
+  inline bool matchType(const char * type) const {return !strcmp(type,this->typeOf());}
 
   /**
    * @brief isTypeOf tells whether current class inherits from specified class
@@ -58,7 +59,7 @@ public:
   inline bool isTypeOf(TypedClass& t) const {
     Chain<const char*> * c=this->typeChain;
     while(c){
-      if(c->data==t.typeOf())
+      if(!strcmp(c->data,t.typeOf()))
         return true;
       c=c->next();}
     return false;
@@ -72,7 +73,7 @@ public:
   inline bool isTypeOf(const char* type) const {
     Chain<const char*> * c=this->typeChain;
     while(c){
-      if(c->data==type)
+      if(!strcmp(c->data,type))
         return true;
       c=c->next();}
     return false;

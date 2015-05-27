@@ -27,6 +27,13 @@ GameSession::GameSession(RenderEngine &renderEngine, int W, int H, Timer &timer,
 
 }
 
+GameSession::~GameSession(){
+  delete &this->gameDomain;
+  delete &this->timer;
+  delete &this->physicsEngine;
+  delete &this->gameMap;
+}
+
 GameSession* GameSession::enterSessionLoop(bool &interruptTrigger){
   this->timer.resume();
 
@@ -38,7 +45,7 @@ GameSession* GameSession::enterSessionLoop(bool &interruptTrigger){
     ev=this->gameDomain.reload();
     this->renderEngine.clear();
 
-    for (int i = 1, l = this->gameMap.length(); i < l ; i++){
+    for (int l = 0, i = this->gameMap.length()-1; l < i ; i--){
       std::cout << this->gameMap[i].object.getName() << std::endl;
       this->renderEngine.pushObject(this->gameMap[i].getGlobalPos(),this->gameMap[i].object);
     }

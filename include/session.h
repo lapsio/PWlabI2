@@ -60,6 +60,11 @@ public:
    * @return game domain engine used by session
    */
   inline GameDomain* getGameDomain(){return &this->gameDomain;}
+  /**
+   * @brief getRenderEngine
+   * @return render engine used by session
+   */
+  inline RenderEngine* getRenderEngine(){return &this->renderEngine;}
 };
 
 #endif // SESSION_H

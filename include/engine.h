@@ -16,6 +16,7 @@ public:
   ~GameEngine();
 
   void start(bool& interruptTrigger);
+  void purgeSession(GameSession* session);
 };
 
 #endif // ENGINE_H

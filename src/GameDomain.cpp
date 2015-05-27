@@ -9,6 +9,16 @@ GameDomain::GameDomain() :
 
 }
 
+GameDomain::~GameDomain(){
+  Chain<Team>*c=this->chain;
+  while((c=this->chain->next())){
+    delete c->data.link;
+    delete c;
+  }
+  delete this->chain->data.link;
+  delete this->chain;
+}
+
 void GameDomain:: add (Interface& klocek)
 {
     this -> chain -> insertAfter({&klocek,klocek.link()});

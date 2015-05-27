@@ -4,7 +4,7 @@ Intro::~Intro() {}
 
 BaseEvent& Intro::run(GameSession& session)
 {
-    GameSession* game = new GameSession(this->renderEngine);
+    GameSession* game = new GameSession(*session.getRenderEngine());
     game ->getGameMap()->addObject(*(new ObjectMapMeta(*(new Player("Player")))));
 
     game -> getGameDomain()->add(*(new PlayerController())); /**DODAJE KLOCEK KTORY POWINIEN STEROWAC GRACZEM**/
