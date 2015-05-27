@@ -53,8 +53,8 @@ void RenderEngine::flush(){
   for (int i = 0; i < this->objListLength ; i++){
     sf::Sprite sp(*(this->objList[i].dec->texture));
     sp.setPosition(
-          this->objList->pos->getX()*RenderEngine::UNITSIZE+pivot.getX(),
-          this->objList->pos->getY()*RenderEngine::UNITSIZE+pivot.getY());
+          this->objList[i].pos->getX()*RenderEngine::UNITSIZE+pivot.getX(),
+          this->objList[i].pos->getY()*RenderEngine::UNITSIZE+pivot.getY());
     this->window.draw(sp);
   }
   window.display();

@@ -327,12 +327,12 @@ long double PhysicsEngine::getTimeShift(int objIndex){
 
   min_bound/=2;
 
-  std::cout << "AAAAAAAAAAA" << max_spd << std::endl;
+  std::cout << "AAAAAAAAAAA " << max_spd << std::endl;
 
   if (max_spd==0)
     timeStep=0.25; //4fps on idle
   else
-    timeStep=min_bound/max_spd/10;
+    timeStep=min_bound/max_spd;
 
   return timeStep;
   /*struct Chain * objChain = session->map->objectsChain;
