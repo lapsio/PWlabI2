@@ -3,6 +3,17 @@
 
 #include "./include/object.h"
 
+#ifndef Actor_H
+#define Actor_H
+
+/**
+ * @brief  The Actor class is a parent class for Player,Npc et cetera. This class help us with creating a Object Class with something new.
+ * Class contain some basic attributes for actor characters.
+ *
+ * @see Object
+ * @see Player
+ */
+
 class Actor: public Object
 {
     private:
@@ -10,21 +21,35 @@ class Actor: public Object
         float CurrentHealthPoint;
         int Level;
     public:
-        static constexpr char* typeName=(char*)"Actor";
+        static constexpr char* typeName=(char*)"Actor"; /**< This help us to recognise later a type of Object*/
 
         Actor(std::string n = "Actor", float maxhp = 1, float curhp = 1, int lvl = 1);
         virtual ~Actor(){}
 
-        void setMaxHealthPoint (float mhp);
-        void setCurrentHealthPoint (float curhp);
-        void setLevel (int lvl);
+        void setMaxHealthPoint (float mhp); /**< thanks to that we can set a class variable MaxHealthPoint*/
+        void setCurrentHealthPoint (float curhp); /**< thanks to that we can set a class variable CurrentHealthPoint*/
+        void setLevel (int lvl);    /**< thanks to that we can set a class variable Level*/
 
-        inline float getMaxHealthPoint() const {return this->MaxHealthPoint;}
-        inline float getCurrentHealthPoint() const {return this->CurrentHealthPoint;}
-        inline int getLevel() const {return this->Level;}
+        inline float getMaxHealthPoint() const {return this->MaxHealthPoint;} /**< That function help us to see what is in class variable MaxHealthPoint*/
+        inline float getCurrentHealthPoint() const {return this->CurrentHealthPoint;} /**< That function help us to see what is in class variable CurrentHealthPoint*/
+        inline int getLevel() const {return this->Level;} /**< That function help us to see what is in class variable CurrentHealthPoint*/
 
 
 };
+
+#endif // Actor_H
+
+
+#ifndef Player_H
+#define Player_H
+
+
+/**
+ * @brief  The Player Class is a expanded version of Actor class. Class contain some extra attributes which helped player in game;
+ *
+ * @see Object
+ * @see Actor
+ */
 
 
 class Player: public Actor
@@ -39,12 +64,14 @@ class Player: public Actor
 
         virtual ~Player();
 
-        inline float getGainedExperience() const {return this->GainedExperience;}
-        inline float getToNextLevelExperience() const {return this->ToNextLevelExperience;}
+        inline float getGainedExperience() const {return this->GainedExperience;}   /**< Thanks to that we can check what is in class variable GainedExperience*/
+        inline float getToNextLevelExperience() const {return this->ToNextLevelExperience;}/**< Thanks to that we can check what is in class variable ToNextLevelExperience*/
 
-        void AddExperience (float exp); /** DODAJE EXP I JAK PRZEKROCZY NA LVL ZWIEKSZY LVL I POTRZEBNY EXP**/
-        void LevelUp ();
+        void AddExperience (float exp); /**< We can add experience to current experience*/
+        void LevelUp ();    /**< Add one to class variable Level*/
 
 
 
 };
+
+#endif // Player_H
