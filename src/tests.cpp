@@ -482,6 +482,9 @@ void CORE_DEBUG(){
 
   ///
 
+  (VectorXY(0,0,0,2)+VectorXY(0,0,-2,0)).show();
+  std::cout<<VectorXY(0,2,0,0).height();
+
   std::cout << "Hello World! omg" << std::endl;
 
 }

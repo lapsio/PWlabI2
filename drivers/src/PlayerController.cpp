@@ -38,22 +38,22 @@ BaseEvent& PlayerController:: run(GameSession& session)
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             W.setEnd(0,-20);
-            W.show();
+            //W.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             S.setEnd(0,20);
-            S.show();
+            //S.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             A.setEnd(-20,0);
-            A.show();
+            //A.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             D.setEnd(20,0);
-            D.show();
+            //D.show();
         }
 
         WASD = W + S + A + D;

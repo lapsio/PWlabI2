@@ -29,8 +29,9 @@ public:
   static constexpr char* voidTexturePath=(char*)"misc/void.png";
 
   const sf::Texture* texture;
+  const PointXY offset;
 
-  Decal(const char* filePath=Decal::voidTexturePath);
+  Decal(const char* filePath=Decal::voidTexturePath, PointXY offset=PointXY(0,0));
   virtual ~Decal();
 };
 

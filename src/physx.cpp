@@ -390,14 +390,14 @@ void PhysicsEngine::moveObjects(long double &timeShift, int objIndex){
       continue;
 
 
-    meta->pos.show();
+    //meta->pos.show();
 
     //std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height() << " " << timeShift;
 
     meta->pos.X+=pmeta->speed.width()*timeShift;
     meta->pos.Y+=pmeta->speed.height()*timeShift;
 
-    meta->pos.show();
+    //meta->pos.show();
 
     //std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height();
 
@@ -587,12 +587,14 @@ int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const
       vec.scaleTo(o_circle->object.boundBox.X*2);
       vec.centerOn(localCirclePos);
       if(VectorXY::intersects(vec,*o_mesh->object.getCollisionMesh()[i])){
+
         if (collide){
           VectorXY scaledSpeed = VectorXY(o_circle->speed);
-          scaledSpeed.scaleTo(o_circle->object.boundBox.X*2);
+          scaledSpeed.scaleTo(o_circle->object.boundBox.X);
           o_circle->pos.moveBy(
-                scaledSpeed.width(),
-                scaledSpeed.height());
+                -scaledSpeed.width(),
+                -scaledSpeed.height());
+
           VectorXY::flipAcrossVector(
                 o_circle->speed,
                 *o_mesh->object.getCollisionNormals()[i]);
@@ -606,6 +608,8 @@ int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const
           o_circle->speed.setEnd(
                 o_circle->speed.getEnd().X+projectedSpeed.width(),
                 o_circle->speed.getEnd().Y+projectedSpeed.height());
+
+          o_circle->speed.moveTo(0,0);
         }
 
         return i;
@@ -674,6 +678,15 @@ int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const
                         localCirclePos);
 
       if (path.size()<ballSize){
+
+        std::cout<<"VERT COLLIDE " << o_mesh->object.getName() << " " << o_circle->object.getName() << std::endl;
+        localCirclePos.show();
+        std::cout<<"BALL SIZE"<<ballSize;
+        o_mesh->object.getCollisionMesh()[i]->show();
+        path.show();
+
+        o_circle->speed.show();
+
         if (collide){
           VectorXY scaledSpeed = VectorXY(o_circle->speed);
           scaledSpeed.scaleTo(o_circle->object.boundBox.X*2);
@@ -682,15 +695,19 @@ int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const
                 -scaledSpeed.width(),
                 -scaledSpeed.height());
 
+          localCirclePos.show();
+
           VectorXY::flipAcrossVector(o_circle->speed,path);
           o_circle->speed.flip();
 
           VectorXY projectedSpeed = VectorXY(o_mesh->speed);
           VectorXY::projectOntoVector(projectedSpeed,path);
 
-          o_circle->speed.setEnd(
+          o_circle->speed.show();
+
+          /*o_circle->speed.setEnd(
                 o_circle->speed.getEnd().X+projectedSpeed.width(),
-                o_circle->speed.getEnd().Y+projectedSpeed.height());
+                o_circle->speed.getEnd().Y+projectedSpeed.height());*/
         }
 
         return i;
