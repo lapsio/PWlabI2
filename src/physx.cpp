@@ -31,12 +31,12 @@ bool Timer::shift(long double diff){
     return false;
 
   if (this->autosleep&&t-this->lastTime<(1000/this->freq)){
-    //std::cout << "WAIT" << (1000000/this->freq) << " " << (t-this->lastTime) << std::endl;
+    //std::cout << "WAIT" << (1000/this->freq) << " " << (t-this->lastTime) << std::endl;
     usleep(((1000/this->freq)-(t-this->lastTime))*1000);
   }
 
+  this->bufferedTimeShift-=(t-this->lastTime);
   this->lastTime=t;
-  this->bufferedTimeShift=0;
 
   //std::cout << "NEXT LAST TIME: " << this->lastTime << std::endl;
 
@@ -337,15 +337,18 @@ long double PhysicsEngine::getTimeShift(int objIndex){
     }
   }
 
-  min_bound/=2;
+  min_bound/=4;
 
-  if(max_spd>0)
-  std::cout << "AAAAAAAAAAA " << max_spd << std::endl;
+  //if(max_spd>0)
+  //std::cout << "AAAAAAAAAAA " << max_spd << std::endl;
 
   if (max_spd==0)
     timeStep=0.25; //4fps on idle
   else
     timeStep=min_bound/max_spd;
+
+  if (timeStep>0.25)
+    timeStep=0.25;
 
   return timeStep;
   /*struct Chain * objChain = session->map->objectsChain;
@@ -389,14 +392,14 @@ void PhysicsEngine::moveObjects(long double &timeShift, int objIndex){
 
     meta->pos.show();
 
-    std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height() << " " << timeShift;
+    //std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height() << " " << timeShift;
 
     meta->pos.X+=pmeta->speed.width()*timeShift;
     meta->pos.Y+=pmeta->speed.height()*timeShift;
 
     meta->pos.show();
 
-    std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height();
+    //std::cout << pmeta->speed.width() << " " << meta->pos.X+pmeta->speed.height();
 
     //invalid pos correction
 

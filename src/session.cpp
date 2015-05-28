@@ -40,7 +40,8 @@ GameSession* GameSession::enterSessionLoop(bool &interruptTrigger){
   Chain<BaseEvent&>* ev=new Chain<BaseEvent&>(*(new BaseEvent()));
 
   while(!interruptTrigger&&(!ev->next()||ev->next()->data.type!=BaseEvent::Type::swapSessions)){
-    while(!this->timer.shift(this->physicsEngine.timeShift()));
+    if (!this->timer.shift(0))
+      while(!this->timer.shift(this->physicsEngine.timeShift()));
     delete ev;
     ev=this->gameDomain.reload();
 
