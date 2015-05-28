@@ -164,3 +164,9 @@ Object::Object(const Object &ref) :
 Object::~Object(){
 
 }
+
+std::ostream& operator<<(std::ostream& os, const Object& o)
+{
+    os << o.id << "/" << o.maxId << " (" << o.refUsersCount() << "):" << o.typeOf() << "," << o.name;
+    return os;
+}

@@ -205,6 +205,8 @@ void CORE_DEBUG(){
                      4,10
                      ));
 
+  std::cout << *Circle;
+
   Array<PointXY*>arr(5);
 
   arr[0]=new PointXY(0,0);

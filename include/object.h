@@ -5,11 +5,12 @@
 
 #include <string>
 #include <cstring>
+#include <iostream>
+#include "SFML/Graphics.hpp"
 #include "./include/PointXY.h"
 #include "./include/VectorXY.h"
 #include "./include/misc.h"
 #include "./include/utils.h"
-#include "SFML/Graphics.hpp"
 
 
 
@@ -268,6 +269,8 @@ public:
    * @return
    */
   inline bool operator!=(const Object& o) const {return o.id!=this->id;}
+
+  friend std::ostream& operator<<(std::ostream& os, const Object& dt);
 
 #ifdef _DEBUG
   static void DEBUG(Object * o){
