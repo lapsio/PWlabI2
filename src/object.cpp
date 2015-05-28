@@ -1,8 +1,9 @@
 #include "./include/object.h"
 #include "./include/utils.h"
 
-Decal::Decal(const char *filePath) :
-  texture(this->loadTexture(filePath))
+Decal::Decal(const char *filePath, PointXY offset) :
+  texture(this->loadTexture(filePath)),
+  offset(offset)
 {
 
 }

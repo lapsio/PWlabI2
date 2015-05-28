@@ -3,9 +3,9 @@
 /******************************************************************/
 /*************************ACTOR************************************/
 /******************************************************************/
-Actor::Actor(std::string n, int maxhp, int curhp, int lvl)
-:Object(n,Decal("misc/player.png"),
-                    PhysicalBody(PhysicalBody::ObjectType::dynamic,PhysicalBody::CollisionType::solid,PointXY(2.5,2.5),30,1))
+Actor::Actor(std::string n, float maxhp, float curhp, int lvl)
+:Object(n,Decal("misc/player.png",PointXY(-1.25,-1.25)),
+                    PhysicalBody(PhysicalBody::ObjectType::dynamic,PhysicalBody::CollisionType::solid,PointXY(1.25,1.25),100,1))
 {
     this -> pushType(Actor::typeName);
 
@@ -16,11 +16,11 @@ Actor::Actor(std::string n, int maxhp, int curhp, int lvl)
 
 /**********************************METODY****************************/
 
-void Actor::setMaxHealthPoint (int mhp)
+void Actor::setMaxHealthPoint (float mhp)
 {
     this->MaxHealthPoint = mhp;
 }
-void Actor::setCurrentHealthPoint (int curhp)
+void Actor::setCurrentHealthPoint (float curhp)
 {
     this->CurrentHealthPoint = curhp;
 }
@@ -33,7 +33,7 @@ void Actor::setLevel (int lvl)
 /*************************PLAYER*********************************/
 /******************************************************************/
 
-Player::Player(std::string N, int maxhp, int curhp, int lvl)
+Player::Player(std::string N, float maxhp, float curhp, int lvl)
 :Actor(N , maxhp, curhp, lvl)
 {
     this->pushType(Player::typeName);

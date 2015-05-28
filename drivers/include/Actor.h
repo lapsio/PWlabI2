@@ -6,21 +6,21 @@
 class Actor: public Object
 {
     private:
-        int MaxHealthPoint;
-        int CurrentHealthPoint;
+        float MaxHealthPoint;
+        float CurrentHealthPoint;
         int Level;
     public:
         static constexpr char* typeName=(char*)"Actor";
 
-        Actor(std::string n = "Actor", int maxhp = 1, int curhp = 1, int lvl = 1);
+        Actor(std::string n = "Actor", float maxhp = 1, float curhp = 1, int lvl = 1);
         virtual ~Actor(){}
 
-        void setMaxHealthPoint (int mhp);
-        void setCurrentHealthPoint (int curhp);
+        void setMaxHealthPoint (float mhp);
+        void setCurrentHealthPoint (float curhp);
         void setLevel (int lvl);
 
-        inline int getMaxHealthPoint() const {return this->MaxHealthPoint;}
-        inline int getCurrentHealthPoint() const {return this->CurrentHealthPoint;}
+        inline float getMaxHealthPoint() const {return this->MaxHealthPoint;}
+        inline float getCurrentHealthPoint() const {return this->CurrentHealthPoint;}
         inline int getLevel() const {return this->Level;}
 
 
@@ -35,7 +35,7 @@ class Player: public Actor
     public:
         static constexpr char* typeName=(char*)"Player";
 
-        Player(std::string N = "Player", int maxhp = 1, int curhp = 1, int lvl = 1);
+        Player(std::string N = "Player", float maxhp = 1, float curhp = 1, int lvl = 1);
 
         virtual ~Player();
 

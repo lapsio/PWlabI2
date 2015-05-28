@@ -37,23 +37,23 @@ BaseEvent& PlayerController:: run(GameSession& session)
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
-            W.setEnd(0,-13);
-            W.show();
+            W.setEnd(0,-20);
+            //W.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
-            S.setEnd(0,13);
-            S.show();
+            S.setEnd(0,20);
+            //S.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            A.setEnd(-13,0);
-            A.show();
+            A.setEnd(-20,0);
+            //A.show();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            D.setEnd(13,0);
-            D.show();
+            D.setEnd(20,0);
+            //D.show();
         }
 
         WASD = W + S + A + D;
@@ -69,6 +69,10 @@ BaseEvent& PlayerController:: run(GameSession& session)
           WASD.setEnd(WASD.getEnd().X,PlayerHolder->speed.getEnd().Y);
 
         PlayerHolder->speed.setEnd(WASD.getEnd());
+
+        session.getRenderEngine()->centerCamera(PlayerHolder->pos);
+
+
     }
 
     return *(new BaseEvent);

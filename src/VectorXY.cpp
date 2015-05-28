@@ -106,28 +106,17 @@ PointXY VectorXY::sizeXY() const          /**** zwraca wysokosc i dlugosc czyli 
 
 void VectorXY:: moveTo (long double x, long double y, bool end)         /**** Przesuwa koniec wektora lub poczatek wektora do podanego punktu zachowujac dlugosc  ****/
 {
-    long double k, l;
     if (end != true)
     {
-        /*k = this -> End.getX() - (this -> Beg.getX() - x);
-        l = this -> End.getY() - (this -> Beg.getY() - y);*/
-        k = this -> height();
-        l = this -> width();
-        k = k + x;
-        l = l + y;
-        this -> Beg.changeTo(x,y);
-        this -> End.changeTo(k,l);
+        PointXY d=PointXY(x-this->Beg.X,y-this->Beg.Y);
+        this -> Beg.changeTo(this->Beg.X+d.X,this->Beg.Y+d.Y);
+        this -> End.changeTo(this->End.X+d.X,this->End.Y+d.Y);
     }
     else
     {
-        /*k = this -> Beg.getX() - (this -> End.getX() - x);
-        l = this -> Beg.getY() - (this -> End.getY() - y);*/
-        k = this -> height();
-        l = this -> width();
-        k = k + x;
-        l = l + y;
-        this -> End.changeTo(x,y);
-        this -> Beg.changeTo(k,l);
+      PointXY d=PointXY(x-this->End.X,y-this->End.Y);
+      this -> Beg.changeTo(this->Beg.X+d.X,this->Beg.Y+d.Y);
+      this -> End.changeTo(this->End.X+d.X,this->End.Y+d.Y);
     }
 
     return;
@@ -256,7 +245,7 @@ void VectorXY:: flip()
 
     tmp1 = this -> getBegin();
     tmp2 = this -> getEnd();
-    this -> setVector(tmp1,tmp2);
+    this -> setVector(tmp2,tmp1);
 
     return;
 }
@@ -303,38 +292,45 @@ bool VectorXY:: intersects(const VectorXY& A,const  VectorXY& B)   /**** Sprawdz
 void VectorXY:: flipAcrossVector(PointXY& pt, VectorXY& vec)  /**** Symetria punktu wzgledem wektora ****/
 {
 
-  PointXY CenterPt;
-  PointXY tmp1;
-  PointXY tmp2;
+  PointXY tmp;
 
-  tmp2 = vec.getBegin();
-  tmp1 = tmp2 * (-1);
+  tmp = vec.getBegin();
 
 
-  vec.moveTo(0,0);
+  vec.moveBy(-tmp.X,-tmp.Y);
+  pt.moveBy(-tmp.X,-tmp.Y);
 
-  pt.moveBy(tmp1);
+  //vec.show();
+  //pt.show();
 
 
   //(x,-iy)(a,ib)²/(a²+b²) = (xa² - xb² + 2yab) + i(yb² - ya² + 2xab)
 
 
-  long double nx = (pt.getX() * vec.End.getX() * vec.End.getX()) - (pt.getX() * vec.End.getY() * vec.End.getY()) + (2 * pt.getY() * vec.End.getX() * vec.End.getY());
+  long double nx =
+      (pt.X * vec.End.X * vec.End.X)
+      - (pt.X * vec.End.Y * vec.End.Y)
+      + (2 * pt.Y * vec.End.X * vec.End.Y);
 
-  nx = nx / ((vec.End.getX() * vec.End.getX()) + (vec.End.getY() * vec.End.getY()));
-
-
-  long double ny = (pt.getY() * vec.End.getY() * vec.End.getY()) - (pt.getY() * vec.End.getX() * vec.End.getX()) + (2 * pt.getX() * vec.End.getX() * vec.End.getY());
-
-  ny = ny / ( (vec.End.getX() * vec.End.getX()) + (vec.End.getY() * vec.End.getY()));
+  nx /= (vec.End.X * vec.End.X) + (vec.End.Y * vec.End.Y);
 
 
-  pt.changeTo(nx ,ny);
+  long double ny =
+      (pt.Y * vec.End.Y * vec.End.Y)
+      - (pt.Y * vec.End.X * vec.End.X)
+      + (2 * pt.X * vec.End.X * vec.End.Y);
+
+  ny /= (vec.End.X * vec.End.X) + (vec.End.Y * vec.End.Y);
 
 
-  vec.moveBy(tmp2);//move back
+  pt.X=nx;
+  pt.Y=ny;
 
-  pt.moveBy(tmp2);
+  //pt.show();
+
+  vec.moveBy(tmp);//move back
+
+  pt.moveBy(tmp);
 
   return;
 
@@ -395,20 +391,7 @@ void VectorXY:: projectOntoVector(VectorXY& A, VectorXY& B)
 
 VectorXY VectorXY::operator+(VectorXY vect) const /***DODAJE PUNKTY***/
 {
-    VectorXY tmp;
-    PointXY point1;
-    PointXY point2;
-    PointXY point3;
-
-    point1.changeTo(this -> height(), this -> width());
-    point2.changeTo(vect.height(), vect.width());
-    point3 = point1 + point2;
-
-    tmp.setEnd(point3);
-
-    tmp.moveTo(this -> Beg.getX(), this -> Beg.getY());
-
-    return tmp;
+    return VectorXY(this->getBegin(),this->getEnd()+vect.sizeXY());
 }
 
 VectorXY VectorXY::operator-(VectorXY vect) const /***ODEJMUJE PUNKTY***/

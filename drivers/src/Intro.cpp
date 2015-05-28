@@ -7,34 +7,45 @@ BaseEvent& Intro::run(GameSession& session)
 {
     int i = 1;
 
-    GameSession* game = new GameSession(*session.getRenderEngine(),64,64);
+    GameSession* game = new GameSession(*session.getRenderEngine(),128,128);
 
     Grass* grass = new Grass("Grass");
     Tree* Tree01 = new Tree("Tree");
 
-    for(int i = 0; i < 10; i++)
-        for (int k = 0; k < 10; k++)
+    ObjectMapMeta* player = new ObjectMapMeta(*(new Player("Player",1,1,1)));
+    ObjectMapMeta* HB = new ObjectMapMeta(*(new HealthBar("HealthBar")),PointXY(-32,26));
+
+    for(int i = 0; i < 15; i++)
+        for (int k = 0; k < 15; k++)
             game ->getGameMap()->addObject(*(new ObjectMapMeta(*grass,PointXY(6.4*i, 6.4*k))));
 
-    game ->getGameMap()->addObject(*(new ObjectMapMeta(*(new Player("Player",1,1,1)))));
+    game ->getGameMap()->addObject(*(player));
+    game ->getGameMap()->addObject(*(HB));
+
+    game->getPhysicsEngine()->registerObject(*player);
 
     GameMap & map = *game->getGameMap();
-        while (i < map.length() && (map[i].object.isTypeOf(Player::typeName) == false))
+    i = 1;
+    while (i < map.length() && (map[i].object.isTypeOf(Player::typeName) == false))
+        {
+            i++;
+        }
+    if (i < map.length())
+    {
+        HB -> attach(map[i]);
+    }
+
+    game ->getGameMap()->addObject(*(new ObjectMapMeta(*Tree01,PointXY(16, 16))));
+    i = 1;
+        while (i < map.length() && (map[i].object.isTypeOf(Tree::typeName) == false))
         {
             i++;
         }
     if (i < map.length())
         game->getPhysicsEngine()->registerObject(map[i]);
 
-    for (i = 0 ; i <3 ; i++)
-    {
-        game ->getGameMap()->addObject(*(new ObjectMapMeta(*Tree01,PointXY(16 * i, 16 * i))));
-        game->getPhysicsEngine()->registerObject(map[1]);
-    }
-
 
     game -> getGameDomain()->add(*(new PlayerController())); /**DODAJE KLOCEK KTORY POWINIEN STEROWAC GRACZEM**/
-    game -> getGameDomain()->add(*(new HealthBar()));
     Event<GameSession&>* e = new Event<GameSession&> (*game, BaseEvent::Type::swapSessions);
     return *e;
 }
