@@ -1,0 +1,260 @@
+\hypertarget{classGameMap}{}\section{Game\+Map Class Reference}
+\label{classGameMap}\index{Game\+Map@{Game\+Map}}
+
+
+The \hyperlink{classGameMap}{Game\+Map} class Map class.  
+
+
+
+
+{\ttfamily \#include $<$map.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGameMap_a094aba2348a0265746326b6c1d1864f2}{Game\+Map} (int \hyperlink{classGameMap_ae9f5144c59e2749104bf8a47f1fd8eb3}{width}=64, int heigth=48)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGameMap}{Game\+Map} Map constructor. \end{DoxyCompactList}\item 
+int \hyperlink{classGameMap_a0cfbeb2c0b6a270fc5fa1bcd140743cc}{get\+Index} (const \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$meta) const 
+\begin{DoxyCompactList}\small\item\em get\+Index searches for specified meta in map objects list and returns index \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \& \hyperlink{classGameMap_a3b7cf2fcc2a675b2a66ab304f5d115ad}{get\+Meta} (int index) const 
+\begin{DoxyCompactList}\small\item\em get\+Meta returns object meta from given position in objects list \end{DoxyCompactList}\item 
+void \hyperlink{classGameMap_a1445fd0bb55e7e4ad9fe3cc780306e2d}{add\+Object} (\hyperlink{classObject}{Object} \&obj, \hyperlink{classPointXY}{Point\+X\+Y} pos=\hyperlink{classPointXY}{Point\+X\+Y}(0, 0))
+\begin{DoxyCompactList}\small\item\em add\+Object Places object on map \end{DoxyCompactList}\item 
+void \hyperlink{classGameMap_a7ba7b031db20572304e9d1af751ead53}{add\+Object} (\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \&meta)
+\begin{DoxyCompactList}\small\item\em add\+Object Places meta on map \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \& \hyperlink{classGameMap_a48e62c1eccddabdf34b01c23e17ad07a}{pop\+Object} (\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$meta)
+\begin{DoxyCompactList}\small\item\em pop\+Object removes meta from map (specified by meta) \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \& \hyperlink{classGameMap_aae79574a7e15275ad8bff7aa1d109f32}{pop\+Object} (int index)
+\begin{DoxyCompactList}\small\item\em pop\+Object removes meta from map (specified by index) \end{DoxyCompactList}\item 
+void \hyperlink{classGameMap_ac0bec0f4d4de18a568b952b525e37ce4}{delete\+Object} (\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$meta)
+\begin{DoxyCompactList}\small\item\em delete\+Object deletes meta (specified by meta) \end{DoxyCompactList}\item 
+void \hyperlink{classGameMap_a0177ce70320072c9eaaf0a14f559ca8a}{delete\+Object} (int index)
+\begin{DoxyCompactList}\small\item\em delete\+Object deletes meta (specified by index) \end{DoxyCompactList}\item 
+\hypertarget{classGameMap_a27fe5bad0af175eb8bf65254262b96cf}{}void \hyperlink{classGameMap_a27fe5bad0af175eb8bf65254262b96cf}{clear} ()\label{classGameMap_a27fe5bad0af175eb8bf65254262b96cf}
+
+\begin{DoxyCompactList}\small\item\em clear Clears map from all objects \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \& \hyperlink{classGameMap_af4ce25ca7060ef9a175f75075364d9c0}{operator\mbox{[}$\,$\mbox{]}} (const int \&index) const 
+\begin{DoxyCompactList}\small\item\em operator \mbox{[}\mbox{]} table operator for map. \end{DoxyCompactList}\item 
+\hypertarget{classGameMap_ac1001868696aa67e05070149376ea7d9}{}int {\bfseries operator\mbox{[}$\,$\mbox{]}} (const \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \&m) const \label{classGameMap_ac1001868696aa67e05070149376ea7d9}
+
+\item 
+\hypertarget{classGameMap_a0352e28044e91dd51dfa0d70a10e71ad}{}int {\bfseries length} ()\label{classGameMap_a0352e28044e91dd51dfa0d70a10e71ad}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameMap_ae9f5144c59e2749104bf8a47f1fd8eb3}{}const int \hyperlink{classGameMap_ae9f5144c59e2749104bf8a47f1fd8eb3}{width}\label{classGameMap_ae9f5144c59e2749104bf8a47f1fd8eb3}
+
+\begin{DoxyCompactList}\small\item\em map width \end{DoxyCompactList}\item 
+\hypertarget{classGameMap_a7d35b81d7d8e64820bfd2c9e5d8e708d}{}const int \hyperlink{classGameMap_a7d35b81d7d8e64820bfd2c9e5d8e708d}{height}\label{classGameMap_a7d35b81d7d8e64820bfd2c9e5d8e708d}
+
+\begin{DoxyCompactList}\small\item\em map height \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGameMap}{Game\+Map} class Map class. 
+
+Contains objects.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} 
+
+\hyperlink{classPhysicsEngine}{Physics\+Engine} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGameMap_a094aba2348a0265746326b6c1d1864f2}{}\index{Game\+Map@{Game\+Map}!Game\+Map@{Game\+Map}}
+\index{Game\+Map@{Game\+Map}!Game\+Map@{Game\+Map}}
+\subsubsection[{Game\+Map}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Map\+::\+Game\+Map (
+\begin{DoxyParamCaption}
+\item[{int}]{width = {\ttfamily 64}, }
+\item[{int}]{heigth = {\ttfamily 48}}
+\end{DoxyParamCaption}
+)}\label{classGameMap_a094aba2348a0265746326b6c1d1864f2}
+
+
+\hyperlink{classGameMap}{Game\+Map} Map constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & map width \\
+\hline
+{\em heigth} & map height \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGameMap_a1445fd0bb55e7e4ad9fe3cc780306e2d}{}\index{Game\+Map@{Game\+Map}!add\+Object@{add\+Object}}
+\index{add\+Object@{add\+Object}!Game\+Map@{Game\+Map}}
+\subsubsection[{add\+Object}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Map\+::add\+Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} \&}]{obj, }
+\item[{{\bf Point\+X\+Y}}]{pos = {\ttfamily {\bf Point\+X\+Y}(0,0)}}
+\end{DoxyParamCaption}
+)}\label{classGameMap_a1445fd0bb55e7e4ad9fe3cc780306e2d}
+
+
+add\+Object Places object on map 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & object to be placed \\
+\hline
+{\em pos} & initial position \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameMap_a7ba7b031db20572304e9d1af751ead53}{}\index{Game\+Map@{Game\+Map}!add\+Object@{add\+Object}}
+\index{add\+Object@{add\+Object}!Game\+Map@{Game\+Map}}
+\subsubsection[{add\+Object}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Map\+::add\+Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Map\+Meta} \&}]{meta}
+\end{DoxyParamCaption}
+)}\label{classGameMap_a7ba7b031db20572304e9d1af751ead53}
+
+
+add\+Object Places meta on map 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & to be placed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameMap_ac0bec0f4d4de18a568b952b525e37ce4}{}\index{Game\+Map@{Game\+Map}!delete\+Object@{delete\+Object}}
+\index{delete\+Object@{delete\+Object}!Game\+Map@{Game\+Map}}
+\subsubsection[{delete\+Object}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Map\+::delete\+Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Map\+Meta} $\ast$}]{meta}
+\end{DoxyParamCaption}
+)}\label{classGameMap_ac0bec0f4d4de18a568b952b525e37ce4}
+
+
+delete\+Object deletes meta (specified by meta) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & meta to be deleted \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameMap_a0177ce70320072c9eaaf0a14f559ca8a}{}\index{Game\+Map@{Game\+Map}!delete\+Object@{delete\+Object}}
+\index{delete\+Object@{delete\+Object}!Game\+Map@{Game\+Map}}
+\subsubsection[{delete\+Object}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Map\+::delete\+Object (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{classGameMap_a0177ce70320072c9eaaf0a14f559ca8a}
+
+
+delete\+Object deletes meta (specified by index) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index of meta to be deleted \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameMap_a0cfbeb2c0b6a270fc5fa1bcd140743cc}{}\index{Game\+Map@{Game\+Map}!get\+Index@{get\+Index}}
+\index{get\+Index@{get\+Index}!Game\+Map@{Game\+Map}}
+\subsubsection[{get\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int Game\+Map\+::get\+Index (
+\begin{DoxyParamCaption}
+\item[{const {\bf Object\+Map\+Meta} $\ast$}]{meta}
+\end{DoxyParamCaption}
+) const}\label{classGameMap_a0cfbeb2c0b6a270fc5fa1bcd140743cc}
+
+
+get\+Index searches for specified meta in map objects list and returns index 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & meta to be looked for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+index in map objects list 
+\end{DoxyReturn}
+\hypertarget{classGameMap_a3b7cf2fcc2a675b2a66ab304f5d115ad}{}\index{Game\+Map@{Game\+Map}!get\+Meta@{get\+Meta}}
+\index{get\+Meta@{get\+Meta}!Game\+Map@{Game\+Map}}
+\subsubsection[{get\+Meta}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+Map\+Meta} \& Game\+Map\+::get\+Meta (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+) const}\label{classGameMap_a3b7cf2fcc2a675b2a66ab304f5d115ad}
+
+
+get\+Meta returns object meta from given position in objects list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index of requested meta \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object meta 
+\end{DoxyReturn}
+\hypertarget{classGameMap_af4ce25ca7060ef9a175f75075364d9c0}{}\index{Game\+Map@{Game\+Map}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Game\+Map@{Game\+Map}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+Map\+Meta}\& Game\+Map\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classGameMap_af4ce25ca7060ef9a175f75075364d9c0}
+
+
+operator \mbox{[}\mbox{]} table operator for map. 
+
+Returns object under specified index on list 
+\begin{DoxyParams}{Parameters}
+{\em index} & index of meta to be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classGameMap_a3b7cf2fcc2a675b2a66ab304f5d115ad}{Game\+Map\+::get\+Meta} 
+\end{DoxySeeAlso}
+\hypertarget{classGameMap_a48e62c1eccddabdf34b01c23e17ad07a}{}\index{Game\+Map@{Game\+Map}!pop\+Object@{pop\+Object}}
+\index{pop\+Object@{pop\+Object}!Game\+Map@{Game\+Map}}
+\subsubsection[{pop\+Object}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+Map\+Meta} \& Game\+Map\+::pop\+Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Map\+Meta} $\ast$}]{meta}
+\end{DoxyParamCaption}
+)}\label{classGameMap_a48e62c1eccddabdf34b01c23e17ad07a}
+
+
+pop\+Object removes meta from map (specified by meta) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & meta to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classGameMap_aae79574a7e15275ad8bff7aa1d109f32}{}\index{Game\+Map@{Game\+Map}!pop\+Object@{pop\+Object}}
+\index{pop\+Object@{pop\+Object}!Game\+Map@{Game\+Map}}
+\subsubsection[{pop\+Object}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+Map\+Meta} \& Game\+Map\+::pop\+Object (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{classGameMap_aae79574a7e15275ad8bff7aa1d109f32}
+
+
+pop\+Object removes meta from map (specified by index) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index of meta to be removed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/map.\+h\item 
+src/map.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,282 @@
+\hypertarget{classChain}{}\section{Chain$<$ T\+Y\+P\+E $>$ Class Template Reference}
+\label{classChain}\index{Chain$<$ T\+Y\+P\+E $>$@{Chain$<$ T\+Y\+P\+E $>$}}
+
+
+\hyperlink{classChain}{Chain} class providing bi-\/directional-\/list like data organisation.  
+
+
+
+
+{\ttfamily \#include $<$misc.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classChain_a6e1b54f58b90218127399007e2be651a}{Chain} (T\+Y\+P\+E \hyperlink{classChain_aeb9b72f09201d5553bb04e25593dc7fa}{data})
+\begin{DoxyCompactList}\small\item\em \hyperlink{classChain}{Chain} \hyperlink{classChain}{Chain} constructor. \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain} $\ast$ \hyperlink{classChain_a16411e8032aa4e0464d04d12f69577da}{next} ()
+\begin{DoxyCompactList}\small\item\em next \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain} $\ast$ \hyperlink{classChain_a33dc961c1b75bdad1920680c56a7d52f}{prev} ()
+\begin{DoxyCompactList}\small\item\em prev \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain} $\ast$ \hyperlink{classChain_a3251fcea46affc01835a565a0dcff0f6}{rewind} ()
+\begin{DoxyCompactList}\small\item\em rewind \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain} $\ast$ \hyperlink{classChain_a83b9c24f7e9425bc4876f42833ff25d2}{rewind\+Forward} ()
+\begin{DoxyCompactList}\small\item\em rewind\+Forward \end{DoxyCompactList}\item 
+void \hyperlink{classChain_a8e044eca9ddb093211203a61c4aeb139}{insert\+After} (\hyperlink{classChain}{Chain} $\ast$c)
+\begin{DoxyCompactList}\small\item\em insert\+After inserts given subchain after current element \end{DoxyCompactList}\item 
+void \hyperlink{classChain_a47099e0a5193503c92458ffbb5ecb277}{insert\+Before} (\hyperlink{classChain}{Chain} $\ast$c)
+\begin{DoxyCompactList}\small\item\em insert\+Before inserts given subchain before current elmenet \end{DoxyCompactList}\item 
+void \hyperlink{classChain_adfec3f6f34ee095ffdb953418417ed63}{insert\+After} (T\+Y\+P\+E \hyperlink{classChain_aeb9b72f09201d5553bb04e25593dc7fa}{data})
+\begin{DoxyCompactList}\small\item\em insert\+After inserts given data after current element \end{DoxyCompactList}\item 
+void \hyperlink{classChain_a93b7323dd2f294dcfe07d6c67ec4619a}{insert\+Before} (T\+Y\+P\+E \hyperlink{classChain_aeb9b72f09201d5553bb04e25593dc7fa}{data})
+\begin{DoxyCompactList}\small\item\em insert\+Before inserts given data before current elmenet \end{DoxyCompactList}\item 
+\hypertarget{classChain_ad9ff2a0f87c43c3aa711c3ac5e3dc37a}{}void \hyperlink{classChain_ad9ff2a0f87c43c3aa711c3ac5e3dc37a}{pop} ()\label{classChain_ad9ff2a0f87c43c3aa711c3ac5e3dc37a}
+
+\begin{DoxyCompactList}\small\item\em pop removes element from chain, creating new chain \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain}$<$ T\+Y\+P\+E $>$ $\ast$ \hyperlink{classChain_ace1c46fda105bc0cefe6337b793069de}{map} (void($\ast$f)(T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em map replace content of all alements in array using provided function \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain}$<$ T\+Y\+P\+E $>$ $\ast$ \hyperlink{classChain_a5014320320b6044de28f27d7937165f3}{map} (T\+Y\+P\+E($\ast$f)(const T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em map replace content of all alements in array using provided function \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain}$<$ T\+Y\+P\+E $>$ $\ast$ \hyperlink{classChain_ac21ec871573a170a704e6e06a9cac6ab}{each} (void($\ast$f)(const T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em each calls provided function on all elements of array \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain}$<$ T\+Y\+P\+E $>$ $\ast$ \hyperlink{classChain_a95ad9170db946acf028ba2e98c349595}{selected} (void($\ast$f)(const T\+Y\+P\+E \&), bool($\ast$p)(const T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em selected calls provided call function if acceptor function returns true \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classChain_aeb9b72f09201d5553bb04e25593dc7fa}{}T\+Y\+P\+E \hyperlink{classChain_aeb9b72f09201d5553bb04e25593dc7fa}{data}\label{classChain_aeb9b72f09201d5553bb04e25593dc7fa}
+
+\begin{DoxyCompactList}\small\item\em data stored in each element \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T\+Y\+P\+E$>$class Chain$<$ T\+Y\+P\+E $>$}
+
+\hyperlink{classChain}{Chain} class providing bi-\/directional-\/list like data organisation. 
+
+Each elemen has 2 neighbours. data access to any field is linear. Access to next/prev constant as well as adding/removing after/before current element. Due to its nature each element can be considered autonomous list thus each element popped from list using pop method becomes new list (in constant time/0 alloc) Template class gets stored data type as template param. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classChain_a6e1b54f58b90218127399007e2be651a}{}\index{Chain@{Chain}!Chain@{Chain}}
+\index{Chain@{Chain}!Chain@{Chain}}
+\subsubsection[{Chain}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::{\bf Chain} (
+\begin{DoxyParamCaption}
+\item[{T\+Y\+P\+E}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a6e1b54f58b90218127399007e2be651a}
+
+
+\hyperlink{classChain}{Chain} \hyperlink{classChain}{Chain} constructor. 
+
+Reqires data to be written into first 
+\begin{DoxyParams}{Parameters}
+{\em data} & data to be written as first element \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classChain_ac21ec871573a170a704e6e06a9cac6ab}{}\index{Chain@{Chain}!each@{each}}
+\index{each@{each}!Chain@{Chain}}
+\subsubsection[{each}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$<$T\+Y\+P\+E$>$$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::each (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(const T\+Y\+P\+E \&)}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_ac21ec871573a170a704e6e06a9cac6ab}
+
+
+each calls provided function on all elements of array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & mapping function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classChain_a8e044eca9ddb093211203a61c4aeb139}{}\index{Chain@{Chain}!insert\+After@{insert\+After}}
+\index{insert\+After@{insert\+After}!Chain@{Chain}}
+\subsubsection[{insert\+After}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ void {\bf Chain}$<$ T\+Y\+P\+E $>$\+::insert\+After (
+\begin{DoxyParamCaption}
+\item[{{\bf Chain}$<$ T\+Y\+P\+E $>$ $\ast$}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a8e044eca9ddb093211203a61c4aeb139}
+
+
+insert\+After inserts given subchain after current element 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & subchain \\
+\hline
+\end{DoxyParams}
+\hypertarget{classChain_adfec3f6f34ee095ffdb953418417ed63}{}\index{Chain@{Chain}!insert\+After@{insert\+After}}
+\index{insert\+After@{insert\+After}!Chain@{Chain}}
+\subsubsection[{insert\+After}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ void {\bf Chain}$<$ T\+Y\+P\+E $>$\+::insert\+After (
+\begin{DoxyParamCaption}
+\item[{T\+Y\+P\+E}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_adfec3f6f34ee095ffdb953418417ed63}
+
+
+insert\+After inserts given data after current element 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data \\
+\hline
+\end{DoxyParams}
+\hypertarget{classChain_a47099e0a5193503c92458ffbb5ecb277}{}\index{Chain@{Chain}!insert\+Before@{insert\+Before}}
+\index{insert\+Before@{insert\+Before}!Chain@{Chain}}
+\subsubsection[{insert\+Before}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ void {\bf Chain}$<$ T\+Y\+P\+E $>$\+::insert\+Before (
+\begin{DoxyParamCaption}
+\item[{{\bf Chain}$<$ T\+Y\+P\+E $>$ $\ast$}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a47099e0a5193503c92458ffbb5ecb277}
+
+
+insert\+Before inserts given subchain before current elmenet 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & subchain \\
+\hline
+\end{DoxyParams}
+\hypertarget{classChain_a93b7323dd2f294dcfe07d6c67ec4619a}{}\index{Chain@{Chain}!insert\+Before@{insert\+Before}}
+\index{insert\+Before@{insert\+Before}!Chain@{Chain}}
+\subsubsection[{insert\+Before}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ void {\bf Chain}$<$ T\+Y\+P\+E $>$\+::insert\+Before (
+\begin{DoxyParamCaption}
+\item[{T\+Y\+P\+E}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a93b7323dd2f294dcfe07d6c67ec4619a}
+
+
+insert\+Before inserts given data before current elmenet 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data \\
+\hline
+\end{DoxyParams}
+\hypertarget{classChain_ace1c46fda105bc0cefe6337b793069de}{}\index{Chain@{Chain}!map@{map}}
+\index{map@{map}!Chain@{Chain}}
+\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$<$T\+Y\+P\+E$>$$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::map (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(T\+Y\+P\+E \&)}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_ace1c46fda105bc0cefe6337b793069de}
+
+
+map replace content of all alements in array using provided function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & mapping function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to \hyperlink{classArray}{Array} 
+\end{DoxyReturn}
+\hypertarget{classChain_a5014320320b6044de28f27d7937165f3}{}\index{Chain@{Chain}!map@{map}}
+\index{map@{map}!Chain@{Chain}}
+\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$<$T\+Y\+P\+E$>$$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::map (
+\begin{DoxyParamCaption}
+\item[{T\+Y\+P\+E($\ast$)(const T\+Y\+P\+E \&)}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a5014320320b6044de28f27d7937165f3}
+
+
+map replace content of all alements in array using provided function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & mapping function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to \hyperlink{classArray}{Array} 
+\end{DoxyReturn}
+\hypertarget{classChain_a16411e8032aa4e0464d04d12f69577da}{}\index{Chain@{Chain}!next@{next}}
+\index{next@{next}!Chain@{Chain}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::next (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a16411e8032aa4e0464d04d12f69577da}
+
+
+next 
+
+\begin{DoxyReturn}{Returns}
+next chain elem 
+\end{DoxyReturn}
+\hypertarget{classChain_a33dc961c1b75bdad1920680c56a7d52f}{}\index{Chain@{Chain}!prev@{prev}}
+\index{prev@{prev}!Chain@{Chain}}
+\subsubsection[{prev}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::prev (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a33dc961c1b75bdad1920680c56a7d52f}
+
+
+prev 
+
+\begin{DoxyReturn}{Returns}
+prev chain elem 
+\end{DoxyReturn}
+\hypertarget{classChain_a3251fcea46affc01835a565a0dcff0f6}{}\index{Chain@{Chain}!rewind@{rewind}}
+\index{rewind@{rewind}!Chain@{Chain}}
+\subsubsection[{rewind}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::rewind (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a3251fcea46affc01835a565a0dcff0f6}
+
+
+rewind 
+
+\begin{DoxyReturn}{Returns}
+first chain elem 
+\end{DoxyReturn}
+\hypertarget{classChain_a83b9c24f7e9425bc4876f42833ff25d2}{}\index{Chain@{Chain}!rewind\+Forward@{rewind\+Forward}}
+\index{rewind\+Forward@{rewind\+Forward}!Chain@{Chain}}
+\subsubsection[{rewind\+Forward}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::rewind\+Forward (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a83b9c24f7e9425bc4876f42833ff25d2}
+
+
+rewind\+Forward 
+
+\begin{DoxyReturn}{Returns}
+last chain elem 
+\end{DoxyReturn}
+\hypertarget{classChain_a95ad9170db946acf028ba2e98c349595}{}\index{Chain@{Chain}!selected@{selected}}
+\index{selected@{selected}!Chain@{Chain}}
+\subsubsection[{selected}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Chain}$<$T\+Y\+P\+E$>$$\ast$ {\bf Chain}$<$ T\+Y\+P\+E $>$\+::selected (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(const T\+Y\+P\+E \&)}]{f, }
+\item[{bool($\ast$)(const T\+Y\+P\+E \&)}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classChain_a95ad9170db946acf028ba2e98c349595}
+
+
+selected calls provided call function if acceptor function returns true 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & call function \\
+\hline
+{\em acceptor} & function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/misc.\+h\end{DoxyCompactItemize}

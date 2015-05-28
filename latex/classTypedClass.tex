@@ -1,0 +1,159 @@
+\hypertarget{classTypedClass}{}\section{Typed\+Class Class Reference}
+\label{classTypedClass}\index{Typed\+Class@{Typed\+Class}}
+
+
+The \hyperlink{classTypedClass}{Typed\+Class} class class meant to be inherited by classes meant to be downcasted, providing basic \char`\"{}instanceof\char`\"{} functionality.  
+
+
+
+
+{\ttfamily \#include $<$utils.\+h$>$}
+
+Inheritance diagram for Typed\+Class\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classTypedClass}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{classTypedClass_ad12ee69d293a535940caea9cceea2659}{type\+Of} () const 
+\begin{DoxyCompactList}\small\item\em type\+Of returns highest level type name \end{DoxyCompactList}\item 
+bool \hyperlink{classTypedClass_a4af819bf3ec6b84e65c97fff993a1392}{match\+Type} (\hyperlink{classTypedClass}{Typed\+Class} \&t) const 
+\begin{DoxyCompactList}\small\item\em match\+Type tells whether class is type as provided reference class \end{DoxyCompactList}\item 
+bool \hyperlink{classTypedClass_ad31239a6b7d8eab7a63a8c28767e99e9}{match\+Type} (const char $\ast$type) const 
+\begin{DoxyCompactList}\small\item\em match\+Type tells whether class is type as provided type descriptor \end{DoxyCompactList}\item 
+bool \hyperlink{classTypedClass_a3b2358800578595aa3d490917431e19a}{is\+Type\+Of} (\hyperlink{classTypedClass}{Typed\+Class} \&t) const 
+\begin{DoxyCompactList}\small\item\em is\+Type\+Of tells whether current class inherits from specified class \end{DoxyCompactList}\item 
+bool \hyperlink{classTypedClass_ab4fc19854ea57d5055cd0d0e1baeec11}{is\+Type\+Of} (const char $\ast$type) const 
+\begin{DoxyCompactList}\small\item\em is\+Type\+Of tells whether current class inherits from specified class descriptor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTypedClass_a14ef8946c4d5af21949bde220d686617}{}static constexpr char $\ast$ \hyperlink{classTypedClass_a14ef8946c4d5af21949bde220d686617}{type\+Name} =(char$\ast$)\char`\"{}Generic\char`\"{}\label{classTypedClass_a14ef8946c4d5af21949bde220d686617}
+
+\begin{DoxyCompactList}\small\item\em type descriptor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classTypedClass_a39c4e5de4ad1bf09e24a5c4b6e56e506}{push\+Type} (const char $\ast$type)
+\begin{DoxyCompactList}\small\item\em push\+Type Adds new type descriptor to registered inheritance tree \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classTypedClass}{Typed\+Class} class class meant to be inherited by classes meant to be downcasted, providing basic \char`\"{}instanceof\char`\"{} functionality. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classTypedClass_a3b2358800578595aa3d490917431e19a}{}\index{Typed\+Class@{Typed\+Class}!is\+Type\+Of@{is\+Type\+Of}}
+\index{is\+Type\+Of@{is\+Type\+Of}!Typed\+Class@{Typed\+Class}}
+\subsubsection[{is\+Type\+Of}]{\setlength{\rightskip}{0pt plus 5cm}bool Typed\+Class\+::is\+Type\+Of (
+\begin{DoxyParamCaption}
+\item[{{\bf Typed\+Class} \&}]{t}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTypedClass_a3b2358800578595aa3d490917431e19a}
+
+
+is\+Type\+Of tells whether current class inherits from specified class 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & reference class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+yup or nope 
+\end{DoxyReturn}
+\hypertarget{classTypedClass_ab4fc19854ea57d5055cd0d0e1baeec11}{}\index{Typed\+Class@{Typed\+Class}!is\+Type\+Of@{is\+Type\+Of}}
+\index{is\+Type\+Of@{is\+Type\+Of}!Typed\+Class@{Typed\+Class}}
+\subsubsection[{is\+Type\+Of}]{\setlength{\rightskip}{0pt plus 5cm}bool Typed\+Class\+::is\+Type\+Of (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{type}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTypedClass_ab4fc19854ea57d5055cd0d0e1baeec11}
+
+
+is\+Type\+Of tells whether current class inherits from specified class descriptor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & class descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+yup or nope 
+\end{DoxyReturn}
+\hypertarget{classTypedClass_a4af819bf3ec6b84e65c97fff993a1392}{}\index{Typed\+Class@{Typed\+Class}!match\+Type@{match\+Type}}
+\index{match\+Type@{match\+Type}!Typed\+Class@{Typed\+Class}}
+\subsubsection[{match\+Type}]{\setlength{\rightskip}{0pt plus 5cm}bool Typed\+Class\+::match\+Type (
+\begin{DoxyParamCaption}
+\item[{{\bf Typed\+Class} \&}]{t}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTypedClass_a4af819bf3ec6b84e65c97fff993a1392}
+
+
+match\+Type tells whether class is type as provided reference class 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & class to be compared with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+yup or nope 
+\end{DoxyReturn}
+\hypertarget{classTypedClass_ad31239a6b7d8eab7a63a8c28767e99e9}{}\index{Typed\+Class@{Typed\+Class}!match\+Type@{match\+Type}}
+\index{match\+Type@{match\+Type}!Typed\+Class@{Typed\+Class}}
+\subsubsection[{match\+Type}]{\setlength{\rightskip}{0pt plus 5cm}bool Typed\+Class\+::match\+Type (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{type}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTypedClass_ad31239a6b7d8eab7a63a8c28767e99e9}
+
+
+match\+Type tells whether class is type as provided type descriptor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & descriptor to be compared with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+yup or nope 
+\end{DoxyReturn}
+\hypertarget{classTypedClass_a39c4e5de4ad1bf09e24a5c4b6e56e506}{}\index{Typed\+Class@{Typed\+Class}!push\+Type@{push\+Type}}
+\index{push\+Type@{push\+Type}!Typed\+Class@{Typed\+Class}}
+\subsubsection[{push\+Type}]{\setlength{\rightskip}{0pt plus 5cm}void Typed\+Class\+::push\+Type (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{classTypedClass_a39c4e5de4ad1bf09e24a5c4b6e56e506}
+
+
+push\+Type Adds new type descriptor to registered inheritance tree 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & new class type descriptor \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTypedClass_ad12ee69d293a535940caea9cceea2659}{}\index{Typed\+Class@{Typed\+Class}!type\+Of@{type\+Of}}
+\index{type\+Of@{type\+Of}!Typed\+Class@{Typed\+Class}}
+\subsubsection[{type\+Of}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ Typed\+Class\+::type\+Of (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classTypedClass_ad12ee69d293a535940caea9cceea2659}
+
+
+type\+Of returns highest level type name 
+
+\begin{DoxyReturn}{Returns}
+type name 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/utils.\+h\item 
+src/utils.\+cpp\end{DoxyCompactItemize}

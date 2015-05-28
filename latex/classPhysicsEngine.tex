@@ -1,0 +1,163 @@
+\hypertarget{classPhysicsEngine}{}\section{Physics\+Engine Class Reference}
+\label{classPhysicsEngine}\index{Physics\+Engine@{Physics\+Engine}}
+
+
+The \hyperlink{classPhysicsEngine}{Physics\+Engine} class Class providing basic physics functionality to registered map.  
+
+
+
+
+{\ttfamily \#include $<$physx.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classPhysicsEngine_1_1CollisionGrid}{Collision\+Grid}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{classPhysicsEngine_1_1CollisionGrid}{Collision\+Grid} class Class containing collision grid for optimization purpose. \end{DoxyCompactList}\item 
+struct \hyperlink{structPhysicsEngine_1_1CREnt}{C\+R\+Ent}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPhysicsEngine_abc458126ff199c01fe04bbc910f2190d}{Physics\+Engine} (\hyperlink{classGameMap}{Game\+Map} \&map)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPhysicsEngine}{Physics\+Engine} Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classGameMap}{Game\+Map} $\ast$ \hyperlink{classPhysicsEngine_abe9b7fec2565129365490d4d09ab91fb}{get\+Map} () const 
+\begin{DoxyCompactList}\small\item\em get\+Map return map registered by engine \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain}$<$ \hyperlink{structPhysicsEngine_1_1CREnt}{C\+R\+Ent} $>$ $\ast$ \hyperlink{classPhysicsEngine_a52a90ad6bdd5706c6fe89254991330c6}{get\+Collision\+Registry} () const 
+\begin{DoxyCompactList}\small\item\em get\+Collision\+Registry returns list of collisions \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicsEngine_a37d4d1483678921775e0bc545fc8e0b0}{reload\+Map} (\hyperlink{classGameMap}{Game\+Map} \&map)
+\begin{DoxyCompactList}\small\item\em reload\+Map bind engine to different map \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicsEngine_ac6d56b0524f4c020463dd6dbbd9dcdc1}{register\+Object} (\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \&meta)
+\begin{DoxyCompactList}\small\item\em register\+Object register object in physics engine \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicsEngine_a323e3de1fd9aa734b84fb62a9496f2e2}{unregister\+Object} (\hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} \&meta)
+\begin{DoxyCompactList}\small\item\em unregister\+Object unregister object from physics engine \end{DoxyCompactList}\item 
+long double \hyperlink{classPhysicsEngine_a71be5c7bd4b8f50a78a3618b57cb0e84}{time\+Shift} ()
+\begin{DoxyCompactList}\small\item\em time\+Shift perform physics clock tick \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classPhysicsEngine}{Physics\+Engine} class Class providing basic physics functionality to registered map. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classGameMap}{Game\+Map} 
+
+\hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPhysicsEngine_abc458126ff199c01fe04bbc910f2190d}{}\index{Physics\+Engine@{Physics\+Engine}!Physics\+Engine@{Physics\+Engine}}
+\index{Physics\+Engine@{Physics\+Engine}!Physics\+Engine@{Physics\+Engine}}
+\subsubsection[{Physics\+Engine}]{\setlength{\rightskip}{0pt plus 5cm}Physics\+Engine\+::\+Physics\+Engine (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Map} \&}]{map}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_abc458126ff199c01fe04bbc910f2190d}
+
+
+\hyperlink{classPhysicsEngine}{Physics\+Engine} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & map to register physics engine for \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPhysicsEngine_a52a90ad6bdd5706c6fe89254991330c6}{}\index{Physics\+Engine@{Physics\+Engine}!get\+Collision\+Registry@{get\+Collision\+Registry}}
+\index{get\+Collision\+Registry@{get\+Collision\+Registry}!Physics\+Engine@{Physics\+Engine}}
+\subsubsection[{get\+Collision\+Registry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Chain}$<${\bf C\+R\+Ent}$>$$\ast$ Physics\+Engine\+::get\+Collision\+Registry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicsEngine_a52a90ad6bdd5706c6fe89254991330c6}
+
+
+get\+Collision\+Registry returns list of collisions 
+
+\begin{DoxyReturn}{Returns}
+list of collisions 
+\end{DoxyReturn}
+\hypertarget{classPhysicsEngine_abe9b7fec2565129365490d4d09ab91fb}{}\index{Physics\+Engine@{Physics\+Engine}!get\+Map@{get\+Map}}
+\index{get\+Map@{get\+Map}!Physics\+Engine@{Physics\+Engine}}
+\subsubsection[{get\+Map}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Map}$\ast$ Physics\+Engine\+::get\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicsEngine_abe9b7fec2565129365490d4d09ab91fb}
+
+
+get\+Map return map registered by engine 
+
+\begin{DoxyReturn}{Returns}
+map registered by engine 
+\end{DoxyReturn}
+\hypertarget{classPhysicsEngine_ac6d56b0524f4c020463dd6dbbd9dcdc1}{}\index{Physics\+Engine@{Physics\+Engine}!register\+Object@{register\+Object}}
+\index{register\+Object@{register\+Object}!Physics\+Engine@{Physics\+Engine}}
+\subsubsection[{register\+Object}]{\setlength{\rightskip}{0pt plus 5cm}void Physics\+Engine\+::register\+Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Map\+Meta} \&}]{meta}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_ac6d56b0524f4c020463dd6dbbd9dcdc1}
+
+
+register\+Object register object in physics engine 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & meta to be registered \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicsEngine_a37d4d1483678921775e0bc545fc8e0b0}{}\index{Physics\+Engine@{Physics\+Engine}!reload\+Map@{reload\+Map}}
+\index{reload\+Map@{reload\+Map}!Physics\+Engine@{Physics\+Engine}}
+\subsubsection[{reload\+Map}]{\setlength{\rightskip}{0pt plus 5cm}void Physics\+Engine\+::reload\+Map (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Map} \&}]{map}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_a37d4d1483678921775e0bc545fc8e0b0}
+
+
+reload\+Map bind engine to different map 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & new map to be bound to \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicsEngine_a71be5c7bd4b8f50a78a3618b57cb0e84}{}\index{Physics\+Engine@{Physics\+Engine}!time\+Shift@{time\+Shift}}
+\index{time\+Shift@{time\+Shift}!Physics\+Engine@{Physics\+Engine}}
+\subsubsection[{time\+Shift}]{\setlength{\rightskip}{0pt plus 5cm}long double Physics\+Engine\+::time\+Shift (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_a71be5c7bd4b8f50a78a3618b57cb0e84}
+
+
+time\+Shift perform physics clock tick 
+
+\begin{DoxyReturn}{Returns}
+time shifted by engine 
+\end{DoxyReturn}
+\hypertarget{classPhysicsEngine_a323e3de1fd9aa734b84fb62a9496f2e2}{}\index{Physics\+Engine@{Physics\+Engine}!unregister\+Object@{unregister\+Object}}
+\index{unregister\+Object@{unregister\+Object}!Physics\+Engine@{Physics\+Engine}}
+\subsubsection[{unregister\+Object}]{\setlength{\rightskip}{0pt plus 5cm}void Physics\+Engine\+::unregister\+Object (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Physics\+Meta} \&}]{meta}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_a323e3de1fd9aa734b84fb62a9496f2e2}
+
+
+unregister\+Object unregister object from physics engine 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & meta to be unregistered \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/physx.\+h\item 
+src/physx.\+cpp\end{DoxyCompactItemize}

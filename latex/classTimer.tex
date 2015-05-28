@@ -1,0 +1,136 @@
+\hypertarget{classTimer}{}\section{Timer Class Reference}
+\label{classTimer}\index{Timer@{Timer}}
+
+
+The \hyperlink{classTimer}{Timer} class \hyperlink{classTimer}{Timer} class providing timer functionality, can be used to generate signal with certain frequency.  
+
+
+
+
+{\ttfamily \#include $<$physx.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTimer_a16e1294d6277a44056a2ebe3fa968777}{Timer} (int frequency=25, bool autosleep=true)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classTimer}{Timer} constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classTimer_a03bf21c7ffff6c9a00b25c66b46d648d}{shift} (long double diff)
+\begin{DoxyCompactList}\small\item\em shift record time shift \end{DoxyCompactList}\item 
+\hypertarget{classTimer_a0289effad7b573c508bc27e405900a23}{}void \hyperlink{classTimer_a0289effad7b573c508bc27e405900a23}{pause} ()\label{classTimer_a0289effad7b573c508bc27e405900a23}
+
+\begin{DoxyCompactList}\small\item\em pause pause timer \end{DoxyCompactList}\item 
+\hypertarget{classTimer_a4ac55a73bb3431db9d4d2fd70ae9a2e8}{}void \hyperlink{classTimer_a4ac55a73bb3431db9d4d2fd70ae9a2e8}{resume} ()\label{classTimer_a4ac55a73bb3431db9d4d2fd70ae9a2e8}
+
+\begin{DoxyCompactList}\small\item\em resume resume timer \end{DoxyCompactList}\item 
+void \hyperlink{classTimer_a800180c46d170e8d7821d08508cc1945}{set\+Autosleep} (bool value)
+\begin{DoxyCompactList}\small\item\em set\+Autosleep change autosleep flag value \end{DoxyCompactList}\item 
+\hypertarget{classTimer_afc90ad6e658d90ec64f338867044c609}{}void \hyperlink{classTimer_afc90ad6e658d90ec64f338867044c609}{toggle\+Autosleep} ()\label{classTimer_afc90ad6e658d90ec64f338867044c609}
+
+\begin{DoxyCompactList}\small\item\em toggle\+Autosleep toggle autosleep flag value \end{DoxyCompactList}\item 
+bool \hyperlink{classTimer_adba0628ba7c2f61e72da83d9d8648773}{is\+Paused} ()
+\begin{DoxyCompactList}\small\item\em is\+Paused indicates whether timer is paused or not \end{DoxyCompactList}\item 
+bool \hyperlink{classTimer_ac3b274af3a742a97ffd1fdc5fce4c452}{is\+Auto\+Sleep} ()
+\begin{DoxyCompactList}\small\item\em is\+Auto\+Sleep indicates whether timer uses autosleep or not \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classTimer_af676580c849532abe14b6887e93b17d0}{}const unsigned int \hyperlink{classTimer_af676580c849532abe14b6887e93b17d0}{freq}\label{classTimer_af676580c849532abe14b6887e93b17d0}
+
+\begin{DoxyCompactList}\small\item\em timer base frequency \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classTimer}{Timer} class \hyperlink{classTimer}{Timer} class providing timer functionality, can be used to generate signal with certain frequency. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classTimer_a16e1294d6277a44056a2ebe3fa968777}{}\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\subsubsection[{Timer}]{\setlength{\rightskip}{0pt plus 5cm}Timer\+::\+Timer (
+\begin{DoxyParamCaption}
+\item[{int}]{frequency = {\ttfamily 25}, }
+\item[{bool}]{autosleep = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{classTimer_a16e1294d6277a44056a2ebe3fa968777}
+
+
+\hyperlink{classTimer}{Timer} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & requested timer frequency \\
+\hline
+{\em autosleep} & whether timer should call sleep function and pause code execution till next expected tick or not \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classTimer_ac3b274af3a742a97ffd1fdc5fce4c452}{}\index{Timer@{Timer}!is\+Auto\+Sleep@{is\+Auto\+Sleep}}
+\index{is\+Auto\+Sleep@{is\+Auto\+Sleep}!Timer@{Timer}}
+\subsubsection[{is\+Auto\+Sleep}]{\setlength{\rightskip}{0pt plus 5cm}bool Timer\+::is\+Auto\+Sleep (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTimer_ac3b274af3a742a97ffd1fdc5fce4c452}
+
+
+is\+Auto\+Sleep indicates whether timer uses autosleep or not 
+
+\begin{DoxyReturn}{Returns}
+yup or nope 
+\end{DoxyReturn}
+\hypertarget{classTimer_adba0628ba7c2f61e72da83d9d8648773}{}\index{Timer@{Timer}!is\+Paused@{is\+Paused}}
+\index{is\+Paused@{is\+Paused}!Timer@{Timer}}
+\subsubsection[{is\+Paused}]{\setlength{\rightskip}{0pt plus 5cm}bool Timer\+::is\+Paused (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTimer_adba0628ba7c2f61e72da83d9d8648773}
+
+
+is\+Paused indicates whether timer is paused or not 
+
+\begin{DoxyReturn}{Returns}
+yup or nope 
+\end{DoxyReturn}
+\hypertarget{classTimer_a800180c46d170e8d7821d08508cc1945}{}\index{Timer@{Timer}!set\+Autosleep@{set\+Autosleep}}
+\index{set\+Autosleep@{set\+Autosleep}!Timer@{Timer}}
+\subsubsection[{set\+Autosleep}]{\setlength{\rightskip}{0pt plus 5cm}void Timer\+::set\+Autosleep (
+\begin{DoxyParamCaption}
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classTimer_a800180c46d170e8d7821d08508cc1945}
+
+
+set\+Autosleep change autosleep flag value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & new value \\
+\hline
+\end{DoxyParams}
+\hypertarget{classTimer_a03bf21c7ffff6c9a00b25c66b46d648d}{}\index{Timer@{Timer}!shift@{shift}}
+\index{shift@{shift}!Timer@{Timer}}
+\subsubsection[{shift}]{\setlength{\rightskip}{0pt plus 5cm}bool Timer\+::shift (
+\begin{DoxyParamCaption}
+\item[{long double}]{diff}
+\end{DoxyParamCaption}
+)}\label{classTimer_a03bf21c7ffff6c9a00b25c66b46d648d}
+
+
+shift record time shift 
+
+
+\begin{DoxyParams}{Parameters}
+{\em diff} & time shift to be performed (in miliseconds) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/physx.\+h\item 
+src/physx.\+cpp\end{DoxyCompactItemize}

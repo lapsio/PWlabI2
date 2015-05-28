@@ -1,0 +1,575 @@
+\hypertarget{classVectorXY}{}\section{Vector\+X\+Y Class Reference}
+\label{classVectorXY}\index{Vector\+X\+Y@{Vector\+X\+Y}}
+
+
+The \hyperlink{classVectorXY}{Vector\+X\+Y} class Class providing basic vector functionality.  
+
+
+
+
+{\ttfamily \#include $<$Vector\+X\+Y.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVectorXY_a8cf9a7bae3f5c6c120f305268076a2af}{Vector\+X\+Y} (long double x\+Beg=0, long double y\+Beg=0, long double x\+End=1, long double y\+End=1)
+\begin{DoxyCompactList}\small\item\em $<$ vector end \end{DoxyCompactList}\item 
+\hyperlink{classVectorXY_a1d6f51eec2d1eb3d4f70d3c6d9c6bed1}{Vector\+X\+Y} (const \hyperlink{classPointXY}{Point\+X\+Y} \&first, const \hyperlink{classPointXY}{Point\+X\+Y} \&last)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVectorXY}{Vector\+X\+Y} constructor from points. \end{DoxyCompactList}\item 
+\hyperlink{classVectorXY_afa7511b9ada046d507e11acbdca41a0b}{Vector\+X\+Y} (const \hyperlink{classVectorXY}{Vector\+X\+Y} \&tmp)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classVectorXY}{Vector\+X\+Y} copy constructor. \end{DoxyCompactList}\item 
+const \hyperlink{classPointXY}{Point\+X\+Y} \& \hyperlink{classVectorXY_a756a3c349a46361ce94af16a358d0699}{get\+Begin} () const 
+\begin{DoxyCompactList}\small\item\em get\+Begin \end{DoxyCompactList}\item 
+const \hyperlink{classPointXY}{Point\+X\+Y} \& \hyperlink{classVectorXY_a59ba6208946c4860c43f84a11f2d4ca4}{get\+End} () const 
+\begin{DoxyCompactList}\small\item\em get\+End \end{DoxyCompactList}\item 
+void \hyperlink{classVectorXY_a54d01726e2920265ddc17152d292ad3e}{set\+Begin} (const \hyperlink{classPointXY}{Point\+X\+Y} \&A)
+\begin{DoxyCompactList}\small\item\em set\+Begin set beginning point of vector to specified value \end{DoxyCompactList}\item 
+\hypertarget{classVectorXY_ab72566580ee7cfbd9dae6c9b89ba1245}{}void {\bfseries set\+Begin} (long double a, long double b)\label{classVectorXY_ab72566580ee7cfbd9dae6c9b89ba1245}
+
+\item 
+void \hyperlink{classVectorXY_a4aa9560ca31838238992c604f23c1910}{set\+End} (const \hyperlink{classPointXY}{Point\+X\+Y} \&A)
+\begin{DoxyCompactList}\small\item\em set\+End set endinf point of vector to specified value \end{DoxyCompactList}\item 
+\hypertarget{classVectorXY_a808bcf64655761e98f92e915ba6bd634}{}void {\bfseries set\+End} (long double a, long double b)\label{classVectorXY_a808bcf64655761e98f92e915ba6bd634}
+
+\item 
+void \hyperlink{classVectorXY_a8ba83cb02ebe32672926abac17ab174e}{set\+Vector} (const \hyperlink{classPointXY}{Point\+X\+Y} \&beg, const \hyperlink{classPointXY}{Point\+X\+Y} \&end)
+\begin{DoxyCompactList}\small\item\em set\+Vector set vector to new one \end{DoxyCompactList}\item 
+long double \hyperlink{classVectorXY_adb8b4da2bd2d7383af3973d6daa95b53}{height} () const 
+\begin{DoxyCompactList}\small\item\em height returns height of vector (Y axis length) \end{DoxyCompactList}\item 
+long double \hyperlink{classVectorXY_ada8c272d3a9f8aab0b6af4cd15763d23}{width} () const 
+\begin{DoxyCompactList}\small\item\em width returns width of vector (X axis length) \end{DoxyCompactList}\item 
+\hyperlink{classPointXY}{Point\+X\+Y} \hyperlink{classVectorXY_a0f1457e18bad227f3e06b5b3ca37f0b7}{size\+X\+Y} () const 
+\begin{DoxyCompactList}\small\item\em size\+X\+Y returns pair of width\+:heigth as Point class \end{DoxyCompactList}\item 
+long double \hyperlink{classVectorXY_aa7aa129411aaeb43a1b89084c2af5da8}{size} () const 
+\begin{DoxyCompactList}\small\item\em size Euclidean length of vector \end{DoxyCompactList}\item 
+void \hyperlink{classVectorXY_a85281070287140c27325ad11e7198840}{move\+To} (long double x, long double y, bool end=false)
+\begin{DoxyCompactList}\small\item\em move\+To move vector to specified position \end{DoxyCompactList}\item 
+void \hyperlink{classVectorXY_a27649ddf218ed91b6c38e9ccee45a637}{move\+By} (long double x, long double y)
+\begin{DoxyCompactList}\small\item\em move\+By move vector by specified offset \end{DoxyCompactList}\item 
+\hypertarget{classVectorXY_a10fb6ca1d0a636852eff2f753b619ac8}{}void {\bfseries move\+By} (\hyperlink{classPointXY}{Point\+X\+Y} \&point)\label{classVectorXY_a10fb6ca1d0a636852eff2f753b619ac8}
+
+\item 
+void \hyperlink{classVectorXY_a55713178bb2845a83b858c5776194b6d}{center\+On} (long double x, long double y)
+\begin{DoxyCompactList}\small\item\em center\+On center vector on specified point \end{DoxyCompactList}\item 
+\hypertarget{classVectorXY_a2ff78c91d0896f2d32aba1d612b4e7e0}{}void {\bfseries center\+On} (\hyperlink{classPointXY}{Point\+X\+Y} \&point)\label{classVectorXY_a2ff78c91d0896f2d32aba1d612b4e7e0}
+
+\item 
+void \hyperlink{classVectorXY_a92c5fd3e5018183f59e409abd523b23b}{scale\+By} (long double k)
+\begin{DoxyCompactList}\small\item\em scale\+By scale vector by specified fraction (from point 0,0) \end{DoxyCompactList}\item 
+void \hyperlink{classVectorXY_a08ef32c78e917db26296e27a924504bf}{scale\+To} (long double siz)
+\begin{DoxyCompactList}\small\item\em scale\+To scale vector to specified Euclidean length (from point 0,0) \end{DoxyCompactList}\item 
+void \hyperlink{classVectorXY_a6cc6d38fbe0d949a6758d6b04ff61818}{scale\+Length\+To} (long double k, bool end=false)
+\begin{DoxyCompactList}\small\item\em scale\+Length\+To scale vector by specified fraction (from beginning point) \end{DoxyCompactList}\item 
+void \hyperlink{classVectorXY_aa4dfb1630e9d1b440a7f383a8f7f5bd8}{scale\+Length\+By} (long double k, bool end=false)
+\begin{DoxyCompactList}\small\item\em scale\+Length\+By scale vector to specified Euclidean length (from point 0,0) \end{DoxyCompactList}\item 
+\hypertarget{classVectorXY_a6d9d6f426a7dd4135a088da08823f371}{}void \hyperlink{classVectorXY_a6d9d6f426a7dd4135a088da08823f371}{flip} ()\label{classVectorXY_a6d9d6f426a7dd4135a088da08823f371}
+
+\begin{DoxyCompactList}\small\item\em flip swap beginning point with ending one \end{DoxyCompactList}\item 
+\hypertarget{classVectorXY_a5a65769eeb23d8c5d2deb0ef821777d9}{}\hyperlink{classVectorXY}{Vector\+X\+Y} {\bfseries operator+} (\hyperlink{classVectorXY}{Vector\+X\+Y} vect) const \label{classVectorXY_a5a65769eeb23d8c5d2deb0ef821777d9}
+
+\item 
+\hypertarget{classVectorXY_a3e9b238c7a3a7c1dbffd02b841d32926}{}\hyperlink{classVectorXY}{Vector\+X\+Y} {\bfseries operator-\/} (\hyperlink{classVectorXY}{Vector\+X\+Y} vect) const \label{classVectorXY_a3e9b238c7a3a7c1dbffd02b841d32926}
+
+\item 
+\hypertarget{classVectorXY_a7206b9e67b835aa3d1bc02d58593e89d}{}void {\bfseries operator+=} (\hyperlink{classVectorXY}{Vector\+X\+Y} vect)\label{classVectorXY_a7206b9e67b835aa3d1bc02d58593e89d}
+
+\item 
+\hypertarget{classVectorXY_a4849b9c7d700cb33819fd9a67a7bdb65}{}void {\bfseries operator-\/=} (\hyperlink{classVectorXY}{Vector\+X\+Y} vect)\label{classVectorXY_a4849b9c7d700cb33819fd9a67a7bdb65}
+
+\item 
+\hypertarget{classVectorXY_aa54d52ee35bd9f23aacf9e40db864afe}{}\hyperlink{classVectorXY}{Vector\+X\+Y} {\bfseries operator$\ast$} (double k) const \label{classVectorXY_aa54d52ee35bd9f23aacf9e40db864afe}
+
+\item 
+\hypertarget{classVectorXY_aca23f07f70da97399ad83d6c1d025420}{}void {\bfseries operator$\ast$=} (double k)\label{classVectorXY_aca23f07f70da97399ad83d6c1d025420}
+
+\item 
+\hypertarget{classVectorXY_af815be1ddb6c8d4e9222791240549fbf}{}bool {\bfseries operator==} (const \hyperlink{classVectorXY}{Vector\+X\+Y} \&vect) const \label{classVectorXY_af815be1ddb6c8d4e9222791240549fbf}
+
+\item 
+\hypertarget{classVectorXY_ad288ee31a7ef0437962779fd631acd23}{}bool {\bfseries operator!=} (const \hyperlink{classVectorXY}{Vector\+X\+Y} \&vect) const \label{classVectorXY_ad288ee31a7ef0437962779fd631acd23}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classVectorXY_a585c00eaedb3c0af026cca3d155df34d}{intersects} (const \hyperlink{classVectorXY}{Vector\+X\+Y} \&A, const \hyperlink{classVectorXY}{Vector\+X\+Y} \&B)
+\begin{DoxyCompactList}\small\item\em intersects indicates whether 2 vectors intersect or not \end{DoxyCompactList}\item 
+static long double \hyperlink{classVectorXY_afd36ee1e0721ed9aea5cf47dbbca6f66}{scalar\+Product} (\hyperlink{classPointXY}{Point\+X\+Y} $\ast$a, \hyperlink{classPointXY}{Point\+X\+Y} $\ast$b, \hyperlink{classPointXY}{Point\+X\+Y} $\ast$c)
+\begin{DoxyCompactList}\small\item\em scalar\+Product scalar product of 2 detached vector \end{DoxyCompactList}\item 
+static void \hyperlink{classVectorXY_a61f4148fb8478296adb53e3f11e35bce}{flip\+Across\+Vector} (\hyperlink{classVectorXY}{Vector\+X\+Y} \&A, \hyperlink{classVectorXY}{Vector\+X\+Y} \&B)
+\begin{DoxyCompactList}\small\item\em flip\+Across\+Vector flip one vector across another \end{DoxyCompactList}\item 
+static void \hyperlink{classVectorXY_a07353914e6a38ea4426314d3997234e6}{flip\+Across\+Vector} (\hyperlink{classPointXY}{Point\+X\+Y} \&pt, \hyperlink{classVectorXY}{Vector\+X\+Y} \&vec)
+\begin{DoxyCompactList}\small\item\em flip\+Across\+Vector flip point actoss vector \end{DoxyCompactList}\item 
+static void \hyperlink{classVectorXY_a62651da7f0e1ef8cad09fb48e05488c4}{project\+Onto\+Vector} (\hyperlink{classPointXY}{Point\+X\+Y} \&pt, \hyperlink{classVectorXY}{Vector\+X\+Y} \&vec)
+\begin{DoxyCompactList}\small\item\em project\+Onto\+Vector projectile point onto vector \end{DoxyCompactList}\item 
+static void \hyperlink{classVectorXY_a79bb35dc0ea4090c75ed95123cb2c7f9}{project\+Onto\+Vector} (\hyperlink{classVectorXY}{Vector\+X\+Y} \&A, \hyperlink{classVectorXY}{Vector\+X\+Y} \&B)
+\begin{DoxyCompactList}\small\item\em project\+Onto\+Vector projectile vector onto another vector \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classVectorXY_acaa3c11c02bd1fe1fb410ee45b028c87}{}\hyperlink{classVectorXY}{Vector\+X\+Y} {\bfseries operator$\ast$} (const double \&k, const \hyperlink{classVectorXY}{Vector\+X\+Y} \&vect)\label{classVectorXY_acaa3c11c02bd1fe1fb410ee45b028c87}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classVectorXY}{Vector\+X\+Y} class Class providing basic vector functionality. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classVectorXY_a8cf9a7bae3f5c6c120f305268076a2af}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!Vector\+X\+Y@{Vector\+X\+Y}}
+\index{Vector\+X\+Y@{Vector\+X\+Y}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{Vector\+X\+Y}]{\setlength{\rightskip}{0pt plus 5cm}Vector\+X\+Y\+::\+Vector\+X\+Y (
+\begin{DoxyParamCaption}
+\item[{long double}]{x\+Beg = {\ttfamily 0}, }
+\item[{long double}]{y\+Beg = {\ttfamily 0}, }
+\item[{long double}]{x\+End = {\ttfamily 1}, }
+\item[{long double}]{y\+End = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a8cf9a7bae3f5c6c120f305268076a2af}
+
+
+$<$ vector end 
+
+\hyperlink{classVectorXY}{Vector\+X\+Y} basic constructor 
+\begin{DoxyParams}{Parameters}
+{\em x\+Beg} & x begin \\
+\hline
+{\em y\+Beg} & y begin \\
+\hline
+{\em x\+End} & x end \\
+\hline
+{\em y\+End} & y end \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a1d6f51eec2d1eb3d4f70d3c6d9c6bed1}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!Vector\+X\+Y@{Vector\+X\+Y}}
+\index{Vector\+X\+Y@{Vector\+X\+Y}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{Vector\+X\+Y}]{\setlength{\rightskip}{0pt plus 5cm}Vector\+X\+Y\+::\+Vector\+X\+Y (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\+X\+Y} \&}]{first, }
+\item[{const {\bf Point\+X\+Y} \&}]{last}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a1d6f51eec2d1eb3d4f70d3c6d9c6bed1}
+
+
+\hyperlink{classVectorXY}{Vector\+X\+Y} constructor from points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & begin \\
+\hline
+{\em last} & end \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_afa7511b9ada046d507e11acbdca41a0b}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!Vector\+X\+Y@{Vector\+X\+Y}}
+\index{Vector\+X\+Y@{Vector\+X\+Y}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{Vector\+X\+Y}]{\setlength{\rightskip}{0pt plus 5cm}Vector\+X\+Y\+::\+Vector\+X\+Y (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector\+X\+Y} \&}]{tmp}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_afa7511b9ada046d507e11acbdca41a0b}
+
+
+\hyperlink{classVectorXY}{Vector\+X\+Y} copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tmp} & reference \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classVectorXY_a55713178bb2845a83b858c5776194b6d}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!center\+On@{center\+On}}
+\index{center\+On@{center\+On}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{center\+On}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::center\+On (
+\begin{DoxyParamCaption}
+\item[{long double}]{x, }
+\item[{long double}]{y}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a55713178bb2845a83b858c5776194b6d}
+
+
+center\+On center vector on specified point 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & desired x \\
+\hline
+{\em y} & desired y \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a61f4148fb8478296adb53e3f11e35bce}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!flip\+Across\+Vector@{flip\+Across\+Vector}}
+\index{flip\+Across\+Vector@{flip\+Across\+Vector}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{flip\+Across\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::flip\+Across\+Vector (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector\+X\+Y} \&}]{A, }
+\item[{{\bf Vector\+X\+Y} \&}]{B}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classVectorXY_a61f4148fb8478296adb53e3f11e35bce}
+
+
+flip\+Across\+Vector flip one vector across another 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vector to be flipped \\
+\hline
+{\em B} & vector to flip against \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a07353914e6a38ea4426314d3997234e6}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!flip\+Across\+Vector@{flip\+Across\+Vector}}
+\index{flip\+Across\+Vector@{flip\+Across\+Vector}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{flip\+Across\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::flip\+Across\+Vector (
+\begin{DoxyParamCaption}
+\item[{{\bf Point\+X\+Y} \&}]{pt, }
+\item[{{\bf Vector\+X\+Y} \&}]{vec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classVectorXY_a07353914e6a38ea4426314d3997234e6}
+
+
+flip\+Across\+Vector flip point actoss vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pt} & point \\
+\hline
+{\em vec} & vector \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a756a3c349a46361ce94af16a358d0699}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!get\+Begin@{get\+Begin}}
+\index{get\+Begin@{get\+Begin}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{get\+Begin}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point\+X\+Y}\& Vector\+X\+Y\+::get\+Begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classVectorXY_a756a3c349a46361ce94af16a358d0699}
+
+
+get\+Begin 
+
+\begin{DoxyReturn}{Returns}
+begin of vector 
+\end{DoxyReturn}
+\hypertarget{classVectorXY_a59ba6208946c4860c43f84a11f2d4ca4}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!get\+End@{get\+End}}
+\index{get\+End@{get\+End}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{get\+End}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point\+X\+Y}\& Vector\+X\+Y\+::get\+End (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classVectorXY_a59ba6208946c4860c43f84a11f2d4ca4}
+
+
+get\+End 
+
+\begin{DoxyReturn}{Returns}
+end of vector 
+\end{DoxyReturn}
+\hypertarget{classVectorXY_adb8b4da2bd2d7383af3973d6daa95b53}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!height@{height}}
+\index{height@{height}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{height}]{\setlength{\rightskip}{0pt plus 5cm}long double Vector\+X\+Y\+::height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classVectorXY_adb8b4da2bd2d7383af3973d6daa95b53}
+
+
+height returns height of vector (Y axis length) 
+
+\begin{DoxyReturn}{Returns}
+height of vector 
+\end{DoxyReturn}
+\hypertarget{classVectorXY_a585c00eaedb3c0af026cca3d155df34d}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!intersects@{intersects}}
+\index{intersects@{intersects}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{intersects}]{\setlength{\rightskip}{0pt plus 5cm}bool Vector\+X\+Y\+::intersects (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector\+X\+Y} \&}]{A, }
+\item[{const {\bf Vector\+X\+Y} \&}]{B}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classVectorXY_a585c00eaedb3c0af026cca3d155df34d}
+
+
+intersects indicates whether 2 vectors intersect or not 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vector A \\
+\hline
+{\em B} & vector B \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether A intersects with B 
+\end{DoxyReturn}
+\hypertarget{classVectorXY_a27649ddf218ed91b6c38e9ccee45a637}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!move\+By@{move\+By}}
+\index{move\+By@{move\+By}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{move\+By}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::move\+By (
+\begin{DoxyParamCaption}
+\item[{long double}]{x, }
+\item[{long double}]{y}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a27649ddf218ed91b6c38e9ccee45a637}
+
+
+move\+By move vector by specified offset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x offset \\
+\hline
+{\em y} & y offset \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a85281070287140c27325ad11e7198840}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!move\+To@{move\+To}}
+\index{move\+To@{move\+To}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{move\+To}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::move\+To (
+\begin{DoxyParamCaption}
+\item[{long double}]{x, }
+\item[{long double}]{y, }
+\item[{bool}]{end = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a85281070287140c27325ad11e7198840}
+
+
+move\+To move vector to specified position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & desired x pos \\
+\hline
+{\em y} & desired y pos \\
+\hline
+{\em end} & flag indicating which point of vector should be aligned \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a62651da7f0e1ef8cad09fb48e05488c4}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!project\+Onto\+Vector@{project\+Onto\+Vector}}
+\index{project\+Onto\+Vector@{project\+Onto\+Vector}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{project\+Onto\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::project\+Onto\+Vector (
+\begin{DoxyParamCaption}
+\item[{{\bf Point\+X\+Y} \&}]{pt, }
+\item[{{\bf Vector\+X\+Y} \&}]{vec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classVectorXY_a62651da7f0e1ef8cad09fb48e05488c4}
+
+
+project\+Onto\+Vector projectile point onto vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pt} & point \\
+\hline
+{\em vec} & vector \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a79bb35dc0ea4090c75ed95123cb2c7f9}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!project\+Onto\+Vector@{project\+Onto\+Vector}}
+\index{project\+Onto\+Vector@{project\+Onto\+Vector}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{project\+Onto\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::project\+Onto\+Vector (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector\+X\+Y} \&}]{A, }
+\item[{{\bf Vector\+X\+Y} \&}]{B}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classVectorXY_a79bb35dc0ea4090c75ed95123cb2c7f9}
+
+
+project\+Onto\+Vector projectile vector onto another vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & vector to be projected \\
+\hline
+{\em B} & vector to be projected on \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_afd36ee1e0721ed9aea5cf47dbbca6f66}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!scalar\+Product@{scalar\+Product}}
+\index{scalar\+Product@{scalar\+Product}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{scalar\+Product}]{\setlength{\rightskip}{0pt plus 5cm}long double Vector\+X\+Y\+::scalar\+Product (
+\begin{DoxyParamCaption}
+\item[{{\bf Point\+X\+Y} $\ast$}]{a, }
+\item[{{\bf Point\+X\+Y} $\ast$}]{b, }
+\item[{{\bf Point\+X\+Y} $\ast$}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classVectorXY_afd36ee1e0721ed9aea5cf47dbbca6f66}
+
+
+scalar\+Product scalar product of 2 detached vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & point A \\
+\hline
+{\em b} & commont point of 2 vectors \\
+\hline
+{\em c} & point B \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classVectorXY_a92c5fd3e5018183f59e409abd523b23b}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!scale\+By@{scale\+By}}
+\index{scale\+By@{scale\+By}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{scale\+By}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::scale\+By (
+\begin{DoxyParamCaption}
+\item[{long double}]{k}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a92c5fd3e5018183f59e409abd523b23b}
+
+
+scale\+By scale vector by specified fraction (from point 0,0) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & fraction \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_aa4dfb1630e9d1b440a7f383a8f7f5bd8}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!scale\+Length\+By@{scale\+Length\+By}}
+\index{scale\+Length\+By@{scale\+Length\+By}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{scale\+Length\+By}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::scale\+Length\+By (
+\begin{DoxyParamCaption}
+\item[{long double}]{k, }
+\item[{bool}]{end = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_aa4dfb1630e9d1b440a7f383a8f7f5bd8}
+
+
+scale\+Length\+By scale vector to specified Euclidean length (from point 0,0) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a6cc6d38fbe0d949a6758d6b04ff61818}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!scale\+Length\+To@{scale\+Length\+To}}
+\index{scale\+Length\+To@{scale\+Length\+To}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{scale\+Length\+To}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::scale\+Length\+To (
+\begin{DoxyParamCaption}
+\item[{long double}]{k, }
+\item[{bool}]{end = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a6cc6d38fbe0d949a6758d6b04ff61818}
+
+
+scale\+Length\+To scale vector by specified fraction (from beginning point) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a08ef32c78e917db26296e27a924504bf}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!scale\+To@{scale\+To}}
+\index{scale\+To@{scale\+To}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{scale\+To}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::scale\+To (
+\begin{DoxyParamCaption}
+\item[{long double}]{siz}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a08ef32c78e917db26296e27a924504bf}
+
+
+scale\+To scale vector to specified Euclidean length (from point 0,0) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em siz} & desired size \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a54d01726e2920265ddc17152d292ad3e}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!set\+Begin@{set\+Begin}}
+\index{set\+Begin@{set\+Begin}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{set\+Begin}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::set\+Begin (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\+X\+Y} \&}]{A}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a54d01726e2920265ddc17152d292ad3e}
+
+
+set\+Begin set beginning point of vector to specified value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & new value \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a4aa9560ca31838238992c604f23c1910}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!set\+End@{set\+End}}
+\index{set\+End@{set\+End}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{set\+End}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::set\+End (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\+X\+Y} \&}]{A}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a4aa9560ca31838238992c604f23c1910}
+
+
+set\+End set endinf point of vector to specified value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & new value \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_a8ba83cb02ebe32672926abac17ab174e}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!set\+Vector@{set\+Vector}}
+\index{set\+Vector@{set\+Vector}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{set\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}void Vector\+X\+Y\+::set\+Vector (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\+X\+Y} \&}]{beg, }
+\item[{const {\bf Point\+X\+Y} \&}]{end}
+\end{DoxyParamCaption}
+)}\label{classVectorXY_a8ba83cb02ebe32672926abac17ab174e}
+
+
+set\+Vector set vector to new one 
+
+
+\begin{DoxyParams}{Parameters}
+{\em beg} & new beginning \\
+\hline
+{\em end} & new ending \\
+\hline
+\end{DoxyParams}
+\hypertarget{classVectorXY_aa7aa129411aaeb43a1b89084c2af5da8}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!size@{size}}
+\index{size@{size}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}long double Vector\+X\+Y\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classVectorXY_aa7aa129411aaeb43a1b89084c2af5da8}
+
+
+size Euclidean length of vector 
+
+\begin{DoxyReturn}{Returns}
+length 
+\end{DoxyReturn}
+\hypertarget{classVectorXY_a0f1457e18bad227f3e06b5b3ca37f0b7}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!size\+X\+Y@{size\+X\+Y}}
+\index{size\+X\+Y@{size\+X\+Y}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{size\+X\+Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\+X\+Y} Vector\+X\+Y\+::size\+X\+Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classVectorXY_a0f1457e18bad227f3e06b5b3ca37f0b7}
+
+
+size\+X\+Y returns pair of width\+:heigth as Point class 
+
+\begin{DoxyReturn}{Returns}
+xy size 
+\end{DoxyReturn}
+\hypertarget{classVectorXY_ada8c272d3a9f8aab0b6af4cd15763d23}{}\index{Vector\+X\+Y@{Vector\+X\+Y}!width@{width}}
+\index{width@{width}!Vector\+X\+Y@{Vector\+X\+Y}}
+\subsubsection[{width}]{\setlength{\rightskip}{0pt plus 5cm}long double Vector\+X\+Y\+::width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classVectorXY_ada8c272d3a9f8aab0b6af4cd15763d23}
+
+
+width returns width of vector (X axis length) 
+
+\begin{DoxyReturn}{Returns}
+width of vector 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Vector\+X\+Y.\+h\item 
+src/Vector\+X\+Y.\+cpp\end{DoxyCompactItemize}

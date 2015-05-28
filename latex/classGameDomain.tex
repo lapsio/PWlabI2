@@ -1,0 +1,98 @@
+\hypertarget{classGameDomain}{}\section{Game\+Domain Class Reference}
+\label{classGameDomain}\index{Game\+Domain@{Game\+Domain}}
+
+
+The \hyperlink{classGameDomain}{Game\+Domain} class Game domain manager class, providing game domain code layer for game logic.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Domain.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classGameDomain_af4426ea0c66b01e5c573becf180e7fb3}{add} (\hyperlink{classInterface}{Interface} \&interface)
+\begin{DoxyCompactList}\small\item\em add add new driver to execution queue of this manager \end{DoxyCompactList}\item 
+void \hyperlink{classGameDomain_a77944f3e82e8f492c523586dd1ce0674}{remove} (\hyperlink{classInterface}{Interface} $\ast$interface)
+\begin{DoxyCompactList}\small\item\em remove remove driver from manager \end{DoxyCompactList}\item 
+void \hyperlink{classGameDomain_a8326ffd8483813cd617c13e6d8e0dbfc}{bind\+Session} (\hyperlink{classGameSession}{Game\+Session} \&s)
+\begin{DoxyCompactList}\small\item\em bind\+Session bind session to this manager. \end{DoxyCompactList}\item 
+\hyperlink{classChain}{Chain}$<$ \hyperlink{classBaseEvent}{Base\+Event} \& $>$ $\ast$ \hyperlink{classGameDomain_a9d8996f5abf6019a7a396c1854a3b8eb}{reload} ()
+\begin{DoxyCompactList}\small\item\em reload reload drivers queue \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGameDomain}{Game\+Domain} class Game domain manager class, providing game domain code layer for game logic. 
+
+Game is created using multiple drivers, handling various tasks. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGameDomain_af4426ea0c66b01e5c573becf180e7fb3}{}\index{Game\+Domain@{Game\+Domain}!add@{add}}
+\index{add@{add}!Game\+Domain@{Game\+Domain}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Domain\+::add (
+\begin{DoxyParamCaption}
+\item[{{\bf Interface} \&}]{interface}
+\end{DoxyParamCaption}
+)}\label{classGameDomain_af4426ea0c66b01e5c573becf180e7fb3}
+
+
+add add new driver to execution queue of this manager 
+
+
+\begin{DoxyParams}{Parameters}
+{\em interface} & interface to be added \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameDomain_a8326ffd8483813cd617c13e6d8e0dbfc}{}\index{Game\+Domain@{Game\+Domain}!bind\+Session@{bind\+Session}}
+\index{bind\+Session@{bind\+Session}!Game\+Domain@{Game\+Domain}}
+\subsubsection[{bind\+Session}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Domain\+::bind\+Session (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Session} \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classGameDomain_a8326ffd8483813cd617c13e6d8e0dbfc}
+
+
+bind\+Session bind session to this manager. 
+
+T\+H\+I\+S I\+S R\+E\+Q\+U\+I\+R\+E\+D. Each manager H\+A\+S T\+O have some session bound to it. 
+\begin{DoxyParams}{Parameters}
+{\em s} & session to be bound \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGameDomain_a9d8996f5abf6019a7a396c1854a3b8eb}{}\index{Game\+Domain@{Game\+Domain}!reload@{reload}}
+\index{reload@{reload}!Game\+Domain@{Game\+Domain}}
+\subsubsection[{reload}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Chain}$<$ {\bf Base\+Event} \& $>$ $\ast$ Game\+Domain\+::reload (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGameDomain_a9d8996f5abf6019a7a396c1854a3b8eb}
+
+
+reload reload drivers queue 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classGameDomain_a77944f3e82e8f492c523586dd1ce0674}{}\index{Game\+Domain@{Game\+Domain}!remove@{remove}}
+\index{remove@{remove}!Game\+Domain@{Game\+Domain}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Domain\+::remove (
+\begin{DoxyParamCaption}
+\item[{{\bf Interface} $\ast$}]{interface}
+\end{DoxyParamCaption}
+)}\label{classGameDomain_a77944f3e82e8f492c523586dd1ce0674}
+
+
+remove remove driver from manager 
+
+
+\begin{DoxyParams}{Parameters}
+{\em interface} & to be removed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Game\+Domain.\+h\item 
+src/Game\+Domain.\+cpp\end{DoxyCompactItemize}

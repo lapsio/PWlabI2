@@ -1,0 +1,170 @@
+\hypertarget{classGameSession}{}\section{Game\+Session Class Reference}
+\label{classGameSession}\index{Game\+Session@{Game\+Session}}
+
+
+The \hyperlink{classGameSession}{Game\+Session} class base game engine class providing session functionality.  
+
+
+
+
+{\ttfamily \#include $<$session.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGameSession_acf86794a6c1bf09cea3862c26179ead7}{Game\+Session} (\hyperlink{classRenderEngine}{Render\+Engine} \&render\+Engine, \hyperlink{classPhysicsEngine}{Physics\+Engine} \&physics\+Engine, \hyperlink{classTimer}{Timer} \&timer=$\ast$(new \hyperlink{classTimer}{Timer}(25, true)), \hyperlink{classGameDomain}{Game\+Domain} \&game\+Domain=$\ast$(new \hyperlink{classGameDomain}{Game\+Domain}()))
+\begin{DoxyCompactList}\small\item\em \hyperlink{classGameSession}{Game\+Session} constructor. \end{DoxyCompactList}\item 
+\hypertarget{classGameSession_a491ad42d36865d15f9b76871039618b8}{}{\bfseries Game\+Session} (\hyperlink{classRenderEngine}{Render\+Engine} \&render\+Engine, \hyperlink{classGameMap}{Game\+Map} \&map, \hyperlink{classTimer}{Timer} \&timer=$\ast$(new \hyperlink{classTimer}{Timer}(25, true)), \hyperlink{classGameDomain}{Game\+Domain} \&game\+Domain=$\ast$(new \hyperlink{classGameDomain}{Game\+Domain}()))\label{classGameSession_a491ad42d36865d15f9b76871039618b8}
+
+\item 
+\hypertarget{classGameSession_a9a0832e191313753703d194a64c90d83}{}{\bfseries Game\+Session} (\hyperlink{classRenderEngine}{Render\+Engine} \&render\+Engine, int W=64, int H=48, \hyperlink{classTimer}{Timer} \&timer=$\ast$(new \hyperlink{classTimer}{Timer}(25, true)), \hyperlink{classGameDomain}{Game\+Domain} \&game\+Domain=$\ast$(new \hyperlink{classGameDomain}{Game\+Domain}()))\label{classGameSession_a9a0832e191313753703d194a64c90d83}
+
+\item 
+\hyperlink{classGameSession}{Game\+Session} $\ast$ \hyperlink{classGameSession_a8bc1efa84d25d89fb0978c374052998f}{enter\+Session\+Loop} (bool \&interrupt\+Trigger)
+\begin{DoxyCompactList}\small\item\em enter\+Session\+Loop starts session \end{DoxyCompactList}\item 
+\hyperlink{classGameMap}{Game\+Map} $\ast$ \hyperlink{classGameSession_a53cf338c7ef00eec4c66cd782aa1c75b}{get\+Game\+Map} ()
+\begin{DoxyCompactList}\small\item\em get\+Game\+Map \end{DoxyCompactList}\item 
+\hyperlink{classTimer}{Timer} $\ast$ \hyperlink{classGameSession_ae83e20db424a495a5c5e77a3d49bc99f}{get\+Timer} ()
+\begin{DoxyCompactList}\small\item\em get\+Timer \end{DoxyCompactList}\item 
+\hyperlink{classPhysicsEngine}{Physics\+Engine} $\ast$ \hyperlink{classGameSession_a4f114298b92076ac0cde3d522966acde}{get\+Physics\+Engine} ()
+\begin{DoxyCompactList}\small\item\em get\+Physics\+Engine \end{DoxyCompactList}\item 
+\hyperlink{classGameDomain}{Game\+Domain} $\ast$ \hyperlink{classGameSession_acd1b9636d6c956c6d8a1b379de8d34ee}{get\+Game\+Domain} ()
+\begin{DoxyCompactList}\small\item\em get\+Game\+Domain \end{DoxyCompactList}\item 
+\hyperlink{classRenderEngine}{Render\+Engine} $\ast$ \hyperlink{classGameSession_a7b517a74945fe5a5100fad30fdd4a40b}{get\+Render\+Engine} ()
+\begin{DoxyCompactList}\small\item\em get\+Render\+Engine \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGameSession_ab7ae8d29634834ce6b4425090b25a091}{}\hyperlink{classChain}{Chain}$<$ char $>$ $\ast$ \hyperlink{classGameSession_ab7ae8d29634834ce6b4425090b25a091}{keyboard\+Input}\label{classGameSession_ab7ae8d29634834ce6b4425090b25a091}
+
+\begin{DoxyCompactList}\small\item\em captured keyboard input \end{DoxyCompactList}\item 
+\hypertarget{classGameSession_a26a0470fc4c20bfd5525e7f375423726}{}\hyperlink{classPointXY}{Point\+X\+Y} \hyperlink{classGameSession_a26a0470fc4c20bfd5525e7f375423726}{mouse\+Inpput}\label{classGameSession_a26a0470fc4c20bfd5525e7f375423726}
+
+\begin{DoxyCompactList}\small\item\em captured mouse input \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGameSession}{Game\+Session} class base game engine class providing session functionality. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGameSession_acf86794a6c1bf09cea3862c26179ead7}{}\index{Game\+Session@{Game\+Session}!Game\+Session@{Game\+Session}}
+\index{Game\+Session@{Game\+Session}!Game\+Session@{Game\+Session}}
+\subsubsection[{Game\+Session}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Session\+::\+Game\+Session (
+\begin{DoxyParamCaption}
+\item[{{\bf Render\+Engine} \&}]{render\+Engine, }
+\item[{{\bf Physics\+Engine} \&}]{physics\+Engine, }
+\item[{{\bf Timer} \&}]{timer = {\ttfamily $\ast$(new~{\bf Timer}(25,true))}, }
+\item[{{\bf Game\+Domain} \&}]{game\+Domain = {\ttfamily $\ast$(new~{\bf Game\+Domain}())}}
+\end{DoxyParamCaption}
+)}\label{classGameSession_acf86794a6c1bf09cea3862c26179ead7}
+
+
+\hyperlink{classGameSession}{Game\+Session} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em physics\+Engine} & physics engine to be used by session \\
+\hline
+{\em timer} & timer to be used by session \\
+\hline
+{\em game\+Domain} & game domain code engine to be used by session \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classGameSession_a8bc1efa84d25d89fb0978c374052998f}{}\index{Game\+Session@{Game\+Session}!enter\+Session\+Loop@{enter\+Session\+Loop}}
+\index{enter\+Session\+Loop@{enter\+Session\+Loop}!Game\+Session@{Game\+Session}}
+\subsubsection[{enter\+Session\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Session} $\ast$ Game\+Session\+::enter\+Session\+Loop (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{interrupt\+Trigger}
+\end{DoxyParamCaption}
+)}\label{classGameSession_a8bc1efa84d25d89fb0978c374052998f}
+
+
+enter\+Session\+Loop starts session 
+
+
+\begin{DoxyParams}{Parameters}
+{\em interrupt\+Trigger} & reference to interruption trigger. when set to true inside game loop, session will terminate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether session was interrupted by interrupt trigger or in usual way (session swap event) 
+\end{DoxyReturn}
+\hypertarget{classGameSession_acd1b9636d6c956c6d8a1b379de8d34ee}{}\index{Game\+Session@{Game\+Session}!get\+Game\+Domain@{get\+Game\+Domain}}
+\index{get\+Game\+Domain@{get\+Game\+Domain}!Game\+Session@{Game\+Session}}
+\subsubsection[{get\+Game\+Domain}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Domain}$\ast$ Game\+Session\+::get\+Game\+Domain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classGameSession_acd1b9636d6c956c6d8a1b379de8d34ee}
+
+
+get\+Game\+Domain 
+
+\begin{DoxyReturn}{Returns}
+game domain engine used by session 
+\end{DoxyReturn}
+\hypertarget{classGameSession_a53cf338c7ef00eec4c66cd782aa1c75b}{}\index{Game\+Session@{Game\+Session}!get\+Game\+Map@{get\+Game\+Map}}
+\index{get\+Game\+Map@{get\+Game\+Map}!Game\+Session@{Game\+Session}}
+\subsubsection[{get\+Game\+Map}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Map}$\ast$ Game\+Session\+::get\+Game\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classGameSession_a53cf338c7ef00eec4c66cd782aa1c75b}
+
+
+get\+Game\+Map 
+
+\begin{DoxyReturn}{Returns}
+map used by session 
+\end{DoxyReturn}
+\hypertarget{classGameSession_a4f114298b92076ac0cde3d522966acde}{}\index{Game\+Session@{Game\+Session}!get\+Physics\+Engine@{get\+Physics\+Engine}}
+\index{get\+Physics\+Engine@{get\+Physics\+Engine}!Game\+Session@{Game\+Session}}
+\subsubsection[{get\+Physics\+Engine}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Physics\+Engine}$\ast$ Game\+Session\+::get\+Physics\+Engine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classGameSession_a4f114298b92076ac0cde3d522966acde}
+
+
+get\+Physics\+Engine 
+
+\begin{DoxyReturn}{Returns}
+physics engine used by session 
+\end{DoxyReturn}
+\hypertarget{classGameSession_a7b517a74945fe5a5100fad30fdd4a40b}{}\index{Game\+Session@{Game\+Session}!get\+Render\+Engine@{get\+Render\+Engine}}
+\index{get\+Render\+Engine@{get\+Render\+Engine}!Game\+Session@{Game\+Session}}
+\subsubsection[{get\+Render\+Engine}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Render\+Engine}$\ast$ Game\+Session\+::get\+Render\+Engine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classGameSession_a7b517a74945fe5a5100fad30fdd4a40b}
+
+
+get\+Render\+Engine 
+
+\begin{DoxyReturn}{Returns}
+render engine used by session 
+\end{DoxyReturn}
+\hypertarget{classGameSession_ae83e20db424a495a5c5e77a3d49bc99f}{}\index{Game\+Session@{Game\+Session}!get\+Timer@{get\+Timer}}
+\index{get\+Timer@{get\+Timer}!Game\+Session@{Game\+Session}}
+\subsubsection[{get\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer}$\ast$ Game\+Session\+::get\+Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classGameSession_ae83e20db424a495a5c5e77a3d49bc99f}
+
+
+get\+Timer 
+
+\begin{DoxyReturn}{Returns}
+timer used by session 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/session.\+h\item 
+src/session.\+cpp\end{DoxyCompactItemize}

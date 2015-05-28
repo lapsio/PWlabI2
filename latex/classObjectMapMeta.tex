@@ -1,0 +1,242 @@
+\hypertarget{classObjectMapMeta}{}\section{Object\+Map\+Meta Class Reference}
+\label{classObjectMapMeta}\index{Object\+Map\+Meta@{Object\+Map\+Meta}}
+
+
+The \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} class \hyperlink{classObject}{Object} meta class containing map-\/related properties of object.  
+
+
+
+
+{\ttfamily \#include $<$map.\+h$>$}
+
+Inheritance diagram for Object\+Map\+Meta\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classObjectMapMeta}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classObjectMapMeta_a5217b0d2a08ec5ed88f790c9f75a0b75}{Object\+Map\+Meta} (\hyperlink{classObject}{Object} \&obj, \hyperlink{classPointXY}{Point\+X\+Y} \hyperlink{classObjectMapMeta_a7ca5609abb6c5fd57fe3828725240847}{pos}=\hyperlink{classPointXY}{Point\+X\+Y}(0, 0))
+\begin{DoxyCompactList}\small\item\em \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta_a97778bafcdef8809112e315189371045}{Object\+Map\+Meta} (const \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \&ref)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$ \hyperlink{classObjectMapMeta_a01202e363d84edbcb7b301c97400dd58}{get\+Anchor} () const 
+\begin{DoxyCompactList}\small\item\em get\+Anchor returns parent object which meta is attached to \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$ \hyperlink{classObjectMapMeta_a50cb677227ba335c397b24bd170f032d}{get\+Tail} () const 
+\begin{DoxyCompactList}\small\item\em get\+Tail returns child object which is attached to this object \end{DoxyCompactList}\item 
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$ \hyperlink{classObjectMapMeta_ae8dd47a6811d0244dc3f10991a749569}{get\+Root} () const 
+\begin{DoxyCompactList}\small\item\em get\+Root returns topmost parent in objects hierarchy \end{DoxyCompactList}\item 
+\hyperlink{classPointXY}{Point\+X\+Y} \hyperlink{classObjectMapMeta_a66b92b6e542b4170a3a2c830d95807d8}{get\+Global\+Pos} () const 
+\begin{DoxyCompactList}\small\item\em get\+Global\+Pos returns calculated global position (affected by \end{DoxyCompactList}\item 
+void \hyperlink{classObjectMapMeta_ae4a20414fe790ad32542294d18efb931}{attach} (\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \&anchor)
+\begin{DoxyCompactList}\small\item\em attach Attaches object to another one \end{DoxyCompactList}\item 
+\hypertarget{classObjectMapMeta_ab73aa1e8a6cb41fcedc94ebf904a5c41}{}void \hyperlink{classObjectMapMeta_ab73aa1e8a6cb41fcedc94ebf904a5c41}{detach} ()\label{classObjectMapMeta_ab73aa1e8a6cb41fcedc94ebf904a5c41}
+
+\begin{DoxyCompactList}\small\item\em detach Detaches object from parent \end{DoxyCompactList}\item 
+bool \hyperlink{classObjectMapMeta_ac0ba6c1b3c98a0b015e60da4575411cb}{is\+In\+Use} () const 
+\begin{DoxyCompactList}\small\item\em is\+In\+Use Indicates whether meta is already placed on map or not \end{DoxyCompactList}\item 
+\hyperlink{classGameMap}{Game\+Map} $\ast$ \hyperlink{classObjectMapMeta_ae9a94a068918c364af21c8e8dc515f0a}{get\+Map} () const 
+\begin{DoxyCompactList}\small\item\em get\+Map returns map which object is placed on \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectMapMeta_a7c63160bc0d55ce0dfa9819a5796e027}{}\hyperlink{classObject}{Object} \& \hyperlink{classObjectMapMeta_a7c63160bc0d55ce0dfa9819a5796e027}{object}\label{classObjectMapMeta_a7c63160bc0d55ce0dfa9819a5796e027}
+
+\begin{DoxyCompactList}\small\item\em represented object reference \end{DoxyCompactList}\item 
+\hypertarget{classObjectMapMeta_a7ca5609abb6c5fd57fe3828725240847}{}\hyperlink{classPointXY}{Point\+X\+Y} \hyperlink{classObjectMapMeta_a7ca5609abb6c5fd57fe3828725240847}{pos}\label{classObjectMapMeta_a7ca5609abb6c5fd57fe3828725240847}
+
+\begin{DoxyCompactList}\small\item\em object position or offset from anchor (parent) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectMapMeta_a65628ecfd0b0db1e2e2534d2ed93a59b}{}static constexpr char $\ast$ \hyperlink{classObjectMapMeta_a65628ecfd0b0db1e2e2534d2ed93a59b}{type\+Name} =(char$\ast$)\char`\"{}Meta\char`\"{}\label{classObjectMapMeta_a65628ecfd0b0db1e2e2534d2ed93a59b}
+
+\begin{DoxyCompactList}\small\item\em type name \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectMapMeta_a80a10a6a51b8533c24f5106d3be695d5}{}virtual void {\bfseries link\+Map} (\hyperlink{classGameMap}{Game\+Map} \&map)\label{classObjectMapMeta_a80a10a6a51b8533c24f5106d3be695d5}
+
+\item 
+\hypertarget{classObjectMapMeta_a3b256fc24b4c5262443094634a91330c}{}virtual void {\bfseries unlink\+Map} ()\label{classObjectMapMeta_a3b256fc24b4c5262443094634a91330c}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectMapMeta_a4dd5cbfe0d5de2020a432f3deb94bbb2}{}bool {\bfseries in\+Use}\label{classObjectMapMeta_a4dd5cbfe0d5de2020a432f3deb94bbb2}
+
+\item 
+\hypertarget{classObjectMapMeta_a97d9c262d487cce070f22f035f1c1e16}{}\hyperlink{classGCRefLink}{G\+C\+Ref\+Link} $\ast$ {\bfseries map\+Link}\label{classObjectMapMeta_a97d9c262d487cce070f22f035f1c1e16}
+
+\item 
+\hypertarget{classObjectMapMeta_aec01f78a915fd54a8cf7ba59de3d3dcf}{}\hyperlink{classGameMap}{Game\+Map} $\ast$ {\bfseries map}\label{classObjectMapMeta_aec01f78a915fd54a8cf7ba59de3d3dcf}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectMapMeta_a93630ea74a3218a3e2e96b7bf2c07c66}{}class {\bfseries Game\+Map}\label{classObjectMapMeta_a93630ea74a3218a3e2e96b7bf2c07c66}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} class \hyperlink{classObject}{Object} meta class containing map-\/related properties of object. 
+
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} class provides map-\/specific properties related to object like various relations between objects (attachment of one object to another) and position. Single \hyperlink{classObject}{Object} can be placed multiple times on single map using multiple \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} instances, however it\textquotesingle{}ll literally link instances of object on map, thus any operations performed on original object except map-\/specific properties will affect both of them. Useful for template and non-\/interactive objects which can be placed in many places on single map
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classGameMap}{Game\+Map} 
+
+\hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classObjectMapMeta_a5217b0d2a08ec5ed88f790c9f75a0b75}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\index{Object\+Map\+Meta@{Object\+Map\+Meta}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{Object\+Map\+Meta}]{\setlength{\rightskip}{0pt plus 5cm}Object\+Map\+Meta\+::\+Object\+Map\+Meta (
+\begin{DoxyParamCaption}
+\item[{{\bf Object} \&}]{obj, }
+\item[{{\bf Point\+X\+Y}}]{pos = {\ttfamily {\bf Point\+X\+Y}(0,0)}}
+\end{DoxyParamCaption}
+)}\label{classObjectMapMeta_a5217b0d2a08ec5ed88f790c9f75a0b75}
+
+
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & represented object \\
+\hline
+{\em pos} & initial position \\
+\hline
+\end{DoxyParams}
+\hypertarget{classObjectMapMeta_a97778bafcdef8809112e315189371045}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\index{Object\+Map\+Meta@{Object\+Map\+Meta}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{Object\+Map\+Meta}]{\setlength{\rightskip}{0pt plus 5cm}Object\+Map\+Meta\+::\+Object\+Map\+Meta (
+\begin{DoxyParamCaption}
+\item[{const {\bf Object\+Map\+Meta} \&}]{ref}
+\end{DoxyParamCaption}
+)}\label{classObjectMapMeta_a97778bafcdef8809112e315189371045}
+
+
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref} & reference meta \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classObjectMapMeta_ae4a20414fe790ad32542294d18efb931}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!attach@{attach}}
+\index{attach@{attach}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{attach}]{\setlength{\rightskip}{0pt plus 5cm}void Object\+Map\+Meta\+::attach (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Map\+Meta} \&}]{anchor}
+\end{DoxyParamCaption}
+)}\label{classObjectMapMeta_ae4a20414fe790ad32542294d18efb931}
+
+
+attach Attaches object to another one 
+
+
+\begin{DoxyParams}{Parameters}
+{\em anchor} & new parent meta \\
+\hline
+\end{DoxyParams}
+\hypertarget{classObjectMapMeta_a01202e363d84edbcb7b301c97400dd58}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!get\+Anchor@{get\+Anchor}}
+\index{get\+Anchor@{get\+Anchor}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{get\+Anchor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+Map\+Meta}$\ast$ Object\+Map\+Meta\+::get\+Anchor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classObjectMapMeta_a01202e363d84edbcb7b301c97400dd58}
+
+
+get\+Anchor returns parent object which meta is attached to 
+
+\begin{DoxyReturn}{Returns}
+parent meta 
+\end{DoxyReturn}
+\hypertarget{classObjectMapMeta_a66b92b6e542b4170a3a2c830d95807d8}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!get\+Global\+Pos@{get\+Global\+Pos}}
+\index{get\+Global\+Pos@{get\+Global\+Pos}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{get\+Global\+Pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\+X\+Y} Object\+Map\+Meta\+::get\+Global\+Pos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classObjectMapMeta_a66b92b6e542b4170a3a2c830d95807d8}
+
+
+get\+Global\+Pos returns calculated global position (affected by 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classObjectMapMeta_ae9a94a068918c364af21c8e8dc515f0a}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!get\+Map@{get\+Map}}
+\index{get\+Map@{get\+Map}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{get\+Map}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\+Map}$\ast$ Object\+Map\+Meta\+::get\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classObjectMapMeta_ae9a94a068918c364af21c8e8dc515f0a}
+
+
+get\+Map returns map which object is placed on 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classObjectMapMeta_ae8dd47a6811d0244dc3f10991a749569}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!get\+Root@{get\+Root}}
+\index{get\+Root@{get\+Root}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{get\+Root}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+Map\+Meta}$\ast$ Object\+Map\+Meta\+::get\+Root (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classObjectMapMeta_ae8dd47a6811d0244dc3f10991a749569}
+
+
+get\+Root returns topmost parent in objects hierarchy 
+
+\begin{DoxyReturn}{Returns}
+topmost parent meta 
+\end{DoxyReturn}
+\hypertarget{classObjectMapMeta_a50cb677227ba335c397b24bd170f032d}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!get\+Tail@{get\+Tail}}
+\index{get\+Tail@{get\+Tail}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{get\+Tail}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Object\+Map\+Meta}$\ast$ Object\+Map\+Meta\+::get\+Tail (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classObjectMapMeta_a50cb677227ba335c397b24bd170f032d}
+
+
+get\+Tail returns child object which is attached to this object 
+
+\begin{DoxyReturn}{Returns}
+child meta 
+\end{DoxyReturn}
+\hypertarget{classObjectMapMeta_ac0ba6c1b3c98a0b015e60da4575411cb}{}\index{Object\+Map\+Meta@{Object\+Map\+Meta}!is\+In\+Use@{is\+In\+Use}}
+\index{is\+In\+Use@{is\+In\+Use}!Object\+Map\+Meta@{Object\+Map\+Meta}}
+\subsubsection[{is\+In\+Use}]{\setlength{\rightskip}{0pt plus 5cm}bool Object\+Map\+Meta\+::is\+In\+Use (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classObjectMapMeta_ac0ba6c1b3c98a0b015e60da4575411cb}
+
+
+is\+In\+Use Indicates whether meta is already placed on map or not 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/map.\+h\item 
+src/map.\+cpp\end{DoxyCompactItemize}

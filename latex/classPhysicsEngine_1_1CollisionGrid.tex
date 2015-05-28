@@ -1,0 +1,133 @@
+\hypertarget{classPhysicsEngine_1_1CollisionGrid}{}\section{Physics\+Engine\+:\+:Collision\+Grid Class Reference}
+\label{classPhysicsEngine_1_1CollisionGrid}\index{Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}}
+
+
+The \hyperlink{classPhysicsEngine_1_1CollisionGrid}{Collision\+Grid} class Class containing collision grid for optimization purpose.  
+
+
+
+
+{\ttfamily \#include $<$physx.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structPhysicsEngine_1_1CollisionGrid_1_1GridPool}{Grid\+Pool}
+\begin{DoxyCompactList}\small\item\em $<$ grid pool entry \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPhysicsEngine_1_1CollisionGrid_a825fc5e0aaaf4eb9f663b957257ad804}{Collision\+Grid} (\hyperlink{classGameMap}{Game\+Map} \&map)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPhysicsEngine_1_1CollisionGrid}{Collision\+Grid} Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicsEngine_1_1CollisionGrid_aa82df2da2bcb18cd943e3f68c2099a42}{register\+Meta} (\hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} \&meta)
+\begin{DoxyCompactList}\small\item\em register\+Meta register meta in collision grid \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicsEngine_1_1CollisionGrid_aef5fff9dd08c6adb65f4437536883da6}{erase\+Meta\+Records} (\hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} $\ast$meta)
+\begin{DoxyCompactList}\small\item\em erase\+Meta\+Records remove meta from collision grid \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classVectorXY}{Vector\+X\+Y} \hyperlink{classPhysicsEngine_1_1CollisionGrid_adad4599413ced1499d2b8fb35d60034d}{get\+Object\+Bounds} (\hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} \&m)
+\begin{DoxyCompactList}\small\item\em get\+Object\+Bounds returns bounding box occupied by object \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_a8453235376bf615693c1aa96f0f64744}{}const int \hyperlink{classPhysicsEngine_1_1CollisionGrid_a8453235376bf615693c1aa96f0f64744}{grid\+W}\label{classPhysicsEngine_1_1CollisionGrid_a8453235376bf615693c1aa96f0f64744}
+
+\begin{DoxyCompactList}\small\item\em width of single sector \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_ace91b9c4a8ff771dfb3bf27958a759f6}{}const int \hyperlink{classPhysicsEngine_1_1CollisionGrid_ace91b9c4a8ff771dfb3bf27958a759f6}{grid\+H}\label{classPhysicsEngine_1_1CollisionGrid_ace91b9c4a8ff771dfb3bf27958a759f6}
+
+\begin{DoxyCompactList}\small\item\em height of single sector \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_a603a2779e67a16deee6ffb44256ba44c}{}const int \hyperlink{classPhysicsEngine_1_1CollisionGrid_a603a2779e67a16deee6ffb44256ba44c}{grid\+C}\label{classPhysicsEngine_1_1CollisionGrid_a603a2779e67a16deee6ffb44256ba44c}
+
+\begin{DoxyCompactList}\small\item\em number of columns in sectors grid \end{DoxyCompactList}\item 
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_ae430a085d671849fe2b0ae4ac15834d5}{}const int \hyperlink{classPhysicsEngine_1_1CollisionGrid_ae430a085d671849fe2b0ae4ac15834d5}{grid\+R}\label{classPhysicsEngine_1_1CollisionGrid_ae430a085d671849fe2b0ae4ac15834d5}
+
+\begin{DoxyCompactList}\small\item\em number of rows in sectors grid \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_a639ae8db08b48373cb96fa3728d3c447}{}class {\bfseries Physics\+Engine}\label{classPhysicsEngine_1_1CollisionGrid_a639ae8db08b48373cb96fa3728d3c447}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classPhysicsEngine_1_1CollisionGrid}{Collision\+Grid} class Class containing collision grid for optimization purpose. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_a825fc5e0aaaf4eb9f663b957257ad804}{}\index{Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}!Collision\+Grid@{Collision\+Grid}}
+\index{Collision\+Grid@{Collision\+Grid}!Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}}
+\subsubsection[{Collision\+Grid}]{\setlength{\rightskip}{0pt plus 5cm}Physics\+Engine\+::\+Collision\+Grid\+::\+Collision\+Grid (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Map} \&}]{map}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_1_1CollisionGrid_a825fc5e0aaaf4eb9f663b957257ad804}
+
+
+\hyperlink{classPhysicsEngine_1_1CollisionGrid}{Collision\+Grid} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & map to create grid for \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_aef5fff9dd08c6adb65f4437536883da6}{}\index{Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}!erase\+Meta\+Records@{erase\+Meta\+Records}}
+\index{erase\+Meta\+Records@{erase\+Meta\+Records}!Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}}
+\subsubsection[{erase\+Meta\+Records}]{\setlength{\rightskip}{0pt plus 5cm}void Physics\+Engine\+::\+Collision\+Grid\+::erase\+Meta\+Records (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Physics\+Meta} $\ast$}]{meta}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_1_1CollisionGrid_aef5fff9dd08c6adb65f4437536883da6}
+
+
+erase\+Meta\+Records remove meta from collision grid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & meta to be removed \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_adad4599413ced1499d2b8fb35d60034d}{}\index{Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}!get\+Object\+Bounds@{get\+Object\+Bounds}}
+\index{get\+Object\+Bounds@{get\+Object\+Bounds}!Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}}
+\subsubsection[{get\+Object\+Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector\+X\+Y} Physics\+Engine\+::\+Collision\+Grid\+::get\+Object\+Bounds (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Physics\+Meta} \&}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classPhysicsEngine_1_1CollisionGrid_adad4599413ced1499d2b8fb35d60034d}
+
+
+get\+Object\+Bounds returns bounding box occupied by object 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & meta of requested object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pair top left corner \+: bottom right corner 
+\end{DoxyReturn}
+\hypertarget{classPhysicsEngine_1_1CollisionGrid_aa82df2da2bcb18cd943e3f68c2099a42}{}\index{Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}!register\+Meta@{register\+Meta}}
+\index{register\+Meta@{register\+Meta}!Physics\+Engine\+::\+Collision\+Grid@{Physics\+Engine\+::\+Collision\+Grid}}
+\subsubsection[{register\+Meta}]{\setlength{\rightskip}{0pt plus 5cm}void Physics\+Engine\+::\+Collision\+Grid\+::register\+Meta (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Physics\+Meta} \&}]{meta}
+\end{DoxyParamCaption}
+)}\label{classPhysicsEngine_1_1CollisionGrid_aa82df2da2bcb18cd943e3f68c2099a42}
+
+
+register\+Meta register meta in collision grid 
+
+
+\begin{DoxyParams}{Parameters}
+{\em meta} & meta to be registered \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/physx.\+h\item 
+src/physx.\+cpp\end{DoxyCompactItemize}

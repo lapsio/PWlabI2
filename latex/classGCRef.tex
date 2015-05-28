@@ -1,0 +1,75 @@
+\hypertarget{classGCRef}{}\section{G\+C\+Ref Class Reference}
+\label{classGCRef}\index{G\+C\+Ref@{G\+C\+Ref}}
+
+
+The \hyperlink{classGCRef}{G\+C\+Ref} class Class providing basic garbage collecting functionality similar to one provided by sharedptr.  
+
+
+
+
+{\ttfamily \#include $<$utils.\+h$>$}
+
+Inheritance diagram for G\+C\+Ref\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.480620cm]{classGCRef}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGCRefLink}{G\+C\+Ref\+Link} $\ast$ \hyperlink{classGCRef_ae39bea73b9c6af4a0df6ff490f3e8fa9}{link} ()
+\begin{DoxyCompactList}\small\item\em link Get new link to indicate data usage \end{DoxyCompactList}\item 
+\hypertarget{classGCRef_a7d1570b675959b895736d490d5998269}{}void \hyperlink{classGCRef_a7d1570b675959b895736d490d5998269}{unlock} ()\label{classGCRef_a7d1570b675959b895736d490d5998269}
+
+\begin{DoxyCompactList}\small\item\em unlock Manually unlocks object \end{DoxyCompactList}\item 
+int \hyperlink{classGCRef_a7cc24acd7029926613e9681e16f2bf76}{ref\+Users\+Count} () const 
+\begin{DoxyCompactList}\small\item\em ref\+Users\+Count Returns current number of registered links \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classGCRef_a697d68cbe829f48815533b70e888f1e6}{}class {\bfseries G\+C\+Ref\+Link}\label{classGCRef_a697d68cbe829f48815533b70e888f1e6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classGCRef}{G\+C\+Ref} class Class providing basic garbage collecting functionality similar to one provided by sharedptr. 
+
+User can get link which can be deleted later to inform that certain code won\textquotesingle{}t use data anymore. Once all links get deleted class is deleting itself on its own. New class has 0 links thus it\textquotesingle{}s locked. It can be manually unlocked, then deleted or it unlocks automatically after registering first link. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGCRef_ae39bea73b9c6af4a0df6ff490f3e8fa9}{}\index{G\+C\+Ref@{G\+C\+Ref}!link@{link}}
+\index{link@{link}!G\+C\+Ref@{G\+C\+Ref}}
+\subsubsection[{link}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+C\+Ref\+Link} $\ast$ G\+C\+Ref\+::link (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classGCRef_ae39bea73b9c6af4a0df6ff490f3e8fa9}
+
+
+link Get new link to indicate data usage 
+
+\begin{DoxyReturn}{Returns}
+link 
+\end{DoxyReturn}
+\hypertarget{classGCRef_a7cc24acd7029926613e9681e16f2bf76}{}\index{G\+C\+Ref@{G\+C\+Ref}!ref\+Users\+Count@{ref\+Users\+Count}}
+\index{ref\+Users\+Count@{ref\+Users\+Count}!G\+C\+Ref@{G\+C\+Ref}}
+\subsubsection[{ref\+Users\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int G\+C\+Ref\+::ref\+Users\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{classGCRef_a7cc24acd7029926613e9681e16f2bf76}
+
+
+ref\+Users\+Count Returns current number of registered links 
+
+\begin{DoxyReturn}{Returns}
+number of current users 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/utils.\+h\item 
+src/utils.\+cpp\end{DoxyCompactItemize}
