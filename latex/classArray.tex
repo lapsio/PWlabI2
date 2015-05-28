@@ -1,0 +1,255 @@
+\hypertarget{classArray}{}\section{Array$<$ T\+Y\+P\+E $>$ Class Template Reference}
+\label{classArray}\index{Array$<$ T\+Y\+P\+E $>$@{Array$<$ T\+Y\+P\+E $>$}}
+
+
+\hyperlink{classArray}{Array} class providing some common operations on tables.  
+
+
+
+
+{\ttfamily \#include $<$misc.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classArray_ae135878c586419c57baf3edf7fa0fe21}{Array} (int \hyperlink{classArray_a3a088222b444a20f1d926ee7b44fa868}{length})
+\begin{DoxyCompactList}\small\item\em \hyperlink{classArray}{Array} \hyperlink{classArray}{Array} constructor. \end{DoxyCompactList}\item 
+\hyperlink{classArray_a9307cd54f769f06cd738443f3ddaeb0a}{Array} (const \hyperlink{classArray}{Array}$<$ T\+Y\+P\+E $>$ \&ref)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classArray}{Array} \hyperlink{classArray}{Array} copy constructor. \end{DoxyCompactList}\item 
+int \hyperlink{classArray_a3a088222b444a20f1d926ee7b44fa868}{length} () const 
+\begin{DoxyCompactList}\small\item\em length returns \hyperlink{classArray}{Array} length \end{DoxyCompactList}\item 
+T\+Y\+P\+E \hyperlink{classArray_a185f77a5e5fec186718b41c6f97cf901}{get\+Data} (int index) const 
+\begin{DoxyCompactList}\small\item\em get\+Data returns data stored by \hyperlink{classArray}{Array} \end{DoxyCompactList}\item 
+void \hyperlink{classArray_a518c03f5920deccc1b084fb8a919a34f}{set\+Data} (T\+Y\+P\+E d, int index)
+\begin{DoxyCompactList}\small\item\em set\+Data replaces data stored by \hyperlink{classArray}{Array} \end{DoxyCompactList}\item 
+T\+Y\+P\+E \& \hyperlink{classArray_a87ffb65623ab72521ebe02547d9f01ff}{operator\mbox{[}$\,$\mbox{]}} (int index) const 
+\begin{DoxyCompactList}\small\item\em operator \mbox{[}\mbox{]} to access \hyperlink{classArray}{Array} data in C table-\/like manner \end{DoxyCompactList}\item 
+\hyperlink{classArray}{Array}$<$ T\+Y\+P\+E $>$ \& \hyperlink{classArray_a34e9893e307bf2fb22cab46290745c0a}{operator=} (const \hyperlink{classArray}{Array}$<$ T\+Y\+P\+E $>$ \&R)
+\begin{DoxyCompactList}\small\item\em operator = for \hyperlink{classArray}{Array} \end{DoxyCompactList}\item 
+\hyperlink{classArray}{Array}$<$ T\+Y\+P\+E $>$ \& \hyperlink{classArray_a0899406e957a31785920f60b046cd20c}{map} (void($\ast$f)(T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em map replace content of all alements in array using provided function \end{DoxyCompactList}\item 
+\hyperlink{classArray}{Array}$<$ T\+Y\+P\+E $>$ \& \hyperlink{classArray_a77b9fc51577ae9f1de00114fa73a6d71}{map} (T\+Y\+P\+E($\ast$f)(const T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em map replace content of all alements in array using provided function \end{DoxyCompactList}\item 
+\hyperlink{classArray}{Array}$<$ T\+Y\+P\+E $>$ \& \hyperlink{classArray_a4c4664880f4da94ebc7e7f42b15bc623}{each} (void($\ast$f)(const T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em each calls provided function on all elements of array \end{DoxyCompactList}\item 
+\hyperlink{classArray}{Array}$<$ T\+Y\+P\+E $>$ \& \hyperlink{classArray_ab23349c296b04fa2276a0996854ec9c7}{selected} (void($\ast$f)(const T\+Y\+P\+E \&), bool($\ast$p)(const T\+Y\+P\+E \&))
+\begin{DoxyCompactList}\small\item\em selected calls provided call function if acceptor function returns true \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T\+Y\+P\+E$>$class Array$<$ T\+Y\+P\+E $>$}
+
+\hyperlink{classArray}{Array} class providing some common operations on tables. 
+
+Class allowing user to store data in C table-\/like manner, additionally providing certain J\+S-\/like fonctionality. Template class getting stored data type name as template argument. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classArray_ae135878c586419c57baf3edf7fa0fe21}{}\index{Array@{Array}!Array@{Array}}
+\index{Array@{Array}!Array@{Array}}
+\subsubsection[{Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Array}$<$ T\+Y\+P\+E $>$\+::{\bf Array} (
+\begin{DoxyParamCaption}
+\item[{int}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_ae135878c586419c57baf3edf7fa0fe21}
+
+
+\hyperlink{classArray}{Array} \hyperlink{classArray}{Array} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & length of newly created \hyperlink{classArray}{Array} (can be increased later) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classArray_a9307cd54f769f06cd738443f3ddaeb0a}{}\index{Array@{Array}!Array@{Array}}
+\index{Array@{Array}!Array@{Array}}
+\subsubsection[{Array}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Array}$<$ T\+Y\+P\+E $>$\+::{\bf Array} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array}$<$ T\+Y\+P\+E $>$ \&}]{ref}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a9307cd54f769f06cd738443f3ddaeb0a}
+
+
+\hyperlink{classArray}{Array} \hyperlink{classArray}{Array} copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref} & reference \hyperlink{classArray}{Array} to be copied \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classArray_a4c4664880f4da94ebc7e7f42b15bc623}{}\index{Array@{Array}!each@{each}}
+\index{each@{each}!Array@{Array}}
+\subsubsection[{each}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Array}$<$T\+Y\+P\+E$>$\& {\bf Array}$<$ T\+Y\+P\+E $>$\+::each (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(const T\+Y\+P\+E \&)}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a4c4664880f4da94ebc7e7f42b15bc623}
+
+
+each calls provided function on all elements of array 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & mapping function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classArray_a185f77a5e5fec186718b41c6f97cf901}{}\index{Array@{Array}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Array@{Array}}
+\subsubsection[{get\+Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ T\+Y\+P\+E {\bf Array}$<$ T\+Y\+P\+E $>$\+::get\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a185f77a5e5fec186718b41c6f97cf901}
+
+
+get\+Data returns data stored by \hyperlink{classArray}{Array} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index in \hyperlink{classArray}{Array} of data to be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data data under requested index 
+\end{DoxyReturn}
+\hypertarget{classArray_a3a088222b444a20f1d926ee7b44fa868}{}\index{Array@{Array}!length@{length}}
+\index{length@{length}!Array@{Array}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ int {\bf Array}$<$ T\+Y\+P\+E $>$\+::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a3a088222b444a20f1d926ee7b44fa868}
+
+
+length returns \hyperlink{classArray}{Array} length 
+
+\begin{DoxyReturn}{Returns}
+number of \hyperlink{classArray}{Array} elements 
+\end{DoxyReturn}
+\hypertarget{classArray_a0899406e957a31785920f60b046cd20c}{}\index{Array@{Array}!map@{map}}
+\index{map@{map}!Array@{Array}}
+\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Array}$<$T\+Y\+P\+E$>$\& {\bf Array}$<$ T\+Y\+P\+E $>$\+::map (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(T\+Y\+P\+E \&)}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a0899406e957a31785920f60b046cd20c}
+
+
+map replace content of all alements in array using provided function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & mapping function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to \hyperlink{classArray}{Array} 
+\end{DoxyReturn}
+\hypertarget{classArray_a77b9fc51577ae9f1de00114fa73a6d71}{}\index{Array@{Array}!map@{map}}
+\index{map@{map}!Array@{Array}}
+\subsubsection[{map}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Array}$<$T\+Y\+P\+E$>$\& {\bf Array}$<$ T\+Y\+P\+E $>$\+::map (
+\begin{DoxyParamCaption}
+\item[{T\+Y\+P\+E($\ast$)(const T\+Y\+P\+E \&)}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a77b9fc51577ae9f1de00114fa73a6d71}
+
+
+map replace content of all alements in array using provided function 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & mapping function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to \hyperlink{classArray}{Array} 
+\end{DoxyReturn}
+\hypertarget{classArray_a34e9893e307bf2fb22cab46290745c0a}{}\index{Array@{Array}!operator=@{operator=}}
+\index{operator=@{operator=}!Array@{Array}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Array}$<$T\+Y\+P\+E$>$\& {\bf Array}$<$ T\+Y\+P\+E $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array}$<$ T\+Y\+P\+E $>$ \&}]{R}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a34e9893e307bf2fb22cab46290745c0a}
+
+
+operator = for \hyperlink{classArray}{Array} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em R} & data to be assigned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference 
+\end{DoxyReturn}
+\hypertarget{classArray_a87ffb65623ab72521ebe02547d9f01ff}{}\index{Array@{Array}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Array@{Array}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ T\+Y\+P\+E\& {\bf Array}$<$ T\+Y\+P\+E $>$\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a87ffb65623ab72521ebe02547d9f01ff}
+
+
+operator \mbox{[}\mbox{]} to access \hyperlink{classArray}{Array} data in C table-\/like manner 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of data to be accessed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to data 
+\end{DoxyReturn}
+\hypertarget{classArray_ab23349c296b04fa2276a0996854ec9c7}{}\index{Array@{Array}!selected@{selected}}
+\index{selected@{selected}!Array@{Array}}
+\subsubsection[{selected}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ {\bf Array}$<$T\+Y\+P\+E$>$\& {\bf Array}$<$ T\+Y\+P\+E $>$\+::selected (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(const T\+Y\+P\+E \&)}]{f, }
+\item[{bool($\ast$)(const T\+Y\+P\+E \&)}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_ab23349c296b04fa2276a0996854ec9c7}
+
+
+selected calls provided call function if acceptor function returns true 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & call function \\
+\hline
+{\em acceptor} & function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classArray_a518c03f5920deccc1b084fb8a919a34f}{}\index{Array@{Array}!set\+Data@{set\+Data}}
+\index{set\+Data@{set\+Data}!Array@{Array}}
+\subsubsection[{set\+Data}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T\+Y\+P\+E$>$ void {\bf Array}$<$ T\+Y\+P\+E $>$\+::set\+Data (
+\begin{DoxyParamCaption}
+\item[{T\+Y\+P\+E}]{d, }
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classArray_a518c03f5920deccc1b084fb8a919a34f}
+
+
+set\+Data replaces data stored by \hyperlink{classArray}{Array} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & data to be inserted \\
+\hline
+{\em index} & index of data to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/misc.\+h\end{DoxyCompactItemize}

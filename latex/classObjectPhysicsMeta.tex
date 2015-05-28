@@ -1,0 +1,97 @@
+\hypertarget{classObjectPhysicsMeta}{}\section{Object\+Physics\+Meta Class Reference}
+\label{classObjectPhysicsMeta}\index{Object\+Physics\+Meta@{Object\+Physics\+Meta}}
+
+
+The \hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} class Extension to \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} class adding physical properties like speed, acceleration...  
+
+
+
+
+{\ttfamily \#include $<$physx.\+h$>$}
+
+Inheritance diagram for Object\+Physics\+Meta\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classObjectPhysicsMeta}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classObjectPhysicsMeta_a5f9da87e92c7d03ba1213542f5d7a6c6}{Object\+Physics\+Meta} (const \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} \&ref, const \hyperlink{classPhysicsEngine}{Physics\+Engine} \&engine, \hyperlink{classVectorXY}{Vector\+X\+Y} \hyperlink{classObjectPhysicsMeta_a9d6fae5e4518766e715781227e3fb9a9}{speed}=\hyperlink{classVectorXY}{Vector\+X\+Y}(0, 0, 0, 0), \hyperlink{classVectorXY}{Vector\+X\+Y} \hyperlink{classObjectPhysicsMeta_ab2ef030e0178008c40520e615790a854}{acceleration}=\hyperlink{classVectorXY}{Vector\+X\+Y}(0, 0, 0, 0))
+\begin{DoxyCompactList}\small\item\em \hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectPhysicsMeta_a9d6fae5e4518766e715781227e3fb9a9}{}\hyperlink{classVectorXY}{Vector\+X\+Y} \hyperlink{classObjectPhysicsMeta_a9d6fae5e4518766e715781227e3fb9a9}{speed}\label{classObjectPhysicsMeta_a9d6fae5e4518766e715781227e3fb9a9}
+
+\begin{DoxyCompactList}\small\item\em object speed \end{DoxyCompactList}\item 
+\hypertarget{classObjectPhysicsMeta_ab2ef030e0178008c40520e615790a854}{}\hyperlink{classVectorXY}{Vector\+X\+Y} \hyperlink{classObjectPhysicsMeta_ab2ef030e0178008c40520e615790a854}{acceleration}\label{classObjectPhysicsMeta_ab2ef030e0178008c40520e615790a854}
+
+\begin{DoxyCompactList}\small\item\em object acceleration \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectPhysicsMeta_a6017a1245eb08ec3e829b2c1c08aeede}{}static constexpr char $\ast$ {\bfseries type\+Name} =(char$\ast$)\char`\"{}Physics\+Meta\char`\"{}\label{classObjectPhysicsMeta_a6017a1245eb08ec3e829b2c1c08aeede}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectPhysicsMeta_a429712351080fbccba9fb32b11ab1072}{}virtual void {\bfseries link\+Map} (\hyperlink{classGameMap}{Game\+Map} \&map)\label{classObjectPhysicsMeta_a429712351080fbccba9fb32b11ab1072}
+
+\item 
+\hypertarget{classObjectPhysicsMeta_a5e391ee1abaa3e04d3961a1c1e51c73b}{}virtual void {\bfseries unlink\+Map} ()\label{classObjectPhysicsMeta_a5e391ee1abaa3e04d3961a1c1e51c73b}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classObjectPhysicsMeta_a7d5d92b2453386482dd08e0908612a46}{}class {\bfseries Physics\+Engine\+::\+Collision\+Grid}\label{classObjectPhysicsMeta_a7d5d92b2453386482dd08e0908612a46}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} class Extension to \hyperlink{classObjectMapMeta}{Object\+Map\+Meta} class adding physical properties like speed, acceleration... 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} 
+
+\hyperlink{classPhysicsEngine}{Physics\+Engine} 
+\end{DoxySeeAlso}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classObjectPhysicsMeta_a5f9da87e92c7d03ba1213542f5d7a6c6}{}\index{Object\+Physics\+Meta@{Object\+Physics\+Meta}!Object\+Physics\+Meta@{Object\+Physics\+Meta}}
+\index{Object\+Physics\+Meta@{Object\+Physics\+Meta}!Object\+Physics\+Meta@{Object\+Physics\+Meta}}
+\subsubsection[{Object\+Physics\+Meta}]{\setlength{\rightskip}{0pt plus 5cm}Object\+Physics\+Meta\+::\+Object\+Physics\+Meta (
+\begin{DoxyParamCaption}
+\item[{const {\bf Object\+Map\+Meta} \&}]{ref, }
+\item[{const {\bf Physics\+Engine} \&}]{engine, }
+\item[{{\bf Vector\+X\+Y}}]{speed = {\ttfamily {\bf Vector\+X\+Y}(0,0,0,0)}, }
+\item[{{\bf Vector\+X\+Y}}]{acceleration = {\ttfamily {\bf Vector\+X\+Y}(0,0,0,0)}}
+\end{DoxyParamCaption}
+)}\label{classObjectPhysicsMeta_a5f9da87e92c7d03ba1213542f5d7a6c6}
+
+
+\hyperlink{classObjectPhysicsMeta}{Object\+Physics\+Meta} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref} & reference meta to be converted to Physics meta \\
+\hline
+{\em engine} & engine to register in \\
+\hline
+{\em speed} & initial speed \\
+\hline
+{\em acceleration} & initial acceleration \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/physx.\+h\item 
+src/physx.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,181 @@
+\hypertarget{classRenderEngine}{}\section{Render\+Engine Class Reference}
+\label{classRenderEngine}\index{Render\+Engine@{Render\+Engine}}
+
+
+The \hyperlink{classRenderEngine}{Render\+Engine} class rendering engine for game.  
+
+
+
+
+{\ttfamily \#include $<$gfx.\+h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structRenderEngine_1_1objRecord}{obj\+Record}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRenderEngine_a31ae68425b2e62e0e1f427fe7e2c1a75}{Render\+Engine} (int obj\+Buffer\+Size=\hyperlink{classRenderEngine_a9dc4537015d6db0e13cf78364caacddf}{Render\+Engine\+::default\+Buffer\+Size}, bool autoresize=false, bool resizeable=true, const char $\ast$title=Render\+Engine\+::default\+Window\+Name)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classRenderEngine}{Render\+Engine} basic constructor. \end{DoxyCompactList}\item 
+\hypertarget{classRenderEngine_a310e9e1d0a3f9bf46e8fe37b0acea878}{}{\bfseries Render\+Engine} (bool autoresize, bool resizeable=true, const char $\ast$title=Render\+Engine\+::default\+Window\+Name)\label{classRenderEngine_a310e9e1d0a3f9bf46e8fe37b0acea878}
+
+\item 
+void \hyperlink{classRenderEngine_ae737efb1b6933f10aa12b991a3deb1fa}{push\+Object} (const \hyperlink{classPointXY}{Point\+X\+Y} position, const \hyperlink{classDecal}{Decal} \&decal)
+\begin{DoxyCompactList}\small\item\em push\+Object add new \hyperlink{classDecal}{Decal} to render queue \end{DoxyCompactList}\item 
+\hypertarget{classRenderEngine_ab09f2455f3da1dddc07b478405f8f01b}{}void \hyperlink{classRenderEngine_ab09f2455f3da1dddc07b478405f8f01b}{clear} ()\label{classRenderEngine_ab09f2455f3da1dddc07b478405f8f01b}
+
+\begin{DoxyCompactList}\small\item\em clear clear draw buffer \end{DoxyCompactList}\item 
+\hypertarget{classRenderEngine_a4e56228f0972018bc593e5d62da83f1d}{}void \hyperlink{classRenderEngine_a4e56228f0972018bc593e5d62da83f1d}{flush} ()\label{classRenderEngine_a4e56228f0972018bc593e5d62da83f1d}
+
+\begin{DoxyCompactList}\small\item\em flush flush draw buffer \end{DoxyCompactList}\item 
+void \hyperlink{classRenderEngine_a99306b968abe7132a853513e9b2046b2}{center\+Camera} (const \hyperlink{classPointXY}{Point\+X\+Y} pos)
+\begin{DoxyCompactList}\small\item\em center\+Camera center camera on specified point \end{DoxyCompactList}\item 
+\hypertarget{classRenderEngine_ab146273934ea5d1b3f76dd21c456570c}{}void {\bfseries center\+Camera} (int W, int H)\label{classRenderEngine_ab146273934ea5d1b3f76dd21c456570c}
+
+\item 
+void \hyperlink{classRenderEngine_a6b3570ba21bac9e92bd2caebc8362b16}{canvas\+Resize} (const \hyperlink{classPointXY}{Point\+X\+Y} size)
+\begin{DoxyCompactList}\small\item\em canvas\+Resize resize virtual canvas \end{DoxyCompactList}\item 
+\hypertarget{classRenderEngine_a9ed2b4db51b92a361ec13c1c5be51ce5}{}void {\bfseries canvas\+Resize} (int W, int H)\label{classRenderEngine_a9ed2b4db51b92a361ec13c1c5be51ce5}
+
+\item 
+void \hyperlink{classRenderEngine_a92afa48be7f48d9e5697fbb878348267}{resize\+Draw\+Buffer} (int max\+Obj\+Count)
+\begin{DoxyCompactList}\small\item\em resize\+Draw\+Buffer resize draw buffer \end{DoxyCompactList}\item 
+void \hyperlink{classRenderEngine_a78ce63c93988c74ec7b5d5535570c001}{set\+Window\+Title} (const char $\ast$title)
+\begin{DoxyCompactList}\small\item\em set\+Window\+Title set window title \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classRenderEngine_a6e727b66ab4af5ec0a3db0020217137c}{}static constexpr int \hyperlink{classRenderEngine_a6e727b66ab4af5ec0a3db0020217137c}{U\+N\+I\+T\+S\+I\+Z\+E} =10\label{classRenderEngine_a6e727b66ab4af5ec0a3db0020217137c}
+
+\begin{DoxyCompactList}\small\item\em size of single session-\/wise unit in px \end{DoxyCompactList}\item 
+\hypertarget{classRenderEngine_a9dc4537015d6db0e13cf78364caacddf}{}static constexpr int \hyperlink{classRenderEngine_a9dc4537015d6db0e13cf78364caacddf}{default\+Buffer\+Size} =256\label{classRenderEngine_a9dc4537015d6db0e13cf78364caacddf}
+
+\begin{DoxyCompactList}\small\item\em default draw buffer size \end{DoxyCompactList}\item 
+\hypertarget{classRenderEngine_a2039eceae60c84d8640e01cf76dd7e06}{}static constexpr char $\ast$ {\bfseries default\+Window\+Name} =(char$\ast$)\char`\"{}Game window\char`\"{}\label{classRenderEngine_a2039eceae60c84d8640e01cf76dd7e06}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classRenderEngine}{Render\+Engine} class rendering engine for game. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classRenderEngine_a31ae68425b2e62e0e1f427fe7e2c1a75}{}\index{Render\+Engine@{Render\+Engine}!Render\+Engine@{Render\+Engine}}
+\index{Render\+Engine@{Render\+Engine}!Render\+Engine@{Render\+Engine}}
+\subsubsection[{Render\+Engine}]{\setlength{\rightskip}{0pt plus 5cm}Render\+Engine\+::\+Render\+Engine (
+\begin{DoxyParamCaption}
+\item[{int}]{obj\+Buffer\+Size = {\ttfamily {\bf Render\+Engine\+::default\+Buffer\+Size}}, }
+\item[{bool}]{autoresize = {\ttfamily false}, }
+\item[{bool}]{resizeable = {\ttfamily true}, }
+\item[{const char $\ast$}]{title = {\ttfamily RenderEngine\+:\+:defaultWindowName}}
+\end{DoxyParamCaption}
+)}\label{classRenderEngine_a31ae68425b2e62e0e1f427fe7e2c1a75}
+
+
+\hyperlink{classRenderEngine}{Render\+Engine} basic constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj\+Buffer\+Size} & initial size of draw buffer (max number of rendered Decals) \\
+\hline
+{\em autoresize} & whether buffer should auto resize \\
+\hline
+{\em resizeable} & whether buffer should allow manual resizing \\
+\hline
+{\em title} & window title \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classRenderEngine_a6b3570ba21bac9e92bd2caebc8362b16}{}\index{Render\+Engine@{Render\+Engine}!canvas\+Resize@{canvas\+Resize}}
+\index{canvas\+Resize@{canvas\+Resize}!Render\+Engine@{Render\+Engine}}
+\subsubsection[{canvas\+Resize}]{\setlength{\rightskip}{0pt plus 5cm}void Render\+Engine\+::canvas\+Resize (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\+X\+Y}}]{size}
+\end{DoxyParamCaption}
+)}\label{classRenderEngine_a6b3570ba21bac9e92bd2caebc8362b16}
+
+
+canvas\+Resize resize virtual canvas 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & new size of canvas \\
+\hline
+\end{DoxyParams}
+\hypertarget{classRenderEngine_a99306b968abe7132a853513e9b2046b2}{}\index{Render\+Engine@{Render\+Engine}!center\+Camera@{center\+Camera}}
+\index{center\+Camera@{center\+Camera}!Render\+Engine@{Render\+Engine}}
+\subsubsection[{center\+Camera}]{\setlength{\rightskip}{0pt plus 5cm}void Render\+Engine\+::center\+Camera (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\+X\+Y}}]{pos}
+\end{DoxyParamCaption}
+)}\label{classRenderEngine_a99306b968abe7132a853513e9b2046b2}
+
+
+center\+Camera center camera on specified point 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & new camera center point (provided in session-\/wise units) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classRenderEngine_ae737efb1b6933f10aa12b991a3deb1fa}{}\index{Render\+Engine@{Render\+Engine}!push\+Object@{push\+Object}}
+\index{push\+Object@{push\+Object}!Render\+Engine@{Render\+Engine}}
+\subsubsection[{push\+Object}]{\setlength{\rightskip}{0pt plus 5cm}void Render\+Engine\+::push\+Object (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point\+X\+Y}}]{position, }
+\item[{const {\bf Decal} \&}]{decal}
+\end{DoxyParamCaption}
+)}\label{classRenderEngine_ae737efb1b6933f10aa12b991a3deb1fa}
+
+
+push\+Object add new \hyperlink{classDecal}{Decal} to render queue 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position of decal to be rendered (in session-\/wise units) \\
+\hline
+{\em decal} & decal to be rendered \\
+\hline
+\end{DoxyParams}
+\hypertarget{classRenderEngine_a92afa48be7f48d9e5697fbb878348267}{}\index{Render\+Engine@{Render\+Engine}!resize\+Draw\+Buffer@{resize\+Draw\+Buffer}}
+\index{resize\+Draw\+Buffer@{resize\+Draw\+Buffer}!Render\+Engine@{Render\+Engine}}
+\subsubsection[{resize\+Draw\+Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Render\+Engine\+::resize\+Draw\+Buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+Obj\+Count}
+\end{DoxyParamCaption}
+)}\label{classRenderEngine_a92afa48be7f48d9e5697fbb878348267}
+
+
+resize\+Draw\+Buffer resize draw buffer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Obj\+Count} & new max objects count \\
+\hline
+\end{DoxyParams}
+\hypertarget{classRenderEngine_a78ce63c93988c74ec7b5d5535570c001}{}\index{Render\+Engine@{Render\+Engine}!set\+Window\+Title@{set\+Window\+Title}}
+\index{set\+Window\+Title@{set\+Window\+Title}!Render\+Engine@{Render\+Engine}}
+\subsubsection[{set\+Window\+Title}]{\setlength{\rightskip}{0pt plus 5cm}void Render\+Engine\+::set\+Window\+Title (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{title}
+\end{DoxyParamCaption}
+)}\label{classRenderEngine_a78ce63c93988c74ec7b5d5535570c001}
+
+
+set\+Window\+Title set window title 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/gfx.\+h\item 
+src/gfx.\+cpp\end{DoxyCompactItemize}

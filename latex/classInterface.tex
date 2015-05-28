@@ -1,0 +1,59 @@
+\hypertarget{classInterface}{}\section{Interface Class Reference}
+\label{classInterface}\index{Interface@{Interface}}
+
+
+The \hyperlink{classInterface}{Interface} class \hyperlink{classInterface}{Interface} to be implemented by all drivers.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Domain.\+h$>$}
+
+Inheritance diagram for Interface\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classInterface}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classBaseEvent}{Base\+Event} \& \hyperlink{classInterface_addff25eb2adf4221c2be4895597b49c1}{run} (\hyperlink{classGameSession}{Game\+Session} \&session)=0
+\begin{DoxyCompactList}\small\item\em run method called before each screen redraw \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classInterface}{Interface} class \hyperlink{classInterface}{Interface} to be implemented by all drivers. 
+
+Each driver needs to implement certain functionality in order to work with game domain manager and session properly. \hyperlink{classInterface}{Interface} by default inherits from \hyperlink{classGCRef}{G\+C\+Ref} so it\textquotesingle{}s deleted automatically once all sessions using driver will be destroyed 
+
+\subsection{Member Function Documentation}
+\hypertarget{classInterface_addff25eb2adf4221c2be4895597b49c1}{}\index{Interface@{Interface}!run@{run}}
+\index{run@{run}!Interface@{Interface}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Base\+Event}\& Interface\+::run (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\+Session} \&}]{session}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{classInterface_addff25eb2adf4221c2be4895597b49c1}
+
+
+run method called before each screen redraw 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & current session passed to driver by game domain manager \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classEngineStart_a9caa9db3213371e5a77f1b09576a04fa}{Engine\+Start}, \hyperlink{classPlayerController_a062dc3debb7d14f2fc755b1b44ae7d07}{Player\+Controller}, and \hyperlink{classIntro_a3a8f112a89ee8c03e481910173ed5a33}{Intro}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Game\+Domain.\+h\item 
+src/Game\+Domain.\+cpp\end{DoxyCompactItemize}

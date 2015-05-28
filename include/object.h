@@ -5,11 +5,12 @@
 
 #include <string>
 #include <cstring>
+#include <iostream>
+#include "SFML/Graphics.hpp"
 #include "./include/PointXY.h"
 #include "./include/VectorXY.h"
 #include "./include/misc.h"
 #include "./include/utils.h"
-#include "SFML/Graphics.hpp"
 
 
 
@@ -18,7 +19,9 @@ class Decal;
 class LightSource;
 class PhysicalBody;
 
-
+/**
+ * @brief The Decal class renderable Decal for Render Engine.
+ */
 
 class Decal
 {
@@ -28,12 +31,21 @@ private:
 public:
   static constexpr char* voidTexturePath=(char*)"misc/void.png";
 
-  const sf::Texture* texture;
-  const PointXY offset;
+  const sf::Texture* texture; /**< texture contained by Decal */
+  const PointXY offset; /**< offset of texture to be applied when rendering */
 
+  /**
+   * @brief Decal basic constructor of Decal
+   * @param filePath path to file to be used as texture
+   * @param offset (optional) offset of texture
+   */
   Decal(const char* filePath=Decal::voidTexturePath, PointXY offset=PointXY(0,0));
   virtual ~Decal();
 };
+
+/**
+ * @brief The LightSource class unimplemented
+ */
 
 class LightSource
 {
@@ -257,6 +269,8 @@ public:
    * @return
    */
   inline bool operator!=(const Object& o) const {return o.id!=this->id;}
+
+  friend std::ostream& operator<<(std::ostream& os, const Object& dt);
 
 #ifdef _DEBUG
   static void DEBUG(Object * o){

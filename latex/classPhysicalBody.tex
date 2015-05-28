@@ -1,0 +1,382 @@
+\hypertarget{classPhysicalBody}{}\section{Physical\+Body Class Reference}
+\label{classPhysicalBody}\index{Physical\+Body@{Physical\+Body}}
+
+
+The \hyperlink{classPhysicalBody}{Physical\+Body} class Class providing basic physical capabilities.  
+
+
+
+
+{\ttfamily \#include $<$object.\+h$>$}
+
+Inheritance diagram for Physical\+Body\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classPhysicalBody}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPhysicalBody_a11477c65415798a49396b51621e54a70}{}enum {\bfseries Object\+Type} \{ {\bfseries passive} =\textquotesingle{}p\textquotesingle{}, 
+{\bfseries dynamic} =\textquotesingle{}d\textquotesingle{}
+ \}\label{classPhysicalBody_a11477c65415798a49396b51621e54a70}
+
+\item 
+\hypertarget{classPhysicalBody_acfa77263f0e8da678d36bf0a8dde0ed0}{}enum {\bfseries Collision\+Type} \{ {\bfseries ghost} =\textquotesingle{}g\textquotesingle{}, 
+{\bfseries solid} =\textquotesingle{}s\textquotesingle{}
+ \}\label{classPhysicalBody_acfa77263f0e8da678d36bf0a8dde0ed0}
+
+\item 
+\hypertarget{classPhysicalBody_a0242d98735161b0fb3364f21a59eaf41}{}enum {\bfseries Mesh\+Type} \{ {\bfseries circle} =\textquotesingle{}c\textquotesingle{}, 
+{\bfseries mesh} =\textquotesingle{}m\textquotesingle{}
+ \}\label{classPhysicalBody_a0242d98735161b0fb3364f21a59eaf41}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPhysicalBody_a32ddf45baf5694a3cc6c405e2ed6e7bf}{Physical\+Body} (Object\+Type type, Collision\+Type collision, \hyperlink{classPointXY}{Point\+X\+Y} dimensions, double friction=1, double mass=1)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPhysicalBody}{Physical\+Body} Constructor without mesh (circle by default) \end{DoxyCompactList}\item 
+\hyperlink{classPhysicalBody_ab4285ad124f8e4ed0c9c7fd05fad9268}{Physical\+Body} (Object\+Type type, Collision\+Type collision, \hyperlink{classPointXY}{Point\+X\+Y} dimensions, \hyperlink{classArray}{Array}$<$ \hyperlink{classPointXY}{Point\+X\+Y} $\ast$ $>$ \&collision\+Mesh, double friction=1, double mass=1)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPhysicalBody}{Physical\+Body} Constructor with mesh. \end{DoxyCompactList}\item 
+\hyperlink{classPhysicalBody_abfe0f525e4934d83216525a84c9c69f7}{Physical\+Body} (const \hyperlink{classPhysicalBody}{Physical\+Body} \&ref)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classPhysicalBody}{Physical\+Body} copy constructor. \end{DoxyCompactList}\item 
+const \hyperlink{classPointXY}{Point\+X\+Y} \& \hyperlink{classPhysicalBody_a548eed7049c86fbc46ae96958c8703d7}{get\+Bound} () const 
+\begin{DoxyCompactList}\small\item\em get\+Bound returns object bouding box (dimensions) \end{DoxyCompactList}\item 
+const \hyperlink{classArray}{Array}$<$ \hyperlink{classVectorXY}{Vector\+X\+Y} $\ast$ $>$ \& \hyperlink{classPhysicalBody_ac2166b0723886ce7f9c040e18ec954c6}{get\+Collision\+Mesh} () const 
+\begin{DoxyCompactList}\small\item\em get\+Collision\+Mesh \end{DoxyCompactList}\item 
+const \hyperlink{classArray}{Array}$<$ \hyperlink{classVectorXY}{Vector\+X\+Y} $\ast$ $>$ \& \hyperlink{classPhysicalBody_a967028465a40efe44ba6390e3579e210}{get\+Collision\+Normals} () const 
+\begin{DoxyCompactList}\small\item\em get\+Collision\+Normals \end{DoxyCompactList}\item 
+Object\+Type \hyperlink{classPhysicalBody_a9371f19b3f21435c17ba01b034a01404}{get\+Object\+Type} () const 
+\begin{DoxyCompactList}\small\item\em get\+Object\+Type \end{DoxyCompactList}\item 
+Collision\+Type \hyperlink{classPhysicalBody_a96d5dba392884dbf83b1f82c621fac9c}{get\+Collision\+Type} () const 
+\begin{DoxyCompactList}\small\item\em get\+Collision\+Type \end{DoxyCompactList}\item 
+Mesh\+Type \hyperlink{classPhysicalBody_ab6ae355a3cee5918a000220af20f2837}{get\+Mesh\+Type} () const 
+\begin{DoxyCompactList}\small\item\em get\+Mesh\+Type \end{DoxyCompactList}\item 
+double \hyperlink{classPhysicalBody_af8733082c596676418984ab4c5398f5e}{get\+Friction} () const 
+\begin{DoxyCompactList}\small\item\em get\+Friction \end{DoxyCompactList}\item 
+double \hyperlink{classPhysicalBody_a8509893e9881d99ed2851338c1be6b55}{get\+Mass} () const 
+\begin{DoxyCompactList}\small\item\em get\+Mass \end{DoxyCompactList}\item 
+\hypertarget{classPhysicalBody_afef31c3912da9465a1caeed834db6bab}{}void \hyperlink{classPhysicalBody_afef31c3912da9465a1caeed834db6bab}{reshape} ()\label{classPhysicalBody_afef31c3912da9465a1caeed834db6bab}
+
+\begin{DoxyCompactList}\small\item\em reshape strips object collision mesh, turning object into circle type \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicalBody_ae7e0ccd04b9e9e83a9777f016b094914}{reshape} (\hyperlink{classArray}{Array}$<$ \hyperlink{classPointXY}{Point\+X\+Y} $\ast$ $>$ \&collision\+Mesh)
+\begin{DoxyCompactList}\small\item\em reshape assigns collision mesh polygon to object turning it into mesh (polygon) object type \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicalBody_a089a6ea0bbc6e38e9ea09170f123ad64}{set\+Object\+Type} (Object\+Type type)
+\begin{DoxyCompactList}\small\item\em set\+Object\+Type \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicalBody_ab5aebc5188db718079e4f3e5fc51d8b7}{set\+Collision\+Type} (Collision\+Type collision)
+\begin{DoxyCompactList}\small\item\em set\+Collision\+Type \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicalBody_a02bfe02d6439f40f41b47ee797533cb6}{set\+Mass} (double mass)
+\begin{DoxyCompactList}\small\item\em set\+Mass \end{DoxyCompactList}\item 
+void \hyperlink{classPhysicalBody_a44e55add5d12fc288b656f47f983b42a}{set\+Friction} (double friction)
+\begin{DoxyCompactList}\small\item\em set\+Friction \end{DoxyCompactList}\item 
+\hyperlink{classPhysicalBody}{Physical\+Body} \& \hyperlink{classPhysicalBody_adeff65b6b3f377362e5d3140b8dd9258}{operator=} (const \hyperlink{classPhysicalBody}{Physical\+Body} \&R)
+\begin{DoxyCompactList}\small\item\em operator = assignment operator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classPhysicalBody_a639ae8db08b48373cb96fa3728d3c447}{}class {\bfseries Physics\+Engine}\label{classPhysicalBody_a639ae8db08b48373cb96fa3728d3c447}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classPhysicalBody}{Physical\+Body} class Class providing basic physical capabilities. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classPhysicalBody_a32ddf45baf5694a3cc6c405e2ed6e7bf}{}\index{Physical\+Body@{Physical\+Body}!Physical\+Body@{Physical\+Body}}
+\index{Physical\+Body@{Physical\+Body}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{Physical\+Body}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Body\+::\+Physical\+Body (
+\begin{DoxyParamCaption}
+\item[{Object\+Type}]{type, }
+\item[{Collision\+Type}]{collision, }
+\item[{{\bf Point\+X\+Y}}]{dimensions, }
+\item[{double}]{friction = {\ttfamily 1}, }
+\item[{double}]{mass = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{classPhysicalBody_a32ddf45baf5694a3cc6c405e2ed6e7bf}
+
+
+\hyperlink{classPhysicalBody}{Physical\+Body} Constructor without mesh (circle by default) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & object type \\
+\hline
+{\em collision} & collision type \\
+\hline
+{\em dimensions} & object dimensions as w\+:h pair \\
+\hline
+{\em friction} & object friction factor \\
+\hline
+{\em mass} & object mass \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicalBody_ab4285ad124f8e4ed0c9c7fd05fad9268}{}\index{Physical\+Body@{Physical\+Body}!Physical\+Body@{Physical\+Body}}
+\index{Physical\+Body@{Physical\+Body}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{Physical\+Body}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Body\+::\+Physical\+Body (
+\begin{DoxyParamCaption}
+\item[{Object\+Type}]{type, }
+\item[{Collision\+Type}]{collision, }
+\item[{{\bf Point\+X\+Y}}]{dimensions, }
+\item[{{\bf Array}$<$ {\bf Point\+X\+Y} $\ast$ $>$ \&}]{collision\+Mesh, }
+\item[{double}]{friction = {\ttfamily 1}, }
+\item[{double}]{mass = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\label{classPhysicalBody_ab4285ad124f8e4ed0c9c7fd05fad9268}
+
+
+\hyperlink{classPhysicalBody}{Physical\+Body} Constructor with mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & object type \\
+\hline
+{\em collision} & collision type \\
+\hline
+{\em dimensions} & object dimensions as w\+:h pair \\
+\hline
+{\em collision\+Mesh} & polygon representing collision mesh provided as set of vertices \\
+\hline
+{\em friction} & object friction factor \\
+\hline
+{\em mass} & object mass \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicalBody_abfe0f525e4934d83216525a84c9c69f7}{}\index{Physical\+Body@{Physical\+Body}!Physical\+Body@{Physical\+Body}}
+\index{Physical\+Body@{Physical\+Body}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{Physical\+Body}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Body\+::\+Physical\+Body (
+\begin{DoxyParamCaption}
+\item[{const {\bf Physical\+Body} \&}]{ref}
+\end{DoxyParamCaption}
+)}\label{classPhysicalBody_abfe0f525e4934d83216525a84c9c69f7}
+
+
+\hyperlink{classPhysicalBody}{Physical\+Body} copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref} & reference object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classPhysicalBody_a548eed7049c86fbc46ae96958c8703d7}{}\index{Physical\+Body@{Physical\+Body}!get\+Bound@{get\+Bound}}
+\index{get\+Bound@{get\+Bound}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Bound}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point\+X\+Y}\& Physical\+Body\+::get\+Bound (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a548eed7049c86fbc46ae96958c8703d7}
+
+
+get\+Bound returns object bouding box (dimensions) 
+
+\begin{DoxyReturn}{Returns}
+bouding box w\+:h pair 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_ac2166b0723886ce7f9c040e18ec954c6}{}\index{Physical\+Body@{Physical\+Body}!get\+Collision\+Mesh@{get\+Collision\+Mesh}}
+\index{get\+Collision\+Mesh@{get\+Collision\+Mesh}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Collision\+Mesh}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Array}$<${\bf Vector\+X\+Y}$\ast$$>$\& Physical\+Body\+::get\+Collision\+Mesh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_ac2166b0723886ce7f9c040e18ec954c6}
+
+
+get\+Collision\+Mesh 
+
+\begin{DoxyReturn}{Returns}
+object collision mesh 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_a967028465a40efe44ba6390e3579e210}{}\index{Physical\+Body@{Physical\+Body}!get\+Collision\+Normals@{get\+Collision\+Normals}}
+\index{get\+Collision\+Normals@{get\+Collision\+Normals}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Collision\+Normals}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Array}$<${\bf Vector\+X\+Y}$\ast$$>$\& Physical\+Body\+::get\+Collision\+Normals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a967028465a40efe44ba6390e3579e210}
+
+
+get\+Collision\+Normals 
+
+\begin{DoxyReturn}{Returns}
+object normals 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_a96d5dba392884dbf83b1f82c621fac9c}{}\index{Physical\+Body@{Physical\+Body}!get\+Collision\+Type@{get\+Collision\+Type}}
+\index{get\+Collision\+Type@{get\+Collision\+Type}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Collision\+Type}]{\setlength{\rightskip}{0pt plus 5cm}Collision\+Type Physical\+Body\+::get\+Collision\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a96d5dba392884dbf83b1f82c621fac9c}
+
+
+get\+Collision\+Type 
+
+\begin{DoxyReturn}{Returns}
+object collision type 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_af8733082c596676418984ab4c5398f5e}{}\index{Physical\+Body@{Physical\+Body}!get\+Friction@{get\+Friction}}
+\index{get\+Friction@{get\+Friction}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Friction}]{\setlength{\rightskip}{0pt plus 5cm}double Physical\+Body\+::get\+Friction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_af8733082c596676418984ab4c5398f5e}
+
+
+get\+Friction 
+
+\begin{DoxyReturn}{Returns}
+object friction factor 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_a8509893e9881d99ed2851338c1be6b55}{}\index{Physical\+Body@{Physical\+Body}!get\+Mass@{get\+Mass}}
+\index{get\+Mass@{get\+Mass}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Mass}]{\setlength{\rightskip}{0pt plus 5cm}double Physical\+Body\+::get\+Mass (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a8509893e9881d99ed2851338c1be6b55}
+
+
+get\+Mass 
+
+\begin{DoxyReturn}{Returns}
+object mass 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_ab6ae355a3cee5918a000220af20f2837}{}\index{Physical\+Body@{Physical\+Body}!get\+Mesh\+Type@{get\+Mesh\+Type}}
+\index{get\+Mesh\+Type@{get\+Mesh\+Type}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Mesh\+Type}]{\setlength{\rightskip}{0pt plus 5cm}Mesh\+Type Physical\+Body\+::get\+Mesh\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_ab6ae355a3cee5918a000220af20f2837}
+
+
+get\+Mesh\+Type 
+
+\begin{DoxyReturn}{Returns}
+object mesh type 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_a9371f19b3f21435c17ba01b034a01404}{}\index{Physical\+Body@{Physical\+Body}!get\+Object\+Type@{get\+Object\+Type}}
+\index{get\+Object\+Type@{get\+Object\+Type}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{get\+Object\+Type}]{\setlength{\rightskip}{0pt plus 5cm}Object\+Type Physical\+Body\+::get\+Object\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a9371f19b3f21435c17ba01b034a01404}
+
+
+get\+Object\+Type 
+
+\begin{DoxyReturn}{Returns}
+object type 
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_adeff65b6b3f377362e5d3140b8dd9258}{}\index{Physical\+Body@{Physical\+Body}!operator=@{operator=}}
+\index{operator=@{operator=}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Physical\+Body} \& Physical\+Body\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Physical\+Body} \&}]{R}
+\end{DoxyParamCaption}
+)}\label{classPhysicalBody_adeff65b6b3f377362e5d3140b8dd9258}
+
+
+operator = assignment operator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em R} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classPhysicalBody_ae7e0ccd04b9e9e83a9777f016b094914}{}\index{Physical\+Body@{Physical\+Body}!reshape@{reshape}}
+\index{reshape@{reshape}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{reshape}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Body\+::reshape (
+\begin{DoxyParamCaption}
+\item[{{\bf Array}$<$ {\bf Point\+X\+Y} $\ast$ $>$ \&}]{collision\+Mesh}
+\end{DoxyParamCaption}
+)}\label{classPhysicalBody_ae7e0ccd04b9e9e83a9777f016b094914}
+
+
+reshape assigns collision mesh polygon to object turning it into mesh (polygon) object type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em collision\+Mesh} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicalBody_ab5aebc5188db718079e4f3e5fc51d8b7}{}\index{Physical\+Body@{Physical\+Body}!set\+Collision\+Type@{set\+Collision\+Type}}
+\index{set\+Collision\+Type@{set\+Collision\+Type}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{set\+Collision\+Type}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Body\+::set\+Collision\+Type (
+\begin{DoxyParamCaption}
+\item[{Collision\+Type}]{collision}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_ab5aebc5188db718079e4f3e5fc51d8b7}
+
+
+set\+Collision\+Type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em collision} & new collision type \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicalBody_a44e55add5d12fc288b656f47f983b42a}{}\index{Physical\+Body@{Physical\+Body}!set\+Friction@{set\+Friction}}
+\index{set\+Friction@{set\+Friction}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{set\+Friction}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Body\+::set\+Friction (
+\begin{DoxyParamCaption}
+\item[{double}]{friction}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a44e55add5d12fc288b656f47f983b42a}
+
+
+set\+Friction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em friction} & friction factor (can\textquotesingle{}t be negative) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicalBody_a02bfe02d6439f40f41b47ee797533cb6}{}\index{Physical\+Body@{Physical\+Body}!set\+Mass@{set\+Mass}}
+\index{set\+Mass@{set\+Mass}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{set\+Mass}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Body\+::set\+Mass (
+\begin{DoxyParamCaption}
+\item[{double}]{mass}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a02bfe02d6439f40f41b47ee797533cb6}
+
+
+set\+Mass 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mass} & new mass (can\textquotesingle{}t be negative) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classPhysicalBody_a089a6ea0bbc6e38e9ea09170f123ad64}{}\index{Physical\+Body@{Physical\+Body}!set\+Object\+Type@{set\+Object\+Type}}
+\index{set\+Object\+Type@{set\+Object\+Type}!Physical\+Body@{Physical\+Body}}
+\subsubsection[{set\+Object\+Type}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Body\+::set\+Object\+Type (
+\begin{DoxyParamCaption}
+\item[{Object\+Type}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classPhysicalBody_a089a6ea0bbc6e38e9ea09170f123ad64}
+
+
+set\+Object\+Type 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & new object type \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/object.\+h\item 
+src/object.\+cpp\end{DoxyCompactItemize}
