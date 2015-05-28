@@ -1,4 +1,5 @@
 #include "drivers/include/Intro.h"
+#include "drivers/include/Hud.h"
 
 Intro::~Intro() {}
 
@@ -25,17 +26,15 @@ BaseEvent& Intro::run(GameSession& session)
     if (i < map.length())
         game->getPhysicsEngine()->registerObject(map[i]);
 
-    game ->getGameMap()->addObject(*(new ObjectMapMeta(*Tree01,PointXY(16, 16))));
-    i = 1;
-        while (i < map.length() && (map[i].object.isTypeOf(Tree::typeName) == false))
-        {
-            i++;
-        }
-    if (i < map.length())
-        game->getPhysicsEngine()->registerObject(map[i]);
+    for (i = 0 ; i <3 ; i++)
+    {
+        game ->getGameMap()->addObject(*(new ObjectMapMeta(*Tree01,PointXY(16 * i, 16 * i))));
+        game->getPhysicsEngine()->registerObject(map[1]);
+    }
 
 
     game -> getGameDomain()->add(*(new PlayerController())); /**DODAJE KLOCEK KTORY POWINIEN STEROWAC GRACZEM**/
+    game -> getGameDomain()->add(*(new HealthBar()));
     Event<GameSession&>* e = new Event<GameSession&> (*game, BaseEvent::Type::swapSessions);
     return *e;
 }
