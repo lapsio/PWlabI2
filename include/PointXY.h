@@ -2,6 +2,7 @@
 #define POINTXY_H
 
 #include "./include/defines.h"
+#include <iostream>
 
 /**
  * @brief The PointXY class class providing basic point functionality. Can be used as pair of numbers as well
@@ -77,6 +78,7 @@ class PointXY
 /***************************************************************************************/
 
         friend PointXY operator*( const double & k,const PointXY & point ); // Operator dla mnozenia k * (X,Y)
+        friend std::ostream& operator<< (std::ostream &out, const PointXY &cPoint);
 #ifdef _DEBUG
         void show () const;
 #endif

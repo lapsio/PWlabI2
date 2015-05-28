@@ -130,6 +130,12 @@ PointXY operator*( const double & k,const PointXY & point ) /***MNOZENIE PRZEZ S
 
     return tmp;
 }
+std::ostream& operator<< (std::ostream &out, const PointXY &cPoint)
+{
+    out << "(" << cPoint.X << "," <<
+        cPoint.Y << ")";
+    return out;
+}
 
 
 void PointXY:: show() const
