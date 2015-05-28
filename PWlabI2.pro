@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     drivers/src/EngineStart.cpp \
     drivers/src/Intro.cpp \
     drivers/src/PlayerController.cpp \
-    drivers/src/Static.cpp
+    drivers/src/Static.cpp \
+    drivers/src/Hud.cpp
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -46,5 +47,6 @@ HEADERS += \
     drivers/include/EngineStart.h \
     drivers/include/Intro.h \
     drivers/include/PlayerController.h \
-    drivers/include/Static.h
+    drivers/include/Static.h \
+    drivers/include/Hud.h
 

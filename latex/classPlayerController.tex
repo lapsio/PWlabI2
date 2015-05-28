@@ -1,5 +1,14 @@
 \hypertarget{classPlayerController}{}\section{Player\+Controller Class Reference}
 \label{classPlayerController}\index{Player\+Controller@{Player\+Controller}}
+
+
+The \hyperlink{classPlayerController}{Player\+Controller} Class is a tool which we add to session and this allow us to control a \hyperlink{classPlayer}{Player} \hyperlink{classObject}{Object} in game.  
+
+
+
+
+{\ttfamily \#include $<$Player\+Controller.\+h$>$}
+
 Inheritance diagram for Player\+Controller\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,36 +18,32 @@ Inheritance diagram for Player\+Controller\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classPlayerController_a1d348ae7dbf9730dde7b6c76e27b2d4b}{}void {\bfseries set\+Player\+Holder} (\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$M\+M)\label{classPlayerController_a1d348ae7dbf9730dde7b6c76e27b2d4b}
+void \hyperlink{classPlayerController_a1d348ae7dbf9730dde7b6c76e27b2d4b}{set\+Player\+Holder} (\hyperlink{classObjectMapMeta}{Object\+Map\+Meta} $\ast$M\+M)
+\begin{DoxyCompactList}\small\item\em Setting a class variable set\+Player\+Holder. \end{DoxyCompactList}\item 
+\hypertarget{classPlayerController_a062dc3debb7d14f2fc755b1b44ae7d07}{}\hyperlink{classBaseEvent}{Base\+Event} \& \hyperlink{classPlayerController_a062dc3debb7d14f2fc755b1b44ae7d07}{run} (\hyperlink{classGameSession}{Game\+Session} \&session)\label{classPlayerController_a062dc3debb7d14f2fc755b1b44ae7d07}
 
-\item 
-\hyperlink{classBaseEvent}{Base\+Event} \& \hyperlink{classPlayerController_a062dc3debb7d14f2fc755b1b44ae7d07}{run} (\hyperlink{classGameSession}{Game\+Session} \&session)
-\begin{DoxyCompactList}\small\item\em run method called before each screen redraw \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Basic funtion which control a session. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classPlayerController}{Player\+Controller} Class is a tool which we add to session and this allow us to control a \hyperlink{classPlayer}{Player} \hyperlink{classObject}{Object} in game. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classInterface}{Interface} 
+\end{DoxySeeAlso}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classPlayerController_a062dc3debb7d14f2fc755b1b44ae7d07}{}\index{Player\+Controller@{Player\+Controller}!run@{run}}
-\index{run@{run}!Player\+Controller@{Player\+Controller}}
-\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Base\+Event} \& Player\+Controller\+::run (
+\hypertarget{classPlayerController_a1d348ae7dbf9730dde7b6c76e27b2d4b}{}\index{Player\+Controller@{Player\+Controller}!set\+Player\+Holder@{set\+Player\+Holder}}
+\index{set\+Player\+Holder@{set\+Player\+Holder}!Player\+Controller@{Player\+Controller}}
+\subsubsection[{set\+Player\+Holder}]{\setlength{\rightskip}{0pt plus 5cm}void Player\+Controller\+::set\+Player\+Holder (
 \begin{DoxyParamCaption}
-\item[{{\bf Game\+Session} \&}]{session}
+\item[{{\bf Object\+Map\+Meta} $\ast$}]{M\+M}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classPlayerController_a062dc3debb7d14f2fc755b1b44ae7d07}
+)}\label{classPlayerController_a1d348ae7dbf9730dde7b6c76e27b2d4b}
 
 
-run method called before each screen redraw 
-
-
-\begin{DoxyParams}{Parameters}
-{\em session} & current session passed to driver by game domain manager \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-
-\end{DoxyReturn}
-
-
-Implements \hyperlink{classInterface_addff25eb2adf4221c2be4895597b49c1}{Interface}.
+Setting a class variable set\+Player\+Holder. 
 
 
 

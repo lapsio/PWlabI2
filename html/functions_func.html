@@ -119,6 +119,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>add()
 : <a class="el" href="classGameDomain.html#af4426ea0c66b01e5c573becf180e7fb3">GameDomain</a>
 </li>
+<li>AddExperience()
+: <a class="el" href="classPlayer.html#a8b2c3f2f4e2247e2fb394c6868781d9b">Player</a>
+</li>
 <li>addObject()
 : <a class="el" href="classGameMap.html#a1445fd0bb55e7e4ad9fe3cc780306e2d">GameMap</a>
 </li>
@@ -232,6 +235,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getCollisionType()
 : <a class="el" href="classPhysicalBody.html#a96d5dba392884dbf83b1f82c621fac9c">PhysicalBody</a>
 </li>
+<li>getCurrentHealthPoint()
+: <a class="el" href="classActor.html#a09fbcbbca7b72174ba9fb5af36c3d9f2">Actor</a>
+</li>
 <li>getData()
 : <a class="el" href="classArray.html#a185f77a5e5fec186718b41c6f97cf901">Array&lt; TYPE &gt;</a>
 </li>
@@ -240,6 +246,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>getFriction()
 : <a class="el" href="classPhysicalBody.html#af8733082c596676418984ab4c5398f5e">PhysicalBody</a>
+</li>
+<li>getGainedExperience()
+: <a class="el" href="classPlayer.html#a832c45eb6c4c3b7a85098eea14bff5c1">Player</a>
 </li>
 <li>getGameDomain()
 : <a class="el" href="classGameSession.html#acd1b9636d6c956c6d8a1b379de8d34ee">GameSession</a>
@@ -253,12 +262,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getIndex()
 : <a class="el" href="classGameMap.html#a0cfbeb2c0b6a270fc5fa1bcd140743cc">GameMap</a>
 </li>
+<li>getLevel()
+: <a class="el" href="classActor.html#ae42874679e670febffa8919497a4fddd">Actor</a>
+</li>
 <li>getMap()
 : <a class="el" href="classObjectMapMeta.html#ae9a94a068918c364af21c8e8dc515f0a">ObjectMapMeta</a>
 , <a class="el" href="classPhysicsEngine.html#abe9b7fec2565129365490d4d09ab91fb">PhysicsEngine</a>
 </li>
 <li>getMass()
 : <a class="el" href="classPhysicalBody.html#a8509893e9881d99ed2851338c1be6b55">PhysicalBody</a>
+</li>
+<li>getMaxHealthPoint()
+: <a class="el" href="classActor.html#ab8df0b5c89a00f84095977cdb34029c7">Actor</a>
 </li>
 <li>getMeshType()
 : <a class="el" href="classPhysicalBody.html#ab6ae355a3cee5918a000220af20f2837">PhysicalBody</a>
@@ -289,6 +304,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>getTimer()
 : <a class="el" href="classGameSession.html#ae83e20db424a495a5c5e77a3d49bc99f">GameSession</a>
+</li>
+<li>getToNextLevelExperience()
+: <a class="el" href="classPlayer.html#a87007e274e6588713352a3836e6411a2">Player</a>
 </li>
 <li>getX()
 : <a class="el" href="classPointXY.html#ad0a3960b3701e91d54ff2533c5b69809">PointXY</a>
@@ -508,6 +526,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>setCollisionType()
 : <a class="el" href="classPhysicalBody.html#ab5aebc5188db718079e4f3e5fc51d8b7">PhysicalBody</a>
 </li>
+<li>setCurrentHealthPoint()
+: <a class="el" href="classActor.html#a12e31ce9c3517bd08640d7cc6b1748d8">Actor</a>
+</li>
 <li>setData()
 : <a class="el" href="classArray.html#a518c03f5920deccc1b084fb8a919a34f">Array&lt; TYPE &gt;</a>
 </li>
@@ -517,11 +538,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>setFriction()
 : <a class="el" href="classPhysicalBody.html#a44e55add5d12fc288b656f47f983b42a">PhysicalBody</a>
 </li>
+<li>setIsObjectAdded()
+: <a class="el" href="classEngineStart.html#aa69bfc21de9586ba2058aa07d9790b02">EngineStart</a>
+</li>
+<li>setLevel()
+: <a class="el" href="classActor.html#a771a4d2caa4cb8332b18f8bd6f786245">Actor</a>
+</li>
 <li>setMass()
 : <a class="el" href="classPhysicalBody.html#a02bfe02d6439f40f41b47ee797533cb6">PhysicalBody</a>
 </li>
+<li>setMaxHealthPoint()
+: <a class="el" href="classActor.html#a162b1257ffca028edd0d4db0077cf671">Actor</a>
+</li>
 <li>setObjectType()
 : <a class="el" href="classPhysicalBody.html#a089a6ea0bbc6e38e9ea09170f123ad64">PhysicalBody</a>
+</li>
+<li>setPlayerHolder()
+: <a class="el" href="classPlayerController.html#a1d348ae7dbf9730dde7b6c76e27b2d4b">PlayerController</a>
 </li>
 <li>setVector()
 : <a class="el" href="classVectorXY.html#a8ba83cb02ebe32672926abac17ab174e">VectorXY</a>
@@ -585,7 +618,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 06:05:11 for PWlabI2 rpg by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 28 2015 06:44:53 for PWlabI2 rpg by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

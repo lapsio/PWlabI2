@@ -1,5 +1,14 @@
 \hypertarget{classEngineStart}{}\section{Engine\+Start Class Reference}
 \label{classEngineStart}\index{Engine\+Start@{Engine\+Start}}
+
+
+The \hyperlink{classEngineStart}{Engine\+Start} class is using as a tool which will control current session and will change session when user press return.  
+
+
+
+
+{\ttfamily \#include $<$Engine\+Start.\+h$>$}
+
 Inheritance diagram for Engine\+Start\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,10 +22,18 @@ Inheritance diagram for Engine\+Start\+:\begin{figure}[H]
 
 \item 
 \hyperlink{classBaseEvent}{Base\+Event} \& \hyperlink{classEngineStart_a9caa9db3213371e5a77f1b09576a04fa}{run} (\hyperlink{classGameSession}{Game\+Session} \&session)
-\begin{DoxyCompactList}\small\item\em run method called before each screen redraw \end{DoxyCompactList}\item 
-\hypertarget{classEngineStart_aa69bfc21de9586ba2058aa07d9790b02}{}void {\bfseries set\+Is\+Object\+Added} (bool C=true)\label{classEngineStart_aa69bfc21de9586ba2058aa07d9790b02}
+\begin{DoxyCompactList}\small\item\em Basic methods which give us a opportunity to control a session. \end{DoxyCompactList}\item 
+\hypertarget{classEngineStart_aa69bfc21de9586ba2058aa07d9790b02}{}void \hyperlink{classEngineStart_aa69bfc21de9586ba2058aa07d9790b02}{set\+Is\+Object\+Added} (bool C=true)\label{classEngineStart_aa69bfc21de9586ba2058aa07d9790b02}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Change a class variable Is\+Object\+Added. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classEngineStart}{Engine\+Start} class is using as a tool which will control current session and will change session when user press return. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classInterface}{Interface} 
+\end{DoxySeeAlso}
 
 
 \subsection{Member Function Documentation}
@@ -29,16 +46,8 @@ Inheritance diagram for Engine\+Start\+:\begin{figure}[H]
 )\hspace{0.3cm}{\ttfamily [virtual]}}\label{classEngineStart_a9caa9db3213371e5a77f1b09576a04fa}
 
 
-run method called before each screen redraw 
+Basic methods which give us a opportunity to control a session. 
 
-
-\begin{DoxyParams}{Parameters}
-{\em session} & current session passed to driver by game domain manager \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-
-\end{DoxyReturn}
 D\+O\+D\+A\+J\+E K\+L\+O\+C\+E\+K K\+T\+O\+R\+Y W R\+U\+N Z\+W\+R\+A\+C\+A swap\+S\+E\+S\+S\+I\+O\+N\+S 
 
 Implements \hyperlink{classInterface_addff25eb2adf4221c2be4895597b49c1}{Interface}.

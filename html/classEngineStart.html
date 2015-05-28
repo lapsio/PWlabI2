@@ -89,6 +89,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">EngineStart Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classEngineStart.html" title="The EngineStart class is using as a tool which will control current session and will change session w...">EngineStart</a> class is using as a tool which will control current session and will change session when user press return.  
+ <a href="classEngineStart.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="EngineStart_8h_source.html">EngineStart.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for EngineStart:</div>
 <div class="dyncontent">
@@ -106,10 +111,11 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>EngineStart</b> (<a class="el" href="classRenderEngine.html">RenderEngine</a> &amp;rE)</td></tr>
 <tr class="separator:aa40d0a5b9d72a3ce33a8f8fa99656b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9caa9db3213371e5a77f1b09576a04fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseEvent.html">BaseEvent</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEngineStart.html#a9caa9db3213371e5a77f1b09576a04fa">run</a> (<a class="el" href="classGameSession.html">GameSession</a> &amp;session)</td></tr>
-<tr class="memdesc:a9caa9db3213371e5a77f1b09576a04fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">run method called before each screen redraw  <a href="#a9caa9db3213371e5a77f1b09576a04fa">More...</a><br /></td></tr>
+<tr class="memdesc:a9caa9db3213371e5a77f1b09576a04fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic methods which give us a opportunity to control a session.  <a href="#a9caa9db3213371e5a77f1b09576a04fa">More...</a><br /></td></tr>
 <tr class="separator:a9caa9db3213371e5a77f1b09576a04fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa69bfc21de9586ba2058aa07d9790b02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa69bfc21de9586ba2058aa07d9790b02"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setIsObjectAdded</b> (bool C=true)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEngineStart.html#aa69bfc21de9586ba2058aa07d9790b02">setIsObjectAdded</a> (bool C=true)</td></tr>
+<tr class="memdesc:aa69bfc21de9586ba2058aa07d9790b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change a class variable IsObjectAdded. <br /></td></tr>
 <tr class="separator:aa69bfc21de9586ba2058aa07d9790b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classGCRef"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classGCRef')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classGCRef.html">GCRef</a></td></tr>
 <tr class="memitem:ae39bea73b9c6af4a0df6ff490f3e8fa9 inherit pub_methods_classGCRef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGCRefLink.html">GCRefLink</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGCRef.html#ae39bea73b9c6af4a0df6ff490f3e8fa9">link</a> ()</td></tr>
@@ -123,7 +129,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a7cc24acd7029926613e9681e16f2bf76 inherit pub_methods_classGCRef"><td class="mdescLeft">&#160;</td><td class="mdescRight">refUsersCount Returns current number of registered links  <a href="#a7cc24acd7029926613e9681e16f2bf76">More...</a><br /></td></tr>
 <tr class="separator:a7cc24acd7029926613e9681e16f2bf76 inherit pub_methods_classGCRef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="classEngineStart.html" title="The EngineStart class is using as a tool which will control current session and will change session w...">EngineStart</a> class is using as a tool which will control current session and will change session when user press return. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classInterface.html" title="The Interface class Interface to be implemented by all drivers. ">Interface</a> </dd></dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a9caa9db3213371e5a77f1b09576a04fa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -146,14 +155,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table>
 </div><div class="memdoc">
 
-<p>run method called before each screen redraw </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>current session passed to driver by game domain manager </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>Basic methods which give us a opportunity to control a session. </p>
 <p>DODAJE KLOCEK KTORY W RUN ZWRACA swapSESSIONS </p>
 
 <p>Implements <a class="el" href="classInterface.html#addff25eb2adf4221c2be4895597b49c1">Interface</a>.</p>
@@ -167,7 +169,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu May 28 2015 06:05:03 for PWlabI2 rpg by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 28 2015 06:44:47 for PWlabI2 rpg by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>
