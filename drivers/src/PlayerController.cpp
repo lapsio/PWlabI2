@@ -69,6 +69,10 @@ BaseEvent& PlayerController:: run(GameSession& session)
           WASD.setEnd(WASD.getEnd().X,PlayerHolder->speed.getEnd().Y);
 
         PlayerHolder->speed.setEnd(WASD.getEnd());
+
+        session.getRenderEngine()->centerCamera(PlayerHolder->pos);
+
+
     }
 
     return *(new BaseEvent);

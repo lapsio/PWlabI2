@@ -21,10 +21,10 @@ class Tree: public Object
         {
           Array <PointXY*> *arr = new Array <PointXY*> (4);
 
-            (*arr)[0]=new PointXY(0.5,0.5);
-            (*arr)[1]=new PointXY(7.5,0.5);
-            (*arr)[2]=new PointXY(7.5,7.5);
-            (*arr)[3]=new PointXY(0.5,7.5);
+            (*arr)[0]=new PointXY(2,2);
+            (*arr)[1]=new PointXY(6,2);
+            (*arr)[2]=new PointXY(2,6);
+            (*arr)[3]=new PointXY(6,6);
             return arr;
         }
 

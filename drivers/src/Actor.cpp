@@ -5,7 +5,7 @@
 /******************************************************************/
 Actor::Actor(std::string n, float maxhp, float curhp, int lvl)
 :Object(n,Decal("misc/player.png",PointXY(-1.25,-1.25)),
-                    PhysicalBody(PhysicalBody::ObjectType::dynamic,PhysicalBody::CollisionType::solid,PointXY(1.25,1.25),50,1))
+                    PhysicalBody(PhysicalBody::ObjectType::dynamic,PhysicalBody::CollisionType::solid,PointXY(1.25,1.25),100,1))
 {
     this -> pushType(Actor::typeName);
 
