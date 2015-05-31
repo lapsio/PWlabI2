@@ -689,7 +689,7 @@ int PhysicsEngine::isColliding(ObjectPhysicsMeta &A, ObjectPhysicsMeta &B, const
 
         if (collide){
           VectorXY scaledSpeed = VectorXY(o_circle->speed);
-          scaledSpeed.scaleTo(o_circle->object.boundBox.X*2);
+          scaledSpeed.scaleTo(o_circle->object.boundBox.X*0.5);
 
           o_circle->pos.moveBy(
                 -scaledSpeed.width(),

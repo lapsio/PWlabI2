@@ -7,7 +7,7 @@ BaseEvent& Intro::run(GameSession& session)
 {
     int i = 1;
 
-    GameSession* game = new GameSession(*session.getRenderEngine(),64,64);
+    GameSession* game = new GameSession(*session.getRenderEngine(),128,128);
 
     Grass* grass = new Grass("Grass");
     Tree* Tree01 = new Tree("Tree");
@@ -15,8 +15,8 @@ BaseEvent& Intro::run(GameSession& session)
     ObjectMapMeta* player = new ObjectMapMeta(*(new Player("Player",1,1,1)));
     ObjectMapMeta* HB = new ObjectMapMeta(*(new HealthBar("HealthBar")),PointXY(-32,26));
 
-    for(int i = 0; i < 10; i++)
-        for (int k = 0; k < 10; k++)
+    for(int i = 0; i < 20; i++)
+        for (int k = 0; k < 20; k++)
             game ->getGameMap()->addObject(*(new ObjectMapMeta(*grass,PointXY(6.4*i, 6.4*k))));
 
     game ->getGameMap()->addObject(*(player));
@@ -38,10 +38,10 @@ BaseEvent& Intro::run(GameSession& session)
     int liczba1;
     int liczba2;
 
-    for(int i = 0; i < 15; i++)
+    for(int i = 0; i < 128; i++)
     {
-        liczba1 =( std::rand() % 48 ) + 8;
-        liczba2 =( std::rand() % 48 ) + 8;
+        liczba1 =( std::rand() % 112 ) + 8;
+        liczba2 =( std::rand() % 112 ) + 8;
         game ->getGameMap()->addObject(*(new ObjectMapMeta(*Tree01,PointXY(liczba1, liczba2))));
         game -> getPhysicsEngine()->registerObject(map[1]);
     }

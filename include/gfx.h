@@ -12,7 +12,7 @@ class RenderEngine {
 public:
   static constexpr int UNITSIZE=10; /**< size of single session-wise unit in px*/
 
-  static constexpr int defaultBufferSize=256; /**< default draw buffer size*/
+  static constexpr int defaultBufferSize=2048; /**< default draw buffer size*/
   static constexpr char* defaultWindowName=(char*)"Game window";
 
   struct objRecord {
